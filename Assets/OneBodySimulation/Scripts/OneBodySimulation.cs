@@ -2,7 +2,6 @@
 
 public class OneBodySimulation : Simulation
 {
-
     public float frequency;
     public float amplitude;
     public float vectorLength;
@@ -10,6 +9,7 @@ public class OneBodySimulation : Simulation
 
     private float x, y, z;
     Vector3 velocityTotal;
+    private float BOUNDARY = 25f; 
 
     private void Awake() 
     {
@@ -34,7 +34,14 @@ public class OneBodySimulation : Simulation
 
         prefabs.positionBody.position = newPos;
 
-        velocityTotal = vectorLength * (newPos-currPos);
+        Vector3 diff = (newPos-currPos);
+        velocityTotal = vectorLength * diff;
+        // Bound Velocity Vector 
+        if (velocityTotal.magnitude > BOUNDARY)
+        {
+            velocityTotal = Vector3.zero;
+        }
+
     }
     void Update()
     {
