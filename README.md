@@ -1,1 +1,1 @@
-# app-template
+# Mass of a Globular Cluster
