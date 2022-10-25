@@ -64,7 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sous-titre
+  m_text: "une application directe du th\xE9or\xE8me du Viriel"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Titre
+  m_text: Masse d'un amas globulaire
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1d59b1c3fdcb4eaa939a49561e164fd, type: 2}
   m_sharedMaterial: {fileID: -7471981085373252525, guid: b1d59b1c3fdcb4eaa939a49561e164fd,
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Subtitle
+  m_text: a direct application of the Virial Theorem
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Title
+  m_text: Mass of a Globular Cluster
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1d59b1c3fdcb4eaa939a49561e164fd, type: 2}
   m_sharedMaterial: {fileID: -7471981085373252525, guid: b1d59b1c3fdcb4eaa939a49561e164fd,

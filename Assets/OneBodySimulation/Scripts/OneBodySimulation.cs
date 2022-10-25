@@ -5,6 +5,7 @@ public class OneBodySimulation : Simulation
 
     public float frequency;
     public float amplitude;
+    public float vectorLength;
     private OneBodyPrefabs prefabs;
 
     private float x, y, z;
@@ -33,7 +34,7 @@ public class OneBodySimulation : Simulation
 
         prefabs.positionBody.position = newPos;
 
-        velocityTotal = 30f * (newPos-currPos);
+        velocityTotal = vectorLength * (newPos-currPos);
     }
     void Update()
     {

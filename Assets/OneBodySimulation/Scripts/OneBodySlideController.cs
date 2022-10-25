@@ -8,10 +8,14 @@ public class OneBodySlideController : SimulationSlideController
     [SerializeField] private float frequency;
     [SerializeField] private float amplitude;
 
+    [Header("Vectors parameters")]
+    [SerializeField] private float vectorLength;
+
     public override void InitializeSlide()
     {
         OneBodySimulation sim = simulation as OneBodySimulation;
         sim.frequency = frequency;
         sim.amplitude = amplitude;
+        sim.vectorLength = vectorLength;
     }
 }

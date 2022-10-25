@@ -10,12 +10,14 @@ public class OneBodyPrefabs : MonoBehaviour
     [SerializeField] private GameObject vectorVelocityYPrefab;
     [SerializeField] private GameObject vectorVelocityZPrefab;
     [SerializeField] private GameObject vectorVelocityTotalPrefab;
+    [SerializeField] private GameObject coordinateTriadPrefab;
 
     [HideInInspector] public Transform positionBody;
     [HideInInspector] public Vector positionVectorVelocityX;
     [HideInInspector] public Vector positionVectorVelocityY;
     [HideInInspector] public Vector positionVectorVelocityZ;
     [HideInInspector] public Vector positionVectorVelocityTotal;
+    [HideInInspector] public Transform positionCoordinateTriad;
 
     public void SetBodyVisibility(bool isVisible)
     {
@@ -57,6 +59,14 @@ public class OneBodyPrefabs : MonoBehaviour
         }
     }
 
+    public void SetCoordinateTriadVisibility(bool isVisible)
+    {
+        if (positionCoordinateTriad)
+        {
+            positionCoordinateTriad.gameObject.SetActive(isVisible);
+        }
+    }
+
     public void InstantiateAllPrefabs()
     {
         if (bodyPrefab)
@@ -92,6 +102,14 @@ public class OneBodyPrefabs : MonoBehaviour
             positionVectorVelocityTotal.SetPositions(Vector3.zero, Vector3.zero);
             positionVectorVelocityTotal.name = "Velocity Total Vector";
         }
+
+        if (coordinateTriadPrefab)
+        {
+            positionCoordinateTriad = Instantiate(coordinateTriadPrefab, transform).transform;
+            positionCoordinateTriad.position = new Vector3(-7, -2, 0);
+            positionCoordinateTriad.localScale = new Vector3(1f, 1f, 1f);
+            positionCoordinateTriad.name = "Coordinate Triad";
+        }
     }
 
     public void UpdateVectors(float velocityX, float velocityY, float velocityZ, Vector3 velocityTotal)
@@ -116,7 +134,6 @@ public class OneBodyPrefabs : MonoBehaviour
 
         if (positionVectorVelocityTotal)
         {
-            // Change 2nd arg (head of vector)
             positionVectorVelocityTotal.SetPositions(positionBody.position, positionBody.position+velocityTotal);
             positionVectorVelocityTotal.Redraw();
         }
