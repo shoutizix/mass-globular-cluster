@@ -22,6 +22,26 @@ public class OneBodySimulation : Simulation
         prefabs.InstantiateAllPrefabs();
     }
 
+    private void Start() 
+    {
+        if (prefabs.orbit) 
+        {
+            int numSteps = 360;
+
+            Vector3[] positions = new Vector3[numSteps];
+            for (int i = 0; i < numSteps; i++)
+            {
+                float theta = i * 2f * Mathf.PI / numSteps;
+                float r = amplitude;
+                positions[i] = r * (Mathf.Cos(theta) * Vector3.right + Mathf.Sin(theta) * Vector3.up + Mathf.Cos(theta) * Vector3.forward);
+            }
+
+            prefabs.orbit.positionCount = numSteps;
+            prefabs.orbit.SetPositions(positions);
+            prefabs.orbit.loop = true;
+        }
+    }
+
     private void FixedUpdate() 
     {
         Vector3 currPos = prefabs.positionBody.position;

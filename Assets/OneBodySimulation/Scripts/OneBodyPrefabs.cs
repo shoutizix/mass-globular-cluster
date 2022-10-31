@@ -11,6 +11,7 @@ public class OneBodyPrefabs : MonoBehaviour
     [SerializeField] private GameObject vectorVelocityZPrefab;
     [SerializeField] private GameObject vectorVelocityTotalPrefab;
     [SerializeField] private GameObject coordinateTriadPrefab;
+    [SerializeField] private GameObject orbitPrefab;
 
     [HideInInspector] public Transform positionBody;
     [HideInInspector] public Vector positionVectorVelocityX;
@@ -18,6 +19,7 @@ public class OneBodyPrefabs : MonoBehaviour
     [HideInInspector] public Vector positionVectorVelocityZ;
     [HideInInspector] public Vector positionVectorVelocityTotal;
     [HideInInspector] public Transform positionCoordinateTriad;
+    [HideInInspector] public LineRenderer orbit;
 
     public void SetBodyVisibility(bool isVisible)
     {
@@ -67,6 +69,14 @@ public class OneBodyPrefabs : MonoBehaviour
         }
     }
 
+    public void SetOrbitVisibility(bool isVisible)
+    {
+        if (orbit)
+        {
+            orbit.gameObject.SetActive(isVisible);
+        }
+    }
+
     public void InstantiateAllPrefabs()
     {
         if (bodyPrefab)
@@ -109,6 +119,13 @@ public class OneBodyPrefabs : MonoBehaviour
             positionCoordinateTriad.position = new Vector3(-7, -2, 0);
             positionCoordinateTriad.localScale = new Vector3(1f, 1f, 1f);
             positionCoordinateTriad.name = "Coordinate Triad";
+        }
+
+        if (orbitPrefab)
+        {
+            orbit = Instantiate(orbitPrefab, transform).GetComponent<LineRenderer>();
+            orbit.positionCount = 0;
+            orbit.name = "Orbit";
         }
     }
 

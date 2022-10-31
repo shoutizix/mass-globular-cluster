@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311292, g: 0.38073754, b: 0.358736, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731125, g: 0.3807373, b: 0.35873553, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2823,12 +2823,15 @@ MonoBehaviour:
     type: 3}
   coordinateTriadPrefab: {fileID: 3853705163930917420, guid: 5606b785adf484ee7b06a3f7df9402b5,
     type: 3}
+  orbitPrefab: {fileID: 2765505063272382029, guid: 31011c2b0b26d4389a695d1432a0aff2,
+    type: 3}
   positionBody: {fileID: 0}
   positionVectorVelocityX: {fileID: 0}
   positionVectorVelocityY: {fileID: 0}
   positionVectorVelocityZ: {fileID: 0}
   positionVectorVelocityTotal: {fileID: 0}
   positionCoordinateTriad: {fileID: 0}
+  orbit: {fileID: 0}
 --- !u!114 &1551909485
 MonoBehaviour:
   m_ObjectHideFlags: 0
