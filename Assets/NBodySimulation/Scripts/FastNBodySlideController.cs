@@ -608,4 +608,10 @@ public class FastNBodySlideController : SimulationSlideController
             handRotate.TriggerFadeOut();
         }
     }
+
+    public void NewDeactivateSimulation()
+    {
+        base.DeactivateSimulation();
+        SetBloomVisibility(false);
+    }
 }

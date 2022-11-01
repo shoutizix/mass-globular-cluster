@@ -149,7 +149,14 @@ public class SlideManager : MonoBehaviour
         // Deactivate all simulations associated to this slide
         foreach (var prevSSC in prevSlide.GetComponents<SimulationSlideController>())
         {
-            prevSSC.DeactivateSimulation();
+            // Call the Deactivate method from the subclass
+            if (prevSSC is FastNBodySlideController)
+            {
+                ((FastNBodySlideController)prevSSC).NewDeactivateSimulation();
+            } else 
+            {
+                prevSSC.DeactivateSimulation();
+            }
             prevSSC.enabled = false;
         }
 
