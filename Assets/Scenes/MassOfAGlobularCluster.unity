@@ -1132,6 +1132,98 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000030517578, y: 120}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &428136177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 428136178}
+  - component: {fileID: 428136180}
+  - component: {fileID: 428136179}
+  m_Layer: 0
+  m_Name: 80 Body Simulation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &428136178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428136177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1777213032}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &428136179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428136177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3c19c75990e4bfc9f3ef38895c003c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPrefab: {fileID: 6335571273640261831, guid: 92b6705c326ff4de283a035b55885d18,
+    type: 3}
+  centerOfMassPrefab: {fileID: 0}
+  coordinateOriginPrefab: {fileID: 0}
+  angularMomentumVectorPrefab: {fileID: 0}
+  lightPrefabs:
+  - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
+  bodies: []
+  centerOfMass: {fileID: 0}
+  coordinateOrigin: {fileID: 0}
+  angularMomentumVector: {fileID: 0}
+  lights: []
+--- !u!114 &428136180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428136177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc15ff74287a8400a9bb83bb327db90b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paused: 0
+  mass: 0.1
+  bodyScale: 0.8
+  numBodies: 80
+  epsilon: 0.2
+  radialMean: 7
+  radialSigma: 0.5
+  speedMean: 3.3
+  speedSigma: 0.1
+  useMaxNumSteps: 0
+  maxNumSteps: 1000
+  maxAllowedDistance: 40
+  samplePeriod: 100
+  printSamples: 0
+  unitLength: 0
+  unitMass: 0
+  unitTime: 0
+  timeScale: 1
+  solver: 1
+  numSubsteps: 20
+  onMaxDistanceReached: {fileID: 11400000, guid: e11b0d641c1474f149736b45c2be63a5,
+    type: 2}
+  onComputeEnergies: {fileID: 11400000, guid: 775e5ec42293b4062a49757f2aba8180, type: 2}
+  averageVirial: 0
 --- !u!1 &474744076
 GameObject:
   m_ObjectHideFlags: 0
@@ -4265,6 +4357,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1551909483}
+  - {fileID: 428136178}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5813,6 +5906,7 @@ GameObject:
   - component: {fileID: 1366851268612730419}
   - component: {fileID: 1366851268612730421}
   - component: {fileID: 1366851268612730418}
+  - component: {fileID: 1366851268612730417}
   m_Layer: 5
   m_Name: Slide Intro
   m_TagString: Untagged
@@ -5820,6 +5914,48 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1366851268612730417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366851268612730416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9544c9bf2e58140128bd41e1df58055a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoPlay: 1
+  simulation: {fileID: 428136180}
+  virializeOnReset: 0
+  centerOfMass: 0
+  coordinateOrigin: 0
+  angularMomentumVector: 0
+  lights: 0
+  globalVolume: {fileID: 0}
+  bloom: 0
+  equationK: {fileID: 0}
+  panelK: {fileID: 0}
+  meterK: {fileID: 0}
+  equationU: {fileID: 0}
+  panelU: {fileID: 0}
+  meterU: {fileID: 0}
+  dataPanel: {fileID: 0}
+  handRotate: {fileID: 0}
+  computeKButton: {fileID: 0}
+  computeUButton: {fileID: 0}
+  resetButton: {fileID: 0}
+  startButton: {fileID: 0}
+  numberSlider: {fileID: 0}
+  distanceSlider: {fileID: 0}
+  speedSlider: {fileID: 0}
+  defaultMaterial: {fileID: 0}
+  glowMaterial: {fileID: 0}
+  connectorPrefab: {fileID: 0}
+  lineWidth: 0.1
+  velocityPrefab: {fileID: 0}
+  bodyLabels: []
 --- !u!114 &1366851268612730418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5834,18 +5970,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 0.5
-  position: {x: 0, y: 0, z: -30}
-  lookAt: {x: 0, y: 0, z: 0}
+  position: {x: -9, y: 4, z: -70}
+  lookAt: {x: -9, y: 4, z: 0}
   moveTime: 1
   orthographic: 0
-  fieldOfView: 20
+  fieldOfView: 30
   pivotPoint: {x: 0, y: 0, z: 0}
   canRotateX: 0
   canRotateY: 0
   canZoom: 0
   scrollScaleFactor: 0.1
-  minZoom: 5
-  maxZoom: 50
+  minZoom: 10
+  maxZoom: 200
   rotationCurve:
     serializedVersion: 2
     m_Curve:

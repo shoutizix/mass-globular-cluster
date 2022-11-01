@@ -5,6 +5,11 @@ public abstract class Simulation : MonoBehaviour
 {
     [HideInInspector] public bool paused = false;
 
+    public virtual void Reset()
+    {
+        Debug.LogError("Reset() has not been defined by child class.");
+    }
+
     public virtual void Pause()
     {
         paused = true;
