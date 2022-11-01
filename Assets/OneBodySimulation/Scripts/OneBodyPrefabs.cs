@@ -37,12 +37,30 @@ public class OneBodyPrefabs : MonoBehaviour
         }
     }
 
+    public bool GetVectorVelocityXVisibility() 
+    {
+        if (positionVectorVelocityX)
+        {
+            return positionVectorVelocityX.gameObject.activeInHierarchy;
+        }
+        return false;
+    }
+
     public void SetVectorVelocityYVisibility(bool isVisible)
     {
         if (positionVectorVelocityY)
         {
             positionVectorVelocityY.gameObject.SetActive(isVisible);
         }
+    }
+
+    public bool GetVectorVelocityYVisibility() 
+    {
+        if (positionVectorVelocityY)
+        {
+            return positionVectorVelocityY.gameObject.activeInHierarchy;
+        }
+        return false;
     }
 
     public void SetVectorVelocityZVisibility(bool isVisible)
@@ -53,12 +71,30 @@ public class OneBodyPrefabs : MonoBehaviour
         }
     }
 
+    public bool GetVectorVelocityZVisibility() 
+    {
+        if (positionVectorVelocityZ)
+        {
+            return positionVectorVelocityZ.gameObject.activeInHierarchy;
+        }
+        return false;
+    }
+
     public void SetVectorVelocityTotalVisibility(bool isVisible)
     {
         if (positionVectorVelocityTotal)
         {
             positionVectorVelocityTotal.gameObject.SetActive(isVisible);
         }
+    }
+
+    public bool GetVectorVelocityTotalVisibility() 
+    {
+        if (positionVectorVelocityTotal)
+        {
+            return positionVectorVelocityTotal.gameObject.activeInHierarchy;
+        }
+        return false;
     }
 
     public void SetCoordinateTriadVisibility(bool isVisible)
