@@ -4166,13 +4166,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPrefab: {fileID: 3708311882226884103, guid: c8818608f408345099b0c988c951045c,
     type: 3}
-  vectorVelocityXPrefab: {fileID: 2920813319859536083, guid: e863644d8e0e844f7b6614dd9fcfe5c0,
+  vectorVelocityXPrefab: {fileID: 1948715729921795565, guid: d9dc6a4b9e6d6482192e743e635a544f,
     type: 3}
-  vectorVelocityYPrefab: {fileID: 2920813319859536083, guid: 6e87a08ee467a4fbb9c6ccf399cce349,
+  vectorVelocityYPrefab: {fileID: 1948715729921795565, guid: d28f50e7865d046a38b48f21e8cc9827,
     type: 3}
-  vectorVelocityZPrefab: {fileID: 2920813319859536083, guid: b49efae1f99294318921a4c2d8aee2bf,
+  vectorVelocityZPrefab: {fileID: 1948715729921795565, guid: deb30c37df3b54a57b1d1ca0a02b766e,
     type: 3}
-  vectorVelocityTotalPrefab: {fileID: 2920813319859536083, guid: e169191798f194f9b8d61e1960714d90,
+  vectorVelocityTotalPrefab: {fileID: 1948715729921795565, guid: f470f2e73529445ff9d9f2f40c1836a0,
     type: 3}
   coordinateTriadPrefab: {fileID: 3853705163930917420, guid: 5606b785adf484ee7b06a3f7df9402b5,
     type: 3}

@@ -14,10 +14,10 @@ public class OneBodyPrefabs : MonoBehaviour
     [SerializeField] private GameObject orbitPrefab;
 
     [HideInInspector] public Transform positionBody;
-    [HideInInspector] public Vector positionVectorVelocityX;
-    [HideInInspector] public Vector positionVectorVelocityY;
-    [HideInInspector] public Vector positionVectorVelocityZ;
-    [HideInInspector] public Vector positionVectorVelocityTotal;
+    [HideInInspector] public Arrow positionVectorVelocityX;
+    [HideInInspector] public Arrow positionVectorVelocityY;
+    [HideInInspector] public Arrow positionVectorVelocityZ;
+    [HideInInspector] public Arrow positionVectorVelocityTotal;
     [HideInInspector] public Transform positionCoordinateTriad;
     [HideInInspector] public LineRenderer orbit;
 
@@ -123,29 +123,29 @@ public class OneBodyPrefabs : MonoBehaviour
 
         if (vectorVelocityXPrefab)
         {
-            positionVectorVelocityX = Instantiate(vectorVelocityXPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Vector>();
-            positionVectorVelocityX.SetPositions(Vector3.zero, Vector3.zero);
+            positionVectorVelocityX = Instantiate(vectorVelocityXPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Arrow>();
+            positionVectorVelocityX.SetComponents(Vector3.zero);
             positionVectorVelocityX.name = "Velocity X Vector";
         }
 
         if (vectorVelocityYPrefab)
         {
-            positionVectorVelocityY = Instantiate(vectorVelocityYPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Vector>();
-            positionVectorVelocityY.SetPositions(Vector3.zero, Vector3.zero);
+            positionVectorVelocityY = Instantiate(vectorVelocityYPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Arrow>();
+            positionVectorVelocityY.SetComponents(Vector3.zero);
             positionVectorVelocityY.name = "Velocity Y Vector";
         }
 
         if (vectorVelocityZPrefab)
         {
-            positionVectorVelocityZ = Instantiate(vectorVelocityZPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Vector>();
-            positionVectorVelocityZ.SetPositions(Vector3.zero, Vector3.zero);
+            positionVectorVelocityZ = Instantiate(vectorVelocityZPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Arrow>();
+            positionVectorVelocityZ.SetComponents(Vector3.zero);
             positionVectorVelocityZ.name = "Velocity Z Vector";
         }
 
         if (vectorVelocityTotalPrefab)
         {
-            positionVectorVelocityTotal = Instantiate(vectorVelocityTotalPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Vector>();
-            positionVectorVelocityTotal.SetPositions(Vector3.zero, Vector3.zero);
+            positionVectorVelocityTotal = Instantiate(vectorVelocityTotalPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Arrow>();
+            positionVectorVelocityTotal.SetComponents(Vector3.zero);
             positionVectorVelocityTotal.name = "Velocity Total Vector";
         }
 
@@ -169,26 +169,27 @@ public class OneBodyPrefabs : MonoBehaviour
     {
         if (positionVectorVelocityX)
         {
-            positionVectorVelocityX.SetPositions(positionBody.position, positionBody.position+Vector3.right*velocityX);
-            positionVectorVelocityX.Redraw();
+            positionVectorVelocityX.transform.position = positionBody.position;
+            positionVectorVelocityX.SetComponents(Vector3.right * velocityX);
         }
 
         if (positionVectorVelocityY)
         {
-            positionVectorVelocityY.SetPositions(positionBody.position, positionBody.position+Vector3.up*velocityY);
-            positionVectorVelocityY.Redraw();
+            positionVectorVelocityY.transform.position = positionBody.position;
+            positionVectorVelocityY.SetComponents(Vector3.up * velocityY);
         }
 
         if (positionVectorVelocityZ)
         {
-            positionVectorVelocityZ.SetPositions(positionBody.position, positionBody.position+Vector3.forward*velocityZ);
-            positionVectorVelocityZ.Redraw();
+            positionVectorVelocityZ.transform.position = positionBody.position;
+            positionVectorVelocityZ.SetComponents(Vector3.forward * velocityZ);
         }
 
         if (positionVectorVelocityTotal)
         {
-            positionVectorVelocityTotal.SetPositions(positionBody.position, positionBody.position+velocityTotal);
-            positionVectorVelocityTotal.Redraw();
+            //positionVectorVelocityTotal.SetPositions(positionBody.position, positionBody.position+velocityTotal);
+            positionVectorVelocityTotal.transform.position = positionBody.position;
+            positionVectorVelocityTotal.SetComponents(velocityTotal);
         }
     }
 }
