@@ -35,6 +35,8 @@ public class CameraController : MonoBehaviour
     private Vector3 cameraStartPosition;
     private Quaternion cameraStartRotation;
 
+    private bool cameraHasRotated;
+
     public void AssignCameraReference(Camera camera)
     {
         //Debug.Log("AssignCameraReference called by " + gameObject.name);
@@ -53,6 +55,7 @@ public class CameraController : MonoBehaviour
             StopCoroutine(cameraChangingColor);
         }
         mainCamera = null;
+        cameraHasRotated = false;
     }
 
     // For zooming in and out
@@ -124,6 +127,12 @@ public class CameraController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             clickedOnUIElement = false;
+
+            if (!cameraHasRotated)
+            {
+                cameraHasRotated = true;
+                BroadcastMessage("HandleCameraHasRotated", SendMessageOptions.DontRequireReceiver);
+            }
         }
     }
 

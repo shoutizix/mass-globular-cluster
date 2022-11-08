@@ -11,11 +11,27 @@ public class OneBodySlideController : SimulationSlideController
     [Header("Vectors parameters")]
     [SerializeField] private float vectorLength;
 
+    [Header("Fade Out Image")]
+    [SerializeField] private FadeOutUI handRotate;
+
     public override void InitializeSlide()
     {
         OneBodySimulation sim = simulation as OneBodySimulation;
         sim.frequency = frequency;
         sim.amplitude = amplitude;
         sim.vectorLength = vectorLength;
+        
+        if (handRotate)
+        {
+            handRotate.TriggerReset();
+        }
+    }
+
+    public void HandleCameraHasRotated()
+    {
+        if (handRotate)
+        {
+            handRotate.TriggerFadeOut();
+        }
     }
 }

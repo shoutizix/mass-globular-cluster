@@ -16,7 +16,6 @@ public class FadeOutUI : MonoBehaviour
         {
             canvasGroup = GetComponent<CanvasGroup>();
         }
-
         Reset();
     }
 
