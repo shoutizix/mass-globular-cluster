@@ -23,6 +23,8 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private bool bloom;
 
     [Header("Equations / Displays")]
+    [SerializeField] private RectTransform panelRadialVelocity;
+    [SerializeField] private MeterFill meterRadialVelocity;
     [SerializeField] private RectTransform equationK;
     [SerializeField] private RectTransform panelK;
     [SerializeField] private MeterFill meterK;
@@ -33,6 +35,7 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private FadeOutUI handRotate;
 
     [Header("Buttons")]
+    [SerializeField] private Button measureRadialVelocityButton;
     [SerializeField] private Button computeKButton;
     [SerializeField] private Button computeUButton;
     [SerializeField] private Button resetButton;
@@ -84,6 +87,10 @@ public class FastNBodySlideController : SimulationSlideController
 
         // Collect all assigned buttons
         buttons = new HashSet<Button>();
+        if (measureRadialVelocityButton)
+        {
+            buttons.Add(measureRadialVelocityButton);
+        }
         if (computeKButton)
         {
             buttons.Add(computeKButton);
@@ -210,10 +217,22 @@ public class FastNBodySlideController : SimulationSlideController
         }
     }
 
+    public void ComputeRadialVelocityVisually()
+    {
+        UpdateRadialVelocityMeter(0);
+        SetUVisibility(false);
+        SetKVisibility(false);
+        SetButtonsInteractivity(false);
+        simulation.Pause();
+        sim.ComputeRadialVelocity();
+        StartCoroutine(LoopOverBodiesMeasureRadialVelocity(sim.RadialVelocity));
+    }
+
     public void ComputeKVisually()
     {
         UpdateKMeter(0);
         SetUVisibility(false);
+        SetRadialVelocityVisibility(false);
         SetButtonsInteractivity(false);
         simulation.Pause();
         sim.ComputeKineticEnergy();
@@ -224,10 +243,101 @@ public class FastNBodySlideController : SimulationSlideController
     {
         UpdateUMeter(0);
         SetKVisibility(false);
+        SetRadialVelocityVisibility(false);
         SetButtonsInteractivity(false);
         simulation.Pause();
         sim.ComputePotentialEnergy();
         StartCoroutine(LoopOverBodiesWithConnections(sim.U));
+    }
+
+     private IEnumerator LoopOverBodiesMeasureRadialVelocity(float maxValue)
+    {
+        int[] indices = GetSortedIndices();
+        float currentRadialVelocity = 0;
+        float currentSumRadialVelocity = 0;
+
+        TextMeshProUGUI counter = default;
+        TextMeshProUGUI value = default;
+
+        if (panelRadialVelocity)
+        {
+            panelRadialVelocity.gameObject.SetActive(true);
+            Transform counterRadialVelocity = panelRadialVelocity.Find("Counter");
+            if (counterRadialVelocity)
+            {
+                counterRadialVelocity.TryGetComponent(out counter);
+            }
+            Transform valueRadialVelocity = panelRadialVelocity.Find("Value");
+            if (valueRadialVelocity)
+            {
+                valueRadialVelocity.TryGetComponent(out value);
+            }
+        }
+
+        // Highlight the bodies one-by-one and show velocities
+        for (int i = 0; i < indices.Length; i++)
+        {
+            Transform body = prefabs.bodies[indices[i]];
+            Vector3 velocity = sim.GetVelocity(indices[i]);
+
+            // The radial velocity is the velocity on the Z axis
+            currentRadialVelocity = velocity.z;
+            currentSumRadialVelocity += Mathf.Abs(currentRadialVelocity);
+            if (counter)
+            {
+                counter.text = (i + 1).ToString();
+            }
+            if (value)
+            {
+                value.text = currentRadialVelocity.ToString("0.00");
+            }
+
+            // Update Radial Velocity
+            UpdateRadialVelocityMeter(currentSumRadialVelocity / maxValue);
+
+            // Highlight the current body
+            body.GetComponent<MeshRenderer>().material = glowMaterial;
+
+            // Show appropriate index label
+            if (bodyLabels.Count > i && prefabs.BodiesHaveLabels())
+            {
+                Transform label = body.Find("Label");
+                if (label)
+                {
+                    label.GetComponent<SpriteRenderer>().sprite = bodyLabels[i];
+                    label.gameObject.SetActive(true);
+                }
+            }
+
+            // Draw the body's velocity vector
+            if (velocityPrefab)
+            {
+                velocityVector = Instantiate(velocityPrefab, Vector3.zero, Quaternion.identity, simulation.transform).GetComponent<Vector>();
+                velocityVector.SetPositions(body.position, body.position + velocity);
+                velocityVector.Redraw();
+            }
+
+            yield return new WaitForSeconds(0.4f);
+
+            // Destroy the velocity vector
+            if (velocityVector)
+            {
+                Destroy(velocityVector.gameObject);
+                velocityVector = null;
+            }
+
+            HideBodyLabels();
+        }
+
+        yield return new WaitForSeconds(2);
+
+        ResetBodyMaterials();
+        HideBodyLabels();
+        HideTextPanels();
+        SetButtonsInteractivity(true);
+        SetUVisibility(true);
+        SetKVisibility(true);
+        simulation.Resume();
     }
 
     private IEnumerator LoopOverBodies(float maxValue)
@@ -311,6 +421,7 @@ public class FastNBodySlideController : SimulationSlideController
         HideBodyLabels();
         SetButtonsInteractivity(true);
         SetUVisibility(true);
+        SetRadialVelocityVisibility(true);
         simulation.Resume();
     }
 
@@ -399,6 +510,7 @@ public class FastNBodySlideController : SimulationSlideController
         ResetBodyMaterials();
         SetButtonsInteractivity(true);
         SetKVisibility(true);
+        SetRadialVelocityVisibility(true);
         simulation.Resume();
     }
 
@@ -459,6 +571,18 @@ public class FastNBodySlideController : SimulationSlideController
         }
     }
 
+    private void SetRadialVelocityVisibility(bool visible)
+    {
+        if (measureRadialVelocityButton)
+        {
+            measureRadialVelocityButton.gameObject.SetActive(visible);
+        }
+        if (panelRadialVelocity)
+        {
+            panelRadialVelocity.gameObject.SetActive(!visible);
+        }
+    }
+
     private void SetUVisibility(bool visible)
     {
         if (equationU)
@@ -493,6 +617,10 @@ public class FastNBodySlideController : SimulationSlideController
 
     private void HideTextPanels()
     {
+        if (panelRadialVelocity)
+        {
+            panelRadialVelocity.gameObject.SetActive(false);
+        }
         if (panelK)
         {
             panelK.gameObject.SetActive(false);
@@ -582,6 +710,14 @@ public class FastNBodySlideController : SimulationSlideController
                     label.gameObject.SetActive(false);
                 }
             }
+        }
+    }
+
+    private void UpdateRadialVelocityMeter(float fillAmount)
+    {
+        if (meterRadialVelocity)
+        {
+            meterRadialVelocity.SetFillAmount(fillAmount);
         }
     }
 

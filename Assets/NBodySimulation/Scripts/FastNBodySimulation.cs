@@ -45,6 +45,7 @@ public class FastNBodySimulation : Simulation
 
     // Quantities of motion
     private double[] x;  // positions and velocities
+    private float currentRadialVelocity;
     private float currentK;
     private float currentU;
     private float totalEnergy;
@@ -54,6 +55,7 @@ public class FastNBodySimulation : Simulation
     private Vector3 velocityCM;
 
     // Properties
+    public float RadialVelocity => currentRadialVelocity;   // Instantaneous value
     public float U => currentU;     // Instantaneous value
     public float K => currentK;     // Instantaneous value
     public float E => totalEnergy;  // Conserved
@@ -462,6 +464,16 @@ public class FastNBodySimulation : Simulation
             }
 
             velocityCM = Vector3.zero;
+        }
+    }
+
+    public void ComputeRadialVelocity()
+    {
+        currentRadialVelocity = 0;
+        for (int i = 0; i < numBodies; i++)
+        {
+            // Add the Velocity.Z to the current Radial Velocity
+            currentRadialVelocity += Mathf.Abs((float) x[i * 6 + 5]);
         }
     }
 
