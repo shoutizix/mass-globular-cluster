@@ -13,6 +13,11 @@ public class OneBodyPrefabs : MonoBehaviour
     [SerializeField] private GameObject coordinateTriadPrefab;
     [SerializeField] private GameObject orbitPrefab;
 
+    [Header("Positions")]
+    [SerializeField] private float coordinateTriadX = 20;
+    [SerializeField] private float coordinateTriadY = 20;
+    [SerializeField] private float coordinateTriadZ = 30;
+
     [HideInInspector] public Transform positionBody;
     [HideInInspector] public Arrow positionVectorVelocityX;
     [HideInInspector] public Arrow positionVectorVelocityY;
@@ -152,7 +157,6 @@ public class OneBodyPrefabs : MonoBehaviour
         if (coordinateTriadPrefab)
         {
             positionCoordinateTriad = Instantiate(coordinateTriadPrefab, transform).transform;
-            positionCoordinateTriad.position = new Vector3(-7, -2, 0);
             positionCoordinateTriad.localScale = new Vector3(1f, 1f, 1f);
             positionCoordinateTriad.name = "Coordinate Triad";
         }
@@ -190,5 +194,15 @@ public class OneBodyPrefabs : MonoBehaviour
             positionVectorVelocityTotal.transform.position = positionBody.position;
             positionVectorVelocityTotal.SetComponents(velocityTotal);
         }
+    }
+
+    public Vector3 GetNewPosTriad(Camera mainCamera)
+    {
+        //Camera mainCamera = Camera.main;
+        return mainCamera.ScreenToWorldPoint(new Vector3(coordinateTriadX, coordinateTriadY, coordinateTriadZ));
+    }
+    public void UpdateTriad(Vector3 newPos)
+    {
+        positionCoordinateTriad.position = newPos;
     }
 }

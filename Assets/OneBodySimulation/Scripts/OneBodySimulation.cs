@@ -10,10 +10,12 @@ public class OneBodySimulation : Simulation
     private float x, y, z;
     Vector3 velocityTotal;
     private float BOUNDARY = 25f; 
+    private Vector3 positionTriad = Vector3.zero;
+    private Camera currCamera;
 
     private void Awake() 
     {
-         if (!TryGetComponent(out prefabs))
+        if (!TryGetComponent(out prefabs))
         {
             Debug.LogWarning("No OneBodyPrefabs component found");
             Pause();
@@ -24,6 +26,7 @@ public class OneBodySimulation : Simulation
 
     private void Start() 
     {
+        currCamera = Camera.main;
         if (prefabs.orbit) 
         {
             int numSteps = 360;
@@ -70,5 +73,6 @@ public class OneBodySimulation : Simulation
             return;
         }
         prefabs.UpdateVectors(velocityTotal.x, velocityTotal.y, velocityTotal.z, velocityTotal);
+        prefabs.UpdateTriad(prefabs.GetNewPosTriad(currCamera));
     }
 }
