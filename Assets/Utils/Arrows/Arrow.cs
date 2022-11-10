@@ -13,6 +13,7 @@ public class Arrow : MonoBehaviour
 
     [Header("Head")]
     public LineRenderer headLR;
+    public bool isRotated = false;
     [Range(0, 60)] public float headAngle = 45;
 
     private void Awake()
@@ -39,6 +40,8 @@ public class Arrow : MonoBehaviour
         // Draw the head
         if (!headLR) return;
 
+        if (isRotated) RotateHead(90);
+
         Vector3 headPosition = components;
         // Direction along the arrow
         Vector3 e1 = components.normalized;
@@ -63,5 +66,11 @@ public class Arrow : MonoBehaviour
     {
         this.components = components;
         if (redraw) Redraw();
+    }
+
+    public void RotateHead(float newAngle)
+    {
+        headLR.transform.rotation = Quaternion.Euler(0, 0, 0);
+        headLR.transform.Rotate(components.normalized, newAngle);
     }
 }

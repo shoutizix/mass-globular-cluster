@@ -187,7 +187,6 @@ public class OneBodyPrefabs : MonoBehaviour
 
         if (positionVectorVelocityTotal)
         {
-            //positionVectorVelocityTotal.SetPositions(positionBody.position, positionBody.position+velocityTotal);
             positionVectorVelocityTotal.transform.position = positionBody.position;
             positionVectorVelocityTotal.SetComponents(velocityTotal);
         }
