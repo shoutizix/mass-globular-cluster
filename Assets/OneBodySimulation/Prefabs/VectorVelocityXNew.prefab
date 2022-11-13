@@ -157,6 +157,7 @@ MonoBehaviour:
   lineWidth: 0.1
   sortingOrder: 0
   headLR: {fileID: 1948715731046597818}
+  isRotated: 0
   headAngle: 45
 --- !u!1 &1948715731046597820
 GameObject:

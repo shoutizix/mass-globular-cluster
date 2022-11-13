@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1948715729921795562}
   - component: {fileID: 1948715729921795563}
   m_Layer: 0
-  m_Name: VectorVelocityZNew
+  m_Name: VectorArrowZ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -92,7 +92,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.5
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -154,10 +154,10 @@ MonoBehaviour:
   bodyLR: {fileID: 1948715729921795562}
   components: {x: 2, y: 1, z: 0}
   color: {r: 0.35686275, g: 0.67058825, b: 0.94509804, a: 1}
-  lineWidth: 0.1
+  lineWidth: 0.2
   sortingOrder: 0
   headLR: {fileID: 1948715731046597818}
-  isRotated: 0
+  isRotated: 1
   headAngle: 45
 --- !u!1 &1948715731046597820
 GameObject:
@@ -230,9 +230,9 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 1.8102634, y: 1.0632455, z: 0}
+  - {x: 1.6205267, y: 1.1264911, z: 0}
   - {x: 2, y: 1, z: 0}
-  - {x: 1.9367545, y: 0.81026334, z: 0}
+  - {x: 1.8735089, y: 0.6205267, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -241,7 +241,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.1
+        value: 0.2
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -250,7 +250,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.1
+        value: 0.2
         inSlope: 0
         outSlope: 0
         tangentMode: 0

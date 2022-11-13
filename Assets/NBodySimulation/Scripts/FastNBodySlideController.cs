@@ -56,6 +56,7 @@ public class FastNBodySlideController : SimulationSlideController
 
     [Header("Vectors")]
     [SerializeField] private GameObject velocityPrefab;
+    [SerializeField] private float lengthVectors = 5;
 
     [Header("Body Labels")]
     [SerializeField] private List<Sprite> bodyLabels;
@@ -67,12 +68,17 @@ public class FastNBodySlideController : SimulationSlideController
     // Connector collection when computing U visually (and disabling)
     private HashSet<GameObject> connectors;
     private Vector velocityVector = default;
+    private Arrow velocityArrow = default;
 
     // Data Panel values
     private TextMeshProUGUI dataPanelU;
     private TextMeshProUGUI dataPanelK;
     private TextMeshProUGUI dataPanelE;
     private TextMeshProUGUI dataPanelV;
+
+    // Mesure of the radial velocity
+    private List<Vector2> listVelocityAndCount = new List<Vector2>();
+
 
     private void Awake()
     {
@@ -250,7 +256,34 @@ public class FastNBodySlideController : SimulationSlideController
         StartCoroutine(LoopOverBodiesWithConnections(sim.U));
     }
 
-     private IEnumerator LoopOverBodiesMeasureRadialVelocity(float maxValue)
+    private void PrintListVelocityCount()
+    {
+        string text = "";
+        listVelocityAndCount.ForEach((vec) => text+=vec+", ");
+        print(text);
+    }
+
+    private void CheckContainsVelocityAndIncrease(float velocity)
+    {
+        // .5 Round 
+        float newVelocity = Mathf.Round(2*velocity)/2;
+
+        Vector2 vectorToUpdate = listVelocityAndCount.Find(vec => vec.x == newVelocity);
+
+        if(vectorToUpdate != Vector2.zero)
+        {
+            listVelocityAndCount.Remove(vectorToUpdate);
+            listVelocityAndCount.Add(vectorToUpdate + Vector2.up);
+        } else 
+        {
+            listVelocityAndCount.Add(new Vector2(newVelocity, 1));
+        }
+
+        // Sort the list 
+        listVelocityAndCount.Sort((vec1, vec2) => vec1.x.CompareTo(vec2.x));
+    }
+
+    private IEnumerator LoopOverBodiesMeasureRadialVelocity(float maxValue)
     {
         int[] indices = GetSortedIndices();
         float currentRadialVelocity = 0;
@@ -282,6 +315,10 @@ public class FastNBodySlideController : SimulationSlideController
 
             // The radial velocity is the velocity on the Z axis
             currentRadialVelocity = velocity.z;
+            CheckContainsVelocityAndIncrease(currentRadialVelocity);
+            // TODO plot graph 
+
+
             currentSumRadialVelocity += Mathf.Abs(currentRadialVelocity);
             if (counter)
             {
@@ -312,18 +349,25 @@ public class FastNBodySlideController : SimulationSlideController
             // Draw the body's velocity vector
             if (velocityPrefab)
             {
+                velocityArrow = Instantiate(velocityPrefab, Vector3.zero, Quaternion.identity, simulation.transform).GetComponent<Arrow>();
+                velocityArrow.transform.position = body.position;
+                velocityArrow.SetComponents(new Vector3(0, 0, velocity.z) * lengthVectors, true);
+
+                /*
                 velocityVector = Instantiate(velocityPrefab, Vector3.zero, Quaternion.identity, simulation.transform).GetComponent<Vector>();
                 velocityVector.SetPositions(body.position, body.position + velocity);
                 velocityVector.Redraw();
+                */
+
             }
 
             yield return new WaitForSeconds(0.4f);
 
             // Destroy the velocity vector
-            if (velocityVector)
+            if (velocityArrow)
             {
-                Destroy(velocityVector.gameObject);
-                velocityVector = null;
+                Destroy(velocityArrow.gameObject);
+                velocityArrow = null;
             }
 
             HideBodyLabels();
