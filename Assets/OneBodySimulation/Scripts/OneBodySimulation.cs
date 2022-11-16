@@ -64,7 +64,7 @@ public class OneBodySimulation : Simulation
         {
             velocityTotal = Vector3.zero;
         }
-
+        //prefabs.UpdateTriad(prefabs.GetNewPosTriad(currCamera));
     }
     void Update()
     {
