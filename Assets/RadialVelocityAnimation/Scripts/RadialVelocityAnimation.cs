@@ -12,6 +12,9 @@ public class RadialVelocityAnimation : MonoBehaviour
     [Header("Controls")]
     [SerializeField] private float fieldOfView = 20;
     public float timeToWait = 1f;
+
+    [Header("Image Eye")]
+    [SerializeField] private GameObject eyeGameObject;
     private bool hasMoved = false;
     private CanvasGroup canvasGroup;
     private CameraController cameraController;
@@ -28,14 +31,25 @@ public class RadialVelocityAnimation : MonoBehaviour
             Debug.LogWarning("No CameraController component found");
             return;
         }
+        
+        if (eyeGameObject != null)
+        {
+            eyeGameObject.SetActive(false);
+        }
     }
     void Update()
     {
         // If the Slide is inactive the alpha is equal to 0
         if (canvasGroup.alpha == 0) {
-            // If the Slide is not showed anymore
+            // If the Slide is not showed anymore reset the animation
             if (hasMoved) Reset();
             return;
+        } else 
+        {
+            if (eyeGameObject != null)
+            {
+                eyeGameObject.SetActive(true);
+            }
         }
 
         if (cameraController.cameraMoving == null && hasMoved == false)
@@ -64,5 +78,9 @@ public class RadialVelocityAnimation : MonoBehaviour
 
     public void Reset() {
         hasMoved = false;
+        if (eyeGameObject != null)
+        {
+            eyeGameObject.SetActive(false);
+        }
     }
 }
