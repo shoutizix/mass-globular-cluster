@@ -5814,7 +5814,7 @@ MonoBehaviour:
   colorTransitionTime: 0.5
   position: {x: 0, y: 5, z: -25}
   lookAt: {x: 0, y: 0, z: 0}
-  moveTime: 1
+  moveTime: 2.5
   orthographic: 0
   fieldOfView: 20
   pivotPoint: {x: 0, y: 0, z: 0}
@@ -7149,6 +7149,7 @@ GameObject:
   - component: {fileID: 3224529173934859031}
   - component: {fileID: 3224529173934859032}
   - component: {fileID: 3224529173934859033}
+  - component: {fileID: 3224529173934859034}
   m_Layer: 5
   m_Name: Slide N Body Vr Z axis
   m_TagString: Untagged
@@ -7300,6 +7301,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3224529173934859034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224529173934859029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ceca38da8024c43a7dac2164b6a914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: -30, y: 0, z: -180}
+  lookAt: {x: -30, y: 0, z: 0}
+  moveTime: 1
+  fieldOfView: 20
+  timeToWait: 3
 --- !u!222 &3313293079561507751
 CanvasRenderer:
   m_ObjectHideFlags: 0

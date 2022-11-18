@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private AnimationCurve rotationCurve;
 
     private Camera mainCamera;
-    private Coroutine cameraMoving;
+    public Coroutine cameraMoving;
     private Coroutine cameraChangingColor;
 
     private bool clickedOnUIElement;
@@ -158,15 +158,15 @@ public class CameraController : MonoBehaviour
         if (mainCamera.transform.position != position || mainCamera.transform.rotation != targetRotation || mainCamera.fieldOfView != fieldOfView)
         {
             cameraMoving = StartCoroutine(MoveToPosition(mainCamera.transform.position, position, mainCamera.transform.rotation,
-                targetRotation, mainCamera.fieldOfView, fieldOfView, moveTime));
+                targetRotation, mainCamera.fieldOfView, fieldOfView, moveTime, lookAt));
         }
 
         cameraStartPosition = mainCamera.transform.position;
         cameraStartRotation = mainCamera.transform.rotation;
     }
 
-    private IEnumerator MoveToPosition(Vector3 startPosition, Vector3 targetPosition, Quaternion startRotation,
-        Quaternion targetRotation, float startFOV, float targetFOV, float slideTime)
+    public IEnumerator MoveToPosition(Vector3 startPosition, Vector3 targetPosition, Quaternion startRotation,
+        Quaternion targetRotation, float startFOV, float targetFOV, float slideTime, Vector3 lookAt)
     {
         float time = 0;
 
@@ -212,5 +212,10 @@ public class CameraController : MonoBehaviour
     private bool CompareRGB(Color color1, Color color2)
     {
         return (color1.r == color2.r) && (color1.g == color2.g) && (color1.b == color2.b);
+    }
+
+    public Camera GetMainCamera() 
+    {
+        return mainCamera;
     }
 }
