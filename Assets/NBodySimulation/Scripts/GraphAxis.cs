@@ -20,12 +20,17 @@ public class GraphAxis : MonoBehaviour
         InitializeAllAxis();
     }
 
-    private void SetAxisXLength(float length)
+    public void SetAxisYAtMiddleAxisX(bool newValue)
+    {
+        axisYAtMiddleAxisX = newValue;
+    }
+
+    public void SetAxisXLength(float length)
     {
         axisX.SetComponents(Vector3.right * length);
     }
 
-    private void SetAxisYLength(float length)
+    public void SetAxisYLength(float length)
     {
         axisY.SetComponents(Vector3.up * length);
     }
@@ -39,7 +44,7 @@ public class GraphAxis : MonoBehaviour
         axisX.transform.position = oldPos - (Vector3.right * axisX.components.x / 2);
     }
 
-    private void InitializeAllAxis()
+    public void InitializeAllAxis()
     {
         axisY.transform.position = Vector3.zero;
         axisX.transform.position = Vector3.zero;

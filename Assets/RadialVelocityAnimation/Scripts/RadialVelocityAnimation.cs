@@ -145,6 +145,8 @@ public class RadialVelocityAnimation : MonoBehaviour
     }
 
     public void Reset() {
+        StopAllCoroutines();
+
         hasMoved = false;
         arrowHaveMoved = false;
         hasEndedWaitMove = false;

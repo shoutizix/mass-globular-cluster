@@ -792,6 +792,10 @@ public class FastNBodySlideController : SimulationSlideController
     public void NewDeactivateSimulation()
     {
         base.DeactivateSimulation();
+        if (TryGetComponent(out RadialVelocityAnimation radialVelocityAnimation))
+        {
+            radialVelocityAnimation.Reset();
+        }
         SetBloomVisibility(false);
     }
 }
