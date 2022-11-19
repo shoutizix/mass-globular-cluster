@@ -123,7 +123,7 @@ public class RadialVelocityAnimation : MonoBehaviour
         float time = 0;
         Vector3 startPosition = Vector3.zero;
 
-        Vector3 arrowTargetComponent = Vector3.right * arrowLength;
+        Vector3 arrowTargetComponent = Vector3.forward * arrowLength;
 
         while (time < animationDuration)
         {
