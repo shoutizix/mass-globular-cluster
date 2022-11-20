@@ -50,12 +50,10 @@ public class RadialVelocityAnimation : MonoBehaviour
         {
             arrowLengthLeft = Instantiate(arrowPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Arrow>();
             arrowLengthLeft.SetComponents(Vector3.zero);
-            //arrowLengthLeft.transform.position = arrowPosition;
             arrowLengthLeft.name = "Arrow Left";
 
             arrowLengthRight = Instantiate(arrowPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Arrow>();
             arrowLengthRight.SetComponents(Vector3.zero);
-            //arrowLengthRight.transform.position = arrowPosition;
             arrowLengthRight.name = "Arrow Right";
         }
         
