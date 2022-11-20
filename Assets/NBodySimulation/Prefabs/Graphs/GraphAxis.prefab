@@ -207,12 +207,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axisY: {fileID: 3239018962077485185}
   axisX: {fileID: 2172264708198997244}
-  directionAxisX: {x: 1, y: 0, z: 0}
   directionAxisY: {x: 0, y: 1, z: 0}
-  lengthAxisX: 1
+  directionAxisX: {x: 1, y: 0, z: 0}
   lengthAxisY: 1
-  showAxisX: 1
+  lengthAxisX: 1
   showAxisY: 1
+  showAxisX: 1
   axisYAtMiddleAxisX: 0
 --- !u!114 &2257446314959991936
 MonoBehaviour:

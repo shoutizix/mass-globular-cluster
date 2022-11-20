@@ -345,12 +345,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axisY: {fileID: 3466667934161892229}
   axisX: {fileID: 201032189117687800}
-  directionAxisX: {x: 1, y: 0, z: 0}
   directionAxisY: {x: 0, y: 1, z: 0}
-  lengthAxisX: 1
+  directionAxisX: {x: 1, y: 0, z: 0}
   lengthAxisY: 1
-  showAxisX: 1
+  lengthAxisX: 1
   showAxisY: 1
+  showAxisX: 1
   axisYAtMiddleAxisX: 0
 --- !u!114 &268903149083987844
 MonoBehaviour:
@@ -570,8 +570,8 @@ MonoBehaviour:
   crossMarkPrefab: {fileID: 6611487003664596809, guid: 923a99714804d4de8aca4795055a1f0c,
     type: 3}
   graphAxis: {fileID: 7016787961039612509}
-  showAxisX: 1
   showAxisY: 1
+  showAxisX: 1
 --- !u!1 &8584102448379234256
 GameObject:
   m_ObjectHideFlags: 0
