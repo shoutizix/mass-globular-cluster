@@ -5842,7 +5842,7 @@ MonoBehaviour:
   colorTransitionTime: 0.5
   position: {x: 0, y: 5, z: -25}
   lookAt: {x: 0, y: 0, z: 0}
-  moveTime: 2.5
+  moveTime: 1.5
   orthographic: 0
   fieldOfView: 20
   pivotPoint: {x: 0, y: 0, z: 0}
@@ -7348,7 +7348,7 @@ MonoBehaviour:
   lookAt: {x: 0, y: 7, z: -30}
   moveTime: 1
   fieldOfView: 20
-  timeToWait: 3
+  timeToWait: 1.5
   eyeGameObject: {fileID: 1561227579}
   arrowPrefab: {fileID: 1948715729921795565, guid: 8b5914c8ef6b8437e8bb5a4bc08a14ef,
     type: 3}
