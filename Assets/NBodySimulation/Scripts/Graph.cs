@@ -11,10 +11,12 @@ public class Graph : MonoBehaviour
     [Header("Axis parameters")]
     [SerializeField] private bool showAxisY;
     [SerializeField] private bool showAxisX;
-
-    private float lengthAxisX = 1f;
-    private float lengthAxisY = 1f;
-    private bool middeXAxis = false;
+    [SerializeField] private bool showOriginY = false;
+    [SerializeField] private bool showOriginX = false;
+    [SerializeField] private float lengthPositiveAxisY = 1f;
+    [SerializeField] private float lengthPositiveAxisX = 1f;
+    [SerializeField] private float lengthNegativeAxisY = 0f;
+    [SerializeField] private float lengthNegativeAxisX = 0f;
     private List<CrossMark> crossMarksList = new List<CrossMark>();
     
     private void Awake() 
@@ -38,19 +40,34 @@ public class Graph : MonoBehaviour
         graphAxis.SetVisibilityAxisY(isVisible);
     }
 
-    public void SetAxisXLength(float length)
+    public void SetLengthPositiveAxisX(float length)
     {
-        graphAxis.SetLengthAxisX(length);
+        graphAxis.SetLengthPositiveAxisX(length);
     }
 
-    public void SetAxisYLength(float length)
+    public void SetLengthPositiveAxisY(float length)
     {
-        graphAxis.SetLengthAxisY(length);
+        graphAxis.SetLengthPositiveAxisY(length);
     }
 
-    public void SetAxisYAtMiddleAxisX(bool newValue)
+    public void SetLengthNegativeAxisX(float length)
     {
-        graphAxis.SetAxisYAtMiddleAxisX(newValue);
+        graphAxis.SetLengthNegativeAxisX(length);
+    }
+
+    public void SetLengthNegativeAxisY(float length)
+    {
+        graphAxis.SetLengthNegativeAxisY(length);
+    }
+
+    public void SetVisibilityOriginX(bool isVisible)
+    {
+        graphAxis.SetVisibilityOriginX(isVisible);
+    }
+
+    public void SetVisibilityOriginY(bool isVisible)
+    {
+        graphAxis.SetVisibilityOriginY(isVisible);
     }
 
     public void PutCrossMarkAtGraphPos(Vector2 position, float width, float length, Color color)
@@ -66,6 +83,8 @@ public class Graph : MonoBehaviour
         crossMark.SetWidth(width);
         crossMark.SetLength(length);
         crossMark.SetColor(color);
+        crossMark.transform.Rotate(Vector3.up, 90f);
+        // MAYBE CHANGE !
         crossMark.transform.localPosition = new Vector3(position.x, position.y, 0);
         crossMarksList.Add(crossMark);
     }
@@ -80,8 +99,11 @@ public class Graph : MonoBehaviour
     {
         SetAxisXVisibility(showAxisX);
         SetAxisYVisibility(showAxisY);
-        SetAxisXLength(lengthAxisX);
-        SetAxisYLength(lengthAxisY);
-        SetAxisYAtMiddleAxisX(middeXAxis);
+        SetLengthPositiveAxisX(lengthPositiveAxisX);
+        SetLengthPositiveAxisY(lengthPositiveAxisY);
+        SetLengthNegativeAxisX(lengthNegativeAxisX);
+        SetLengthNegativeAxisY(lengthNegativeAxisY);
+        SetVisibilityOriginX(showOriginX);
+        SetVisibilityOriginY(showOriginY);
     }
 }

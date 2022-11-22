@@ -1149,11 +1149,13 @@ MonoBehaviour:
   angularMomentumVectorPrefab: {fileID: 0}
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
+  graphPrefab: {fileID: 0}
   bodies: []
   centerOfMass: {fileID: 0}
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
+  graph: {fileID: 0}
 --- !u!114 &428136180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2628,11 +2630,14 @@ MonoBehaviour:
   angularMomentumVectorPrefab: {fileID: 0}
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
+  graphPrefab: {fileID: 4771440823329845041, guid: 08e7824f27a0b4610ab95c2c69be7c16,
+    type: 3}
   bodies: []
   centerOfMass: {fileID: 0}
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
+  graph: {fileID: 0}
 --- !u!114 &991396267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4429,11 +4434,13 @@ MonoBehaviour:
   angularMomentumVectorPrefab: {fileID: 0}
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
+  graphPrefab: {fileID: 0}
   bodies: []
   centerOfMass: {fileID: 0}
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
+  graph: {fileID: 0}
 --- !u!114 &1790991419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4804,11 +4811,13 @@ MonoBehaviour:
   angularMomentumVectorPrefab: {fileID: 0}
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
+  graphPrefab: {fileID: 0}
   bodies: []
   centerOfMass: {fileID: 0}
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
+  graph: {fileID: 0}
 --- !u!114 &1944280075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5976,6 +5985,7 @@ MonoBehaviour:
   coordinateOrigin: 0
   angularMomentumVector: 0
   lights: 0
+  showGraph: 0
   globalVolume: {fileID: 1198009743}
   bloom: 1
   panelRadialVelocity: {fileID: 0}
@@ -7267,6 +7277,7 @@ MonoBehaviour:
   coordinateOrigin: 0
   angularMomentumVector: 0
   lights: 0
+  showGraph: 0
   globalVolume: {fileID: 1198009743}
   bloom: 0
   panelRadialVelocity: {fileID: 0}
@@ -9402,8 +9413,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9627,6 +9638,7 @@ MonoBehaviour:
   coordinateOrigin: 0
   angularMomentumVector: 0
   lights: 1
+  showGraph: 1
   globalVolume: {fileID: 1198009743}
   bloom: 0
   panelRadialVelocity: {fileID: 8490097839866368891}
@@ -9726,7 +9738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1dadf0551ff640b9984655554c1417d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 0.5
   position: {x: 50, y: 15, z: 0}
   lookAt: {x: 0, y: 0, z: 0}
@@ -10647,7 +10659,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

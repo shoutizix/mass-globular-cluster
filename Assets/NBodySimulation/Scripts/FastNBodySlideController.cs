@@ -17,6 +17,7 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private bool coordinateOrigin;
     [SerializeField] private bool angularMomentumVector;
     [SerializeField] private bool lights;
+    [SerializeField] private bool showGraph;
 
     [Header("Bloom")]
     [SerializeField] private GameObject globalVolume;
@@ -160,6 +161,7 @@ public class FastNBodySlideController : SimulationSlideController
         prefabs.SetCoordinateOriginVisibility(coordinateOrigin);
         prefabs.SetAngularMomentumVectorVisibility(angularMomentumVector);
         prefabs.SetLightsVisibility(lights);
+        prefabs.SetGraphVisibility(showGraph);
 
         ResetBodyMaterials();
         HideBodyLabels();
@@ -316,7 +318,9 @@ public class FastNBodySlideController : SimulationSlideController
             // The radial velocity is the velocity on the Z axis
             currentRadialVelocity = velocity.z;
             CheckContainsVelocityAndIncrease(currentRadialVelocity);
-            // TODO plot graph 
+            // TODO plot graph
+            //prefabs.graph.DisplayGraphParam(true, false, 4, 0, true);
+            prefabs.graph.PutCrossMarkAtGraphPos(Vector2.right * currentRadialVelocity, 0.05f, 0.2f, Color.red); 
 
 
             currentSumRadialVelocity += Mathf.Abs(currentRadialVelocity);

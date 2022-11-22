@@ -9,12 +9,14 @@ public class NBodyPrefabs : MonoBehaviour
     [SerializeField] private GameObject coordinateOriginPrefab;
     [SerializeField] private GameObject angularMomentumVectorPrefab;
     [SerializeField] private GameObject[] lightPrefabs;
+    [SerializeField] private GameObject graphPrefab;
 
     [HideInInspector] public List<Transform> bodies;
     [HideInInspector] public Transform centerOfMass;
     [HideInInspector] public Transform coordinateOrigin;
     [HideInInspector] public Vector angularMomentumVector;
     [HideInInspector] public List<Transform> lights;
+    [HideInInspector] public Graph graph;
 
     private Transform bodyContainer;
 
@@ -48,6 +50,16 @@ public class NBodyPrefabs : MonoBehaviour
             Transform light = Instantiate(lightPrefab, transform).transform;
             lights.Add(light);
         }
+
+        if (graphPrefab)
+        {
+            graph = Instantiate(graphPrefab, transform).GetComponent<Graph>();
+            graph.SetLengthPositiveAxisX(4f);
+            graph.SetLengthNegativeAxisX(4f);
+            graph.SetAxisYVisibility(false);
+            graph.SetVisibilityOriginX(true);
+            graph.name = "Graph";
+        }
     }
 
     public void SetCenterOfMassVisibility(bool visible)
@@ -79,6 +91,14 @@ public class NBodyPrefabs : MonoBehaviour
         foreach (Transform light in lights)
         {
             light.gameObject.SetActive(visible);
+        }
+    }
+
+    public void SetGraphVisibility(bool visible)
+    {
+        if (graph)
+        {
+            graph.gameObject.SetActive(visible);
         }
     }
 

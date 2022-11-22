@@ -347,11 +347,16 @@ MonoBehaviour:
   axisX: {fileID: 201032189117687800}
   directionAxisY: {x: 0, y: 1, z: 0}
   directionAxisX: {x: 1, y: 0, z: 0}
-  lengthAxisY: 1
-  lengthAxisX: 1
+  lengthPositiveAxisY: 1
+  lengthPositiveAxisX: 1
+  lengthNegativeAxisY: 0
+  lengthNegativeAxisX: 0
   showAxisY: 1
   showAxisX: 1
-  axisYAtMiddleAxisX: 0
+  originXLR: {fileID: 0}
+  originYLR: {fileID: 0}
+  showOriginY: 0
+  showOriginX: 0
 --- !u!114 &268903149083987844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4852099300623136566}
   - component: {fileID: 4780612934953398207}
+  - component: {fileID: 8924197902149564753}
   m_Layer: 0
   m_Name: Graph
   m_TagString: Untagged
@@ -572,6 +578,24 @@ MonoBehaviour:
   graphAxis: {fileID: 7016787961039612509}
   showAxisY: 1
   showAxisX: 1
+  showOriginY: 0
+  showOriginX: 0
+  lengthPositiveAxisY: 1
+  lengthPositiveAxisX: 1
+  lengthNegativeAxisY: 0
+  lengthNegativeAxisX: 0
+--- !u!114 &8924197902149564753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4771440823329845041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a41c209c9a8634ddcb400cef24028ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8584102448379234256
 GameObject:
   m_ObjectHideFlags: 0
