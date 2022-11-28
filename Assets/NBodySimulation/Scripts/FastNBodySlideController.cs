@@ -320,7 +320,7 @@ public class FastNBodySlideController : SimulationSlideController
             CheckContainsVelocityAndIncrease(currentRadialVelocity);
             // TODO plot graph
             //prefabs.graph.DisplayGraphParam(true, false, 4, 0, true);
-            prefabs.graph.PutCrossMarkAtGraphPos(Vector2.right * currentRadialVelocity, 0.05f, 0.2f, Color.red); 
+            //prefabs.graph.PutCrossMarkAtGraphPos(Vector2.right * currentRadialVelocity, 0.05f, 0.2f, Color.red); 
 
 
             currentSumRadialVelocity += Mathf.Abs(currentRadialVelocity);

@@ -267,7 +267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 85.7, y: 1.53}
+  m_AnchoredPosition: {x: 85.7, y: 1.5299988}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &48690795
@@ -2250,6 +2250,7 @@ GameObject:
   - component: {fileID: 784623157}
   - component: {fileID: 784623156}
   - component: {fileID: 784623158}
+  - component: {fileID: 784623159}
   m_Layer: 5
   m_Name: Vtotal
   m_TagString: Untagged
@@ -2328,6 +2329,19 @@ MonoBehaviour:
   colorIntensitySelected: 255
   colorIntensityUnselected: 125
   prefabs: {fileID: 1551909484}
+--- !u!114 &784623159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784623154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df4ce5a72859465883f1ec8ae5c10b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 7f14b92c7134d491db223ebdd7ae0a60, type: 3}
 --- !u!1 &886707255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3432,7 +3446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -21.1, y: -43.9}
+  m_AnchoredPosition: {x: -21.099998, y: -43.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1377631282
@@ -9631,14 +9645,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9544c9bf2e58140128bd41e1df58055a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPlay: 1
-  simulation: {fileID: 991396267}
+  autoPlay: 0
+  simulation: {fileID: 1790991419}
   virializeOnReset: 0
   centerOfMass: 1
   coordinateOrigin: 0
   angularMomentumVector: 0
   lights: 1
-  showGraph: 1
+  showGraph: 0
   globalVolume: {fileID: 1198009743}
   bloom: 0
   panelRadialVelocity: {fileID: 8490097839866368891}
@@ -11261,7 +11275,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 45, y: -11.8}
+  m_AnchoredPosition: {x: 45, y: -11.799999}
   m_SizeDelta: {x: 50, y: 22}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &8490097840929682434
