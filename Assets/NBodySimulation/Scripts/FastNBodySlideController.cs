@@ -385,7 +385,7 @@ public class FastNBodySlideController : SimulationSlideController
         SetButtonsInteractivity(true);
         SetUVisibility(true);
         SetKVisibility(true);
-        simulation.Resume();
+        //simulation.Resume();
     }
 
     private IEnumerator LoopOverBodies(float maxValue)
