@@ -62,6 +62,9 @@ public class FastNBodySlideController : SimulationSlideController
     [Header("Body Labels")]
     [SerializeField] private List<Sprite> bodyLabels;
 
+    [Header("Graphs")]
+    [SerializeField] private DynamicGraph graph;
+
     private HashSet<RectTransform> equations;
     private HashSet<Button> buttons;
     private HashSet<Slider> sliders;
@@ -309,6 +312,9 @@ public class FastNBodySlideController : SimulationSlideController
             }
         }
 
+        // Reset the graph before plotting it
+        if (graph) graph.Clear();
+
         // Highlight the bodies one-by-one and show velocities
         for (int i = 0; i < indices.Length; i++)
         {
@@ -317,11 +323,13 @@ public class FastNBodySlideController : SimulationSlideController
 
             // The radial velocity is the velocity on the Z axis
             currentRadialVelocity = velocity.z;
-            CheckContainsVelocityAndIncrease(currentRadialVelocity);
-            // TODO plot graph
-            //prefabs.graph.DisplayGraphParam(true, false, 4, 0, true);
-            //prefabs.graph.PutCrossMarkAtGraphPos(Vector2.right * currentRadialVelocity, 0.05f, 0.2f, Color.red); 
-
+            //CheckContainsVelocityAndIncrease(currentRadialVelocity);
+            // Plot the graph
+            if (graph)
+            {
+                graph.CreateLine(Color.green, "Point "+i);
+                graph.PlotPoint(i, Vector2.right * currentRadialVelocity);
+            }
 
             currentSumRadialVelocity += Mathf.Abs(currentRadialVelocity);
             if (counter)

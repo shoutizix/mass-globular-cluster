@@ -132,7 +132,7 @@ public class LinePlot : MonoBehaviour
         return container;
     }
 
-    private void DrawPointMarker(Vector2 position, RectTransform parent)
+    public void DrawPointMarker(Vector2 position, RectTransform parent)
     {
         if (!pointPrefab) return;
 
