@@ -374,13 +374,6 @@ public class FastNBodySlideController : SimulationSlideController
                 velocityArrow = Instantiate(velocityPrefab, Vector3.zero, Quaternion.identity, simulation.transform).GetComponent<Arrow>();
                 velocityArrow.transform.position = body.position;
                 velocityArrow.SetComponents(new Vector3(0, 0, velocity.z) * lengthVectors, true);
-
-                /*
-                velocityVector = Instantiate(velocityPrefab, Vector3.zero, Quaternion.identity, simulation.transform).GetComponent<Vector>();
-                velocityVector.SetPositions(body.position, body.position + velocity);
-                velocityVector.Redraw();
-                */
-
             }
 
             yield return new WaitForSeconds(0.2f);
