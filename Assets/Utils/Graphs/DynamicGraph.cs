@@ -11,7 +11,6 @@ public class DynamicGraph : MonoBehaviour
 
     [Header("Plots")]
     [SerializeField] private GameObject linePlotPrefab;
-    [SerializeField] private bool showMarkers = true;
     [SerializeField] private float markerSize = 0.1f;
     [SerializeField] private float lineWidth = 1f;
 
@@ -34,12 +33,14 @@ public class DynamicGraph : MonoBehaviour
     private RectTransform rect;
     private List<LinePlot> lines;
     private List<Image> blocks;
+    private List<float> posXBlocks;
 
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
         lines = new List<LinePlot>();
         blocks = new List<Image>();
+        posXBlocks = new List<float>();
 
         xRangeInit = xRange;
         yRangeInit = yRange;
@@ -68,13 +69,23 @@ public class DynamicGraph : MonoBehaviour
         if (!blockPrefab) return;
         // Convert width from Coordinate to Rect width
         if (!rect) rect = GetComponent<RectTransform>();
+
         float width = widthBlock * rect.rect.width / (Mathf.Abs(xRange.x)+Mathf.Abs(xRange.y));
+        Vector2 convertedPos = CoordinateToRectPosition(position);
+        Vector2 newAnchoredPos = Vector2.right * convertedPos.x + Vector2.up * convertedPos.y / 2f;
+
+        if (posXBlocks.Contains(position.x))
+        {
+            Image currblock = blocks[posXBlocks.IndexOf(position.x)];
+            currblock.rectTransform.anchoredPosition = newAnchoredPos;
+            currblock.rectTransform.sizeDelta = new Vector2(width, convertedPos.y);
+            return;
+        }
 
         Image block = Instantiate(blockPrefab, transform).GetComponent<Image>();
-        Vector2 convertedPos = CoordinateToRectPosition(position);
         
         // The position of the block should be at the x coord of the graph
-        block.rectTransform.anchoredPosition = Vector2.right * convertedPos.x + Vector2.up * convertedPos.y / 2f;
+        block.rectTransform.anchoredPosition = newAnchoredPos;
         // The height of the block should be the converted y coord
         block.rectTransform.sizeDelta = new Vector2(width, convertedPos.y);
         block.color = blockColor;
@@ -85,6 +96,7 @@ public class DynamicGraph : MonoBehaviour
 
         // Add block to the list
         blocks.Add(block);
+        posXBlocks.Add(position.x);
     }
 
     public void ClearBlocks()
@@ -95,6 +107,7 @@ public class DynamicGraph : MonoBehaviour
         }
 
         blocks.Clear();
+        posXBlocks.Clear();
     }
 
     public void CreateLine(Color color, bool showMarkers, string label = "")

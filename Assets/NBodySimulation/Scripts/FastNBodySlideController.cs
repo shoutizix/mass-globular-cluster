@@ -64,6 +64,7 @@ public class FastNBodySlideController : SimulationSlideController
 
     [Header("Graphs")]
     [SerializeField] private DynamicGraph graph;
+    [SerializeField] private float animationDuration = 2f;
 
     private HashSet<RectTransform> equations;
     private HashSet<Button> buttons;
@@ -404,8 +405,8 @@ public class FastNBodySlideController : SimulationSlideController
 
         yield return new WaitForSeconds(2);
 
-        // Animation duration
-        StartCoroutine(AnimationNormalDistribution(3f));
+        // Animation Plot Normal distribution
+        StartCoroutine(AnimationNormalDistribution(animationDuration));
 
         ResetBodyMaterials();
         HideBodyLabels();
@@ -413,7 +414,6 @@ public class FastNBodySlideController : SimulationSlideController
         SetButtonsInteractivity(true);
         SetUVisibility(true);
         SetKVisibility(true);
-        //simulation.Resume();
     }
 
     private IEnumerator AnimationNormalDistribution(float animationDuration)
@@ -437,9 +437,10 @@ public class FastNBodySlideController : SimulationSlideController
 
             // Plot the normal distribution with the height as high as the highest
             int maxHeight = GetMaxCountVelocityList();
+            int minHeight = 0;
             float maxNormal = NormalDistribution.NormalPDF(sim.GetMeanSpeed(), sim.GetSpeedSigma(), sim.GetMeanSpeed());
 
-            float yNormal = Mathf.Lerp(0f, maxHeight, NormalDistribution.NormalPDF(x, sim.GetSpeedSigma(), sim.GetMeanSpeed()) / maxNormal);
+            float yNormal = Mathf.Lerp(minHeight, maxHeight, NormalDistribution.NormalPDF(x, sim.GetSpeedSigma(), sim.GetMeanSpeed()) / maxNormal);
             
             Vector2 newPos = new Vector2(x, yNormal);
             
