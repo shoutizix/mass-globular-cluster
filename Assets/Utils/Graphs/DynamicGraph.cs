@@ -5,6 +5,10 @@ using UnityEngine.UI;
 // TODO Make a parent class for this and CoordinateSpace2D
 public class DynamicGraph : MonoBehaviour
 {
+    [Header("Histograms")]
+    [SerializeField] private GameObject blockPrefab;
+    [SerializeField] private Color blockColor;
+
     [Header("Plots")]
     [SerializeField] private GameObject linePlotPrefab;
     [SerializeField] private bool showMarkers = true;
@@ -29,11 +33,13 @@ public class DynamicGraph : MonoBehaviour
 
     private RectTransform rect;
     private List<LinePlot> lines;
+    private List<Image> blocks;
 
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
         lines = new List<LinePlot>();
+        blocks = new List<Image>();
 
         xRangeInit = xRange;
         yRangeInit = yRange;
@@ -55,6 +61,40 @@ public class DynamicGraph : MonoBehaviour
             yAxis.rectTransform.sizeDelta = new Vector2(axisLineWidth, rect.rect.height);
             yAxis.rectTransform.anchoredPosition = pos.x * Vector2.right;
         }
+    }
+
+    public void CreateBlock(Vector2 position, float widthBlock, string label = "")
+    {
+        if (!blockPrefab) return;
+        // Convert width from Coordinate to Rect width
+        if (!rect) rect = GetComponent<RectTransform>();
+        float width = widthBlock * rect.rect.width / (Mathf.Abs(xRange.x)+Mathf.Abs(xRange.y));
+
+        Image block = Instantiate(blockPrefab, transform).GetComponent<Image>();
+        Vector2 convertedPos = CoordinateToRectPosition(position);
+        
+        // The position of the block should be at the x coord of the graph
+        block.rectTransform.anchoredPosition = Vector2.right * convertedPos.x + Vector2.up * convertedPos.y / 2f;
+        // The height of the block should be the converted y coord
+        block.rectTransform.sizeDelta = new Vector2(width, convertedPos.y);
+        block.color = blockColor;
+        block.name = "Block " + label;
+
+        // Puts to the back of UI scene
+        block.rectTransform.SetAsFirstSibling();
+
+        // Add block to the list
+        blocks.Add(block);
+    }
+
+    public void ClearBlocks()
+    {
+        foreach (Image block in blocks)
+        {
+            Destroy(block.gameObject);
+        }
+
+        blocks.Clear();
     }
 
     public void CreateLine(Color color, string label = "")
@@ -100,6 +140,8 @@ public class DynamicGraph : MonoBehaviour
         {
             line.Clear();
         }
+
+        ClearBlocks();
 
         xRange = xRangeInit;
         yRange = yRangeInit;

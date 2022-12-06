@@ -312,8 +312,12 @@ public class FastNBodySlideController : SimulationSlideController
             }
         }
 
-        // Reset the graph before plotting it
-        if (graph) graph.Clear();
+        // Reset the graph and the list of count before plotting the graph
+        if (graph) 
+        {
+            graph.Clear();
+            listVelocityAndCount.Clear();
+        } 
 
         // Highlight the bodies one-by-one and show velocities
         for (int i = 0; i < indices.Length; i++)
@@ -323,12 +327,18 @@ public class FastNBodySlideController : SimulationSlideController
 
             // The radial velocity is the velocity on the Z axis
             currentRadialVelocity = velocity.z;
-            //CheckContainsVelocityAndIncrease(currentRadialVelocity);
+            CheckContainsVelocityAndIncrease(currentRadialVelocity);
             // Plot the graph
             if (graph)
             {
-                graph.CreateLine(Color.green, "Point "+i);
+                graph.CreateLine(Color.blue, "Point "+i);
                 graph.PlotPoint(i, Vector2.right * currentRadialVelocity);
+
+                // .5 Round 
+                float newVelocity = Mathf.Round(2*currentRadialVelocity)/2;
+                Vector2 currBlock = listVelocityAndCount.Find(vec => vec.x == newVelocity);
+
+                graph.CreateBlock(currBlock, 0.5f, "Block "+i);
             }
 
             currentSumRadialVelocity += Mathf.Abs(currentRadialVelocity);
@@ -373,7 +383,7 @@ public class FastNBodySlideController : SimulationSlideController
 
             }
 
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.2f);
 
             // Destroy the velocity vector
             if (velocityArrow)

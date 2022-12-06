@@ -1372,6 +1372,100 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399255285}
   m_CullTransparentMesh: 0
+--- !u!1 &424591228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424591229}
+  - component: {fileID: 424591231}
+  - component: {fileID: 424591230}
+  m_Layer: 0
+  m_Name: 80 Body Simulation Measurement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &424591229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424591228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1777213032}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &424591230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424591228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3c19c75990e4bfc9f3ef38895c003c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPrefab: {fileID: 6335571273640261831, guid: 55ecc591f70e04ad7b186a9a970d394d,
+    type: 3}
+  centerOfMassPrefab: {fileID: 0}
+  coordinateOriginPrefab: {fileID: 0}
+  angularMomentumVectorPrefab: {fileID: 0}
+  lightPrefabs:
+  - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
+  graphPrefab: {fileID: 0}
+  bodies: []
+  centerOfMass: {fileID: 0}
+  coordinateOrigin: {fileID: 0}
+  angularMomentumVector: {fileID: 0}
+  lights: []
+  graph: {fileID: 0}
+--- !u!114 &424591231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424591228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc15ff74287a8400a9bb83bb327db90b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paused: 0
+  mass: 0.1
+  bodyScale: 0.8
+  numBodies: 80
+  epsilon: 0.2
+  radialMean: 7
+  radialSigma: 0.5
+  speedMean: 0
+  speedSigma: 2
+  useMaxNumSteps: 0
+  maxNumSteps: 1000
+  maxAllowedDistance: 40
+  samplePeriod: 100
+  printSamples: 0
+  unitLength: 0
+  unitMass: 0
+  unitTime: 0
+  timeScale: 1
+  solver: 1
+  numSubsteps: 20
+  onMaxDistanceReached: {fileID: 11400000, guid: e11b0d641c1474f149736b45c2be63a5,
+    type: 2}
+  onComputeEnergies: {fileID: 11400000, guid: 775e5ec42293b4062a49757f2aba8180, type: 2}
+  averageVirial: 0
 --- !u!1 &428136177
 GameObject:
   m_ObjectHideFlags: 0
@@ -6145,6 +6239,7 @@ Transform:
   - {fileID: 1790991417}
   - {fileID: 1944280073}
   - {fileID: 991396265}
+  - {fileID: 424591229}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10908,6 +11003,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78aff83718e24d38a83d3a89eb38184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockPrefab: {fileID: 4064381209439042420, guid: 94f93711d7fc94b15a3cf879c3b37ff4,
+    type: 3}
+  blockColor: {r: 0.35686275, g: 0.67058825, b: 0.94509804, a: 1}
   linePlotPrefab: {fileID: 174792231296877005, guid: 3dafe8f8b014a46f0ba3b5c75a202312,
     type: 3}
   showMarkers: 1
@@ -10916,8 +11014,8 @@ MonoBehaviour:
   xAxis: {fileID: 5970626431313117378}
   yAxis: {fileID: 5970626433123902726}
   axisLineWidth: 2
-  xRange: {x: -7, y: 7}
-  yRange: {x: 0, y: 20}
+  xRange: {x: -5, y: 5}
+  yRange: {x: 0, y: 25}
   rolling: 0
   xMax: 9
 --- !u!1 &5970626432157864701
@@ -13124,7 +13222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPlay: 0
-  simulation: {fileID: 1790991419}
+  simulation: {fileID: 424591231}
   virializeOnReset: 0
   centerOfMass: 1
   coordinateOrigin: 0
