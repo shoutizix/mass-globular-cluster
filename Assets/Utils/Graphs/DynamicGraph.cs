@@ -97,7 +97,7 @@ public class DynamicGraph : MonoBehaviour
         blocks.Clear();
     }
 
-    public void CreateLine(Color color, string label = "")
+    public void CreateLine(Color color, bool showMarkers, string label = "")
     {
         if (!linePlotPrefab) return;
 

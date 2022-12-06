@@ -268,6 +268,20 @@ public class FastNBodySlideController : SimulationSlideController
         print(text);
     }
 
+    private int GetMaxCountVelocityList()
+    {
+        int maxCount = 0;
+        foreach(Vector2 vec in listVelocityAndCount)
+        {
+            if (maxCount < (int) vec.y)
+            {
+                maxCount = (int) vec.y;
+            }
+        }
+
+        return maxCount;
+    }
+
     private void CheckContainsVelocityAndIncrease(float velocity)
     {
         // .5 Round 
@@ -331,7 +345,7 @@ public class FastNBodySlideController : SimulationSlideController
             // Plot the graph
             if (graph)
             {
-                graph.CreateLine(Color.blue, "Point "+i);
+                graph.CreateLine(Color.blue, true, "Point "+i);
                 graph.PlotPoint(i, Vector2.right * currentRadialVelocity);
 
                 // .5 Round 
@@ -390,6 +404,9 @@ public class FastNBodySlideController : SimulationSlideController
 
         yield return new WaitForSeconds(2);
 
+        // Animation duration
+        StartCoroutine(AnimationNormalDistribution(3f));
+
         ResetBodyMaterials();
         HideBodyLabels();
         HideTextPanels();
@@ -397,6 +414,39 @@ public class FastNBodySlideController : SimulationSlideController
         SetUVisibility(true);
         SetKVisibility(true);
         //simulation.Resume();
+    }
+
+    private IEnumerator AnimationNormalDistribution(float animationDuration)
+    {
+        if (!graph) yield return null;
+
+        float time = 0;
+        float startXCoord = -5f;
+        float endXCoord = 5f;
+        int[] indices = GetSortedIndices();
+
+        graph.CreateLine(Color.black, false, "Normal distribution");
+
+        while (time < animationDuration)
+        {
+            time += Time.deltaTime;
+            float t = time / animationDuration;
+            t = t * t * (3f - 2f * t);  // Apply some smoothing
+
+            float x = Mathf.Lerp(startXCoord, endXCoord, t);
+
+            // Plot the normal distribution with the height as high as the highest
+            int maxHeight = GetMaxCountVelocityList();
+            float maxNormal = NormalDistribution.NormalPDF(sim.GetMeanSpeed(), sim.GetSpeedSigma(), sim.GetMeanSpeed());
+
+            float yNormal = Mathf.Lerp(0f, maxHeight, NormalDistribution.NormalPDF(x, sim.GetSpeedSigma(), sim.GetMeanSpeed()) / maxNormal);
+            
+            Vector2 newPos = new Vector2(x, yNormal);
+            
+            graph.PlotPoint(indices.Length, newPos);
+
+            yield return null;
+        }
     }
 
     private IEnumerator LoopOverBodies(float maxValue)

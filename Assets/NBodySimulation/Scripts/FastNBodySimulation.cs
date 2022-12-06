@@ -641,4 +641,14 @@ public class FastNBodySimulation : Simulation
             CustomReset(false, true, false);
         }
     }
+
+    public float GetMeanSpeed()
+    {
+        return speedMean;
+    }
+
+    public float GetSpeedSigma()
+    {
+        return speedSigma;
+    }
 }
