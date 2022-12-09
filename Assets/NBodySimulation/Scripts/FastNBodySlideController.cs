@@ -65,6 +65,8 @@ public class FastNBodySlideController : SimulationSlideController
     [Header("Graphs")]
     [SerializeField] private DynamicGraph graph;
     [SerializeField] private float animationDuration = 2f;
+    [SerializeField] private float waitTimeIteration = 0.15f;
+    [SerializeField] private float waitTimeBeforePlotNormalGraph = 1f;
 
     private HashSet<RectTransform> equations;
     private HashSet<Button> buttons;
@@ -391,7 +393,7 @@ public class FastNBodySlideController : SimulationSlideController
                 velocityArrow.SetComponents(new Vector3(0, 0, velocity.z) * lengthVectors, true);
             }
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(waitTimeIteration);
 
             // Destroy the velocity vector
             if (velocityArrow)
@@ -403,7 +405,7 @@ public class FastNBodySlideController : SimulationSlideController
             HideBodyLabels();
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(waitTimeBeforePlotNormalGraph);
 
         // Animation Plot Normal distribution
         StartCoroutine(AnimationNormalDistribution(animationDuration));
