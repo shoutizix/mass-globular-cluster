@@ -233,6 +233,7 @@ public class FastNBodySlideController : SimulationSlideController
 
     public void ComputeRadialVelocityVisually()
     {
+        sim.CustomReset(false, true, false);
         UpdateRadialVelocityMeter(0);
         SetUVisibility(false);
         SetKVisibility(false);

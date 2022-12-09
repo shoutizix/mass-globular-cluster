@@ -111,7 +111,9 @@ public class FastNBodySimulation : Simulation
         iteration = 0;
         numSamples = 0;
 
+        Random.State oldstate = UnityEngine.Random.state;
         Random.InitState(42);
+        
 
         // Allocate array memory corresponding to the current number of bodies
         numEquations = 6 * numBodies;
@@ -133,6 +135,7 @@ public class FastNBodySimulation : Simulation
                 prefabs.centerOfMass.position = R;
             }
         }
+        Random.state = oldstate;
 
         if (generateVelocities)
         {
@@ -450,6 +453,7 @@ public class FastNBodySimulation : Simulation
 
             velocityCM += velocity;
         }
+
 
         velocityCM /= numBodies;
 
