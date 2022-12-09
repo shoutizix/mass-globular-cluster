@@ -1445,10 +1445,10 @@ MonoBehaviour:
   paused: 0
   mass: 0.1
   bodyScale: 0.8
-  numBodies: 80
+  numBodies: 100
   epsilon: 0.2
   radialMean: 7
-  radialSigma: 0.5
+  radialSigma: 4.6
   speedMean: 0
   speedSigma: 2
   useMaxNumSteps: 0
@@ -6451,6 +6451,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f1b98009645a04288b5e7b2358a12703, type: 3}
   - {fileID: 21300000, guid: 42262850caeb54f65a99adcc48cea2dc, type: 3}
   graph: {fileID: 0}
+  animationDuration: 2
 --- !u!114 &1803717795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8808,6 +8809,7 @@ MonoBehaviour:
   lengthVectors: 5
   bodyLabels: []
   graph: {fileID: 0}
+  animationDuration: 2
 --- !u!114 &1366851268612730418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10101,6 +10103,7 @@ MonoBehaviour:
   lengthVectors: 5
   bodyLabels: []
   graph: {fileID: 0}
+  animationDuration: 2
 --- !u!114 &3224529173934859033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11008,14 +11011,13 @@ MonoBehaviour:
   blockColor: {r: 0.35686275, g: 0.67058825, b: 0.94509804, a: 1}
   linePlotPrefab: {fileID: 174792231296877005, guid: 3dafe8f8b014a46f0ba3b5c75a202312,
     type: 3}
-  showMarkers: 1
   markerSize: 0.1
   lineWidth: 2
   xAxis: {fileID: 5970626431313117378}
   yAxis: {fileID: 5970626433123902726}
   axisLineWidth: 2
   xRange: {x: -5, y: 5}
-  yRange: {x: 0, y: 25}
+  yRange: {x: 0, y: 30}
   rolling: 0
   xMax: 9
 --- !u!1 &5970626432157864701
@@ -13279,6 +13281,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f1b98009645a04288b5e7b2358a12703, type: 3}
   - {fileID: 21300000, guid: 42262850caeb54f65a99adcc48cea2dc, type: 3}
   graph: {fileID: 5970626432157864643}
+  animationDuration: 2
 --- !u!224 &8490097839495802693
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13331,7 +13334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 0.5
-  position: {x: 50, y: 15, z: 0}
+  position: {x: 80, y: 15, z: 0}
   lookAt: {x: 0, y: 0, z: 0}
   moveTime: 1.5
   orthographic: 0
