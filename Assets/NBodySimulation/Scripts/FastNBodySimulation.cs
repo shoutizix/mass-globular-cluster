@@ -13,6 +13,8 @@ public class FastNBodySimulation : Simulation
     [SerializeField, Min(0)] private float radialSigma = 2;
     [SerializeField, Min(0)] private float speedMean = 0;
     [SerializeField, Min(0)] private float speedSigma = 0.5f;
+    [SerializeField, Min(0)] private float maxSpeed = 5;
+    [SerializeField] private bool onlyZVelocity = false;
     [SerializeField] private bool useMaxNumSteps = true;
     [SerializeField, Min(1)] private int maxNumSteps = 1000;
     [SerializeField, Min(0)] private float maxAllowedDistance = 1000;
@@ -143,7 +145,7 @@ public class FastNBodySimulation : Simulation
             {
                 Debug.Log("matching half U");
             }
-            GenerateInitialVelocities(true, matchHalfU);
+            GenerateInitialVelocities(true, matchHalfU, onlyZVelocity);
             ComputeKineticEnergy();
             //Debug.Log("K : " + K);
         }
@@ -429,7 +431,7 @@ public class FastNBodySimulation : Simulation
         }
     }
 
-    private void GenerateInitialVelocities(bool workInCMFrame = true, bool matchHalfU = true)
+    private void GenerateInitialVelocities(bool workInCMFrame = true, bool matchHalfU = true, bool onlyZVelocity = false)
     {
         float mean = speedMean;
         float sigma = speedSigma;
@@ -440,20 +442,49 @@ public class FastNBodySimulation : Simulation
             //Debug.Log("Computed mean speed = " + mean);
         }
 
-        //velocities = new List<Vector3>(numBodies);
         velocityCM = Vector3.zero;
 
-        for (int i = 0; i < numBodies; i++)
+        // TODO : Change generation of velocity so that center particles velocity is higher than the one at extremity
+        if (onlyZVelocity)
         {
-            float speed = Utils.Random.NormalValue(mean, sigma);
-            Vector3 velocity = speed * Random.onUnitSphere;
-            x[i * 6 + 3] = velocity.x;
-            x[i * 6 + 4] = velocity.y;
-            x[i * 6 + 5] = velocity.z;
+            print("sigma : "+sigma+", mean : "+mean);
+            for (int i = 0; i < numBodies; i++)
+            {
+                //float distanceFromCenter = prefabs.bodies[i].position.magnitude;
+                float posZ = prefabs.bodies[i].position.z;
+                float posY = prefabs.bodies[i].position.y;
+                float distanceFromCenter = (prefabs.bodies[i].position - positionCM).magnitude;
 
-            velocityCM += velocity;
+                // Multiply by 5 so that near 0.0 values are at 1 (otherwise is approx. 0.2 max)
+                //float speed = NormalDistribution.NormalPDF(1/distanceFromCenter, sigma, mean) * 5;
+                float speed = 1/distanceFromCenter;
+
+                //speed = speed * maxSpeed;
+
+                print("distance i :"+i+", "+distanceFromCenter);
+                print("1/dist i : "+i+", "+1/distanceFromCenter);
+                print("i : "+i+", speed : "+speed);
+                Vector3 velocity = speed * Vector3.forward;
+
+                x[i * 6 + 3] = velocity.x;
+                x[i * 6 + 4] = velocity.y;
+                x[i * 6 + 5] = velocity.z;
+
+                velocityCM += velocity;
+            }
+        } else 
+        {
+            for (int i = 0; i < numBodies; i++)
+            {
+                float speed = Utils.Random.NormalValue(mean, sigma);
+                Vector3 velocity = speed * Random.onUnitSphere;
+                x[i * 6 + 3] = velocity.x;
+                x[i * 6 + 4] = velocity.y;
+                x[i * 6 + 5] = velocity.z;
+
+                velocityCM += velocity;
+            }
         }
-
 
         velocityCM /= numBodies;
 

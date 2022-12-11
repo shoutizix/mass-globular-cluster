@@ -1451,6 +1451,8 @@ MonoBehaviour:
   radialSigma: 4.6
   speedMean: 0
   speedSigma: 2
+  maxSpeed: 5
+  onlyZVelocity: 0
   useMaxNumSteps: 0
   maxNumSteps: 1000
   maxAllowedDistance: 40
@@ -1545,6 +1547,8 @@ MonoBehaviour:
   radialSigma: 0.5
   speedMean: 3.3
   speedSigma: 0.1
+  maxSpeed: 5
+  onlyZVelocity: 0
   useMaxNumSteps: 0
   maxNumSteps: 1000
   maxAllowedDistance: 40
@@ -3743,6 +3747,8 @@ MonoBehaviour:
   radialSigma: 0.5
   speedMean: 2
   speedSigma: 0
+  maxSpeed: 5
+  onlyZVelocity: 0
   useMaxNumSteps: 0
   maxNumSteps: 1000
   maxAllowedDistance: 20
@@ -6322,6 +6328,8 @@ MonoBehaviour:
   radialSigma: 0.5
   speedMean: 3.3
   speedSigma: 0.1
+  maxSpeed: 5
+  onlyZVelocity: 0
   useMaxNumSteps: 0
   maxNumSteps: 1000
   maxAllowedDistance: 40
@@ -7246,6 +7254,8 @@ MonoBehaviour:
   radialSigma: 0.1
   speedMean: 3.3
   speedSigma: 0
+  maxSpeed: 5
+  onlyZVelocity: 0
   useMaxNumSteps: 0
   maxNumSteps: 1000
   maxAllowedDistance: 50
