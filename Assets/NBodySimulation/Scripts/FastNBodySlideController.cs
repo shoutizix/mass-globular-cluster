@@ -67,6 +67,7 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private float animationDuration = 2f;
     [SerializeField] private float waitTimeIteration = 0.15f;
     [SerializeField] private float waitTimeBeforePlotNormalGraph = 1f;
+    [SerializeField] private Color colorBorders = Color.black;
 
     private HashSet<RectTransform> equations;
     private HashSet<Button> buttons;
@@ -286,6 +287,25 @@ public class FastNBodySlideController : SimulationSlideController
         return maxCount;
     }
 
+    private void InitializeVelocityList(DynamicGraph graph)
+    {
+        Vector2 xRange = graph.GetXRange();
+
+        for (float i = xRange.x; i <= xRange.y; i += 0.5f)
+        {
+            listVelocityAndCount.Add(Vector2.right * i);
+        }
+    }
+
+    // Initialize blocks AFTER Velocity List !
+    private void InitializeBlocks(DynamicGraph graph)
+    {
+        for (int i = 0; i < listVelocityAndCount.Count; i++)
+        {
+            graph.CreateBlock(listVelocityAndCount[i], "Block "+i);
+        }
+    }
+
     private void CheckContainsVelocityAndIncrease(float velocity)
     {
         // .5 Round 
@@ -293,11 +313,11 @@ public class FastNBodySlideController : SimulationSlideController
 
         Vector2 vectorToUpdate = listVelocityAndCount.Find(vec => vec.x == newVelocity);
 
-        if(vectorToUpdate != Vector2.zero)
+        if((vectorToUpdate != Vector2.zero) || (newVelocity == 0 && vectorToUpdate == Vector2.zero))
         {
             listVelocityAndCount.Remove(vectorToUpdate);
             listVelocityAndCount.Add(vectorToUpdate + Vector2.up);
-        } else 
+        } else
         {
             listVelocityAndCount.Add(new Vector2(newVelocity, 1));
         }
@@ -335,6 +355,8 @@ public class FastNBodySlideController : SimulationSlideController
         {
             graph.Clear();
             listVelocityAndCount.Clear();
+            InitializeVelocityList(graph);
+            InitializeBlocks(graph);
         } 
 
         // Highlight the bodies one-by-one and show velocities
@@ -349,14 +371,21 @@ public class FastNBodySlideController : SimulationSlideController
             // Plot the graph
             if (graph)
             {
+                // Plot the point on the graph
+                /*
                 graph.CreateLine(Color.blue, true, "Point "+i);
                 graph.PlotPoint(i, Vector2.right * currentRadialVelocity);
+                */
 
                 // .5 Round 
                 float newVelocity = Mathf.Round(2*currentRadialVelocity)/2;
                 Vector2 currBlock = listVelocityAndCount.Find(vec => vec.x == newVelocity);
 
-                graph.CreateBlock(currBlock, 0.5f, "Block "+i);
+                // Draw the current block on the graph
+                graph.CreateBlock(currBlock, "Block "+i);
+
+                // Draw the line on the exterior parts of the blocks
+                graph.DrawExteriorBorder(listVelocityAndCount, colorBorders);
             }
 
             currentSumRadialVelocity += Mathf.Abs(currentRadialVelocity);
@@ -447,7 +476,7 @@ public class FastNBodySlideController : SimulationSlideController
             
             Vector2 newPos = new Vector2(x, yNormal);
             
-            graph.PlotPoint(indices.Length, newPos);
+            graph.PlotPointOnLastLine(newPos);
 
             yield return null;
         }

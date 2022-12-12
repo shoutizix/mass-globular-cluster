@@ -8,6 +8,7 @@ public class DynamicGraph : MonoBehaviour
     [Header("Histograms")]
     [SerializeField] private GameObject blockPrefab;
     [SerializeField] private Color blockColor;
+    [SerializeField] private float widthBlock = 0.5f;
 
     [Header("Plots")]
     [SerializeField] private GameObject linePlotPrefab;
@@ -64,7 +65,51 @@ public class DynamicGraph : MonoBehaviour
         }
     }
 
-    public void CreateBlock(Vector2 position, float widthBlock, string label = "")
+    public Vector2 GetXRange()
+    {
+        return xRange;
+    }
+
+    public Vector2 GetYRange()
+    {
+        return yRange;
+    }
+
+    public void DrawExteriorBorder(List<Vector2> positions, Color color)
+    {
+        if (!rect) rect = GetComponent<RectTransform>();
+
+        int indexOfLine = lines.Count-1;
+        if (indexOfLine >= 0)
+        {
+            lines[indexOfLine].Clear();
+            Destroy(lines[indexOfLine].gameObject);
+            lines.RemoveAt(indexOfLine);
+        }
+
+        CreateLine(color, false, "exterior");
+
+        for (int i = 0; i < positions.Count; i++)
+        {
+            float xPos1 = positions[i].x - widthBlock/2f;
+            float xPos2 = positions[i].x + widthBlock/2f;
+            float yPos = positions[i].y;
+            if (i == 0)
+            {
+                PlotPointOnLastLine(Vector2.right * xPos1, true);
+            }
+            PlotPointOnLastLine(new Vector2(xPos1, yPos), true);
+            if (i == positions.Count - 1)
+            {
+                PlotPointOnLastLine(new Vector2(positions[i].x, yPos), true);
+            } else 
+            {
+                PlotPointOnLastLine(new Vector2(xPos2, yPos), true);
+            }
+        }
+    }
+
+    public void CreateBlock(Vector2 position, string label = "")
     {
         if (!blockPrefab) return;
         // Convert width from Coordinate to Rect width
@@ -124,7 +169,15 @@ public class DynamicGraph : MonoBehaviour
         lines.Add(linePlot);
     }
 
-    public void PlotPoint(int lineIndex, Vector2 position)
+    public void PlotPointOnLastLine(Vector2 position, bool allowSameX = false, bool coordToRect = true)
+    {
+        // Do nothinng if no line has been created
+        if (lines.Count == 0) return;
+
+        PlotPoint(lines.Count-1, position, allowSameX, coordToRect);
+    }
+
+    public void PlotPoint(int lineIndex, Vector2 position, bool allowSameX = false, bool coordToRect = true)
     {
         if (lineIndex < 0 || lineIndex >= lines.Count) return;
         if (!lines[lineIndex].gameObject.activeInHierarchy) return;
@@ -143,8 +196,8 @@ public class DynamicGraph : MonoBehaviour
             xMax += deltaX;
         }
 
-        position = CoordinateToRectPosition(position);
-        lines[lineIndex].PlotPoint(position, true);
+        if (coordToRect) position = CoordinateToRectPosition(position);
+        lines[lineIndex].PlotPoint(position, true, allowSameX);
     }
 
     public void Clear()

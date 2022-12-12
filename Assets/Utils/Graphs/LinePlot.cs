@@ -30,7 +30,7 @@ public class LinePlot : MonoBehaviour
         Clear();
     }
 
-    public void PlotPoint(Vector2 position, bool connected)
+    public void PlotPoint(Vector2 position, bool connected, bool allowSameX = false)
     {
         // Only plot unique points
         if (points.Contains(position)) return;
@@ -39,7 +39,7 @@ public class LinePlot : MonoBehaviour
         // move the previous value instead of adding a new point
         if (points.Count > 0)
         {
-            if (points[points.Count - 1].x == position.x)
+            if (!allowSameX && (points[points.Count - 1].x == position.x))
             {
                 // Update the list value
                 points[points.Count - 1] = position;
@@ -60,10 +60,12 @@ public class LinePlot : MonoBehaviour
         else
         {
             // Draw the first and only marker
+            
             if (points.Count == 1)
             {
-                DrawPointMarker(position, markerContainer);
+                DrawPointMarker(position, markerContainer, false);
             }
+            
             else
             {
                 (markerContainer.GetChild(0) as RectTransform).anchoredPosition = position;
@@ -132,7 +134,7 @@ public class LinePlot : MonoBehaviour
         return container;
     }
 
-    public void DrawPointMarker(Vector2 position, RectTransform parent)
+    public void DrawPointMarker(Vector2 position, RectTransform parent, bool isVisible = true)
     {
         if (!pointPrefab) return;
 
@@ -140,6 +142,7 @@ public class LinePlot : MonoBehaviour
         point.rectTransform.anchoredPosition = position;
         point.rectTransform.localScale = markerSize * Vector3.one;
         point.color = color;
+        point.gameObject.SetActive(isVisible);
     }
 
     private void DrawLineSegment(Vector2 position1, Vector2 position2, RectTransform parent)
