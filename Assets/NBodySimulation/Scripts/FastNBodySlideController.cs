@@ -298,11 +298,30 @@ public class FastNBodySlideController : SimulationSlideController
 
     public void DisplayBodyVelocitiesAtIndex(int index)
     {
-        Vector3 velocity = sim.GetVelocity(index);
-
-        print(velocity);
+        if (graphX.GetLinesCount() > 1)
+        {
+             graphX.ClearLastLine();
+        }
+        if (graphY.GetLinesCount() > 1)
+        {
+             graphY.ClearLastLine();
+        }
+        if (graphZ.GetLinesCount() > 1)
+        {
+             graphZ.ClearLastLine();
+        }
 
         // Display the velocity along each axis on the corresponding graph
+
+        Vector3 velocity = sim.GetVelocity(index);
+        graphX.CreateLine(Color.red, true, "");
+        graphX.PlotPointOnLastLine(Vector2.right * velocity.x);
+
+        graphY.CreateLine(Color.green, true, "");
+        graphY.PlotPointOnLastLine(Vector2.right * velocity.y);
+
+        graphZ.CreateLine(Color.blue, true, "");
+        graphZ.PlotPointOnLastLine(Vector2.right * velocity.z);
     }
 
     private void DrawNormalCurve(DynamicGraph graph)

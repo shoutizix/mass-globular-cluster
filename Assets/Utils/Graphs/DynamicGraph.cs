@@ -75,6 +75,11 @@ public class DynamicGraph : MonoBehaviour
         return yRange;
     }
 
+    public int GetLinesCount()
+    {
+        return lines.Count;
+    }
+
     public void DrawExteriorBorder(List<Vector2> positions, Color color)
     {
         if (!rect) rect = GetComponent<RectTransform>();
@@ -167,6 +172,13 @@ public class DynamicGraph : MonoBehaviour
         linePlot.name = "Line " + label;
 
         lines.Add(linePlot);
+    }
+
+    public void ClearLastLine()
+    {
+        int lastIndex = lines.Count-1;
+        lines[lastIndex].Clear();
+        lines.RemoveAt(lastIndex);
     }
 
     public void PlotPointOnLastLine(Vector2 position, bool allowSameX = false, bool coordToRect = true)
