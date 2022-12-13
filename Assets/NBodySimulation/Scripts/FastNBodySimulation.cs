@@ -72,6 +72,7 @@ public class FastNBodySimulation : Simulation
     private int numSamples;  // number of average virial computations
     [HideInInspector] public float averageVirial;
     private float previousVirial;
+    private bool interactable = false;
 
     private void Awake()
     {
@@ -685,5 +686,28 @@ public class FastNBodySimulation : Simulation
     public float GetSpeedSigma()
     {
         return speedSigma;
+    }
+
+    public void SetInteractable(bool newVal)
+    {
+        if (interactable == newVal) return;
+
+        InteractableBody interBody;
+        foreach (Transform bodyT in prefabs.bodies)
+        {
+            if (!bodyT.gameObject.TryGetComponent(out interBody))
+            {
+                Debug.LogWarning("No InteractableBody component found.");
+            }
+
+            interBody.SetInteractable(newVal);
+        }
+
+        interactable = newVal;
+    }
+
+    public bool GetInteractable()
+    {
+        return interactable;
     }
 }

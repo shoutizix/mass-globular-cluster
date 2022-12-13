@@ -64,10 +64,16 @@ public class FastNBodySlideController : SimulationSlideController
 
     [Header("Graphs")]
     [SerializeField] private DynamicGraph graph;
+    [SerializeField] private DynamicGraph graphX;
+    [SerializeField] private DynamicGraph graphY;
+    [SerializeField] private DynamicGraph graphZ;
     [SerializeField] private float animationDuration = 2f;
     [SerializeField] private float waitTimeIteration = 0.15f;
     [SerializeField] private float waitTimeBeforePlotNormalGraph = 1f;
     [SerializeField] private Color colorBorders = Color.black;
+
+    [Header("Body Interactions")]
+    [SerializeField] private bool bodiesInteractable = false;
 
     private HashSet<RectTransform> equations;
     private HashSet<Button> buttons;
@@ -177,6 +183,8 @@ public class FastNBodySlideController : SimulationSlideController
         HideTextPanels();
         SetDataPanelVisibility(autoPlay);
         SetBloomVisibility(bloom);
+
+        sim.SetInteractable(bodiesInteractable); 
 
         if (startButton && !autoPlay)
         {
