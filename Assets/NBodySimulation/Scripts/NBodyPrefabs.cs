@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class NBodyPrefabs : MonoBehaviour
 {
+    [SerializeField] private FastNBodySlideController slideController;
+
     [Header("Prefabs")]
     [SerializeField] private GameObject bodyPrefab;
     [SerializeField] private GameObject centerOfMassPrefab;
@@ -120,6 +122,13 @@ public class NBodyPrefabs : MonoBehaviour
             {
                 bodies.Add(Instantiate(bodyPrefab, bodyContainer).transform);
                 bodies[i].name = "Body " + i;
+
+                InteractableBody interBody;
+                if (bodies[i].gameObject.TryGetComponent(out interBody))
+                {
+                    interBody.SetSlideController(slideController); 
+                    interBody.SetIndex(i);
+                }
             }
         }
         else

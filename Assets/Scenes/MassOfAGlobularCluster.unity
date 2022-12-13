@@ -2050,6 +2050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c19c75990e4bfc9f3ef38895c003c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slideController: {fileID: 264353517}
   bodyPrefab: {fileID: 6335571273640261831, guid: 55ecc591f70e04ad7b186a9a970d394d,
     type: 3}
   centerOfMassPrefab: {fileID: 0}
@@ -2146,6 +2147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c19c75990e4bfc9f3ef38895c003c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slideController: {fileID: 0}
   bodyPrefab: {fileID: 6335571273640261831, guid: 92b6705c326ff4de283a035b55885d18,
     type: 3}
   centerOfMassPrefab: {fileID: 0}
@@ -5028,6 +5030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c19c75990e4bfc9f3ef38895c003c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slideController: {fileID: 0}
   bodyPrefab: {fileID: 6335571273640261831, guid: 55ecc591f70e04ad7b186a9a970d394d,
     type: 3}
   centerOfMassPrefab: {fileID: 1208157535638110807, guid: 52e077c8711b04628a0362e888941e86,
@@ -8307,6 +8310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c19c75990e4bfc9f3ef38895c003c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slideController: {fileID: 0}
   bodyPrefab: {fileID: 6335571273640261831, guid: 55ecc591f70e04ad7b186a9a970d394d,
     type: 3}
   centerOfMassPrefab: {fileID: 0}
@@ -9425,6 +9429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c19c75990e4bfc9f3ef38895c003c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slideController: {fileID: 0}
   bodyPrefab: {fileID: 6335571273640261831, guid: 55ecc591f70e04ad7b186a9a970d394d,
     type: 3}
   centerOfMassPrefab: {fileID: 1208157535638110807, guid: 52e077c8711b04628a0362e888941e86,

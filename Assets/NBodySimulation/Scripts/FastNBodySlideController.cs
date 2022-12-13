@@ -296,6 +296,15 @@ public class FastNBodySlideController : SimulationSlideController
         StartCoroutine(LoopOverBodiesWithConnections(sim.U));
     }
 
+    public void DisplayBodyVelocitiesAtIndex(int index)
+    {
+        Vector3 velocity = sim.GetVelocity(index);
+
+        print(velocity);
+
+        // Display the velocity along each axis on the corresponding graph
+    }
+
     private void DrawNormalCurve(DynamicGraph graph)
     {
         if (!graph) return;

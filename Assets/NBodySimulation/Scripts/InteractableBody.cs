@@ -7,7 +7,9 @@ public class InteractableBody : MonoBehaviour
     public Texture2D handCursor;
     private Vector2 hotspot = new Vector2(14, 6);
     private bool interactable = false;
-    
+    private int index = 0;
+    private FastNBodySlideController slideController;
+
     private void OnMouseEnter() 
     {
         if (!interactable) return;
@@ -15,6 +17,11 @@ public class InteractableBody : MonoBehaviour
         if (handCursor)
         {
             Cursor.SetCursor(handCursor, hotspot, CursorMode.Auto);
+        }
+
+        if (slideController)
+        {
+            slideController.DisplayBodyVelocitiesAtIndex(index);
         }
 
         // TODO : Update graphs 
@@ -38,4 +45,15 @@ public class InteractableBody : MonoBehaviour
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     }
+
+    public void SetIndex(int newVal)
+    {
+        index = newVal;
+    }
+
+    public void SetSlideController(FastNBodySlideController sController)
+    {
+        slideController = sController;
+    }
+
 }
