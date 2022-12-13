@@ -189,7 +189,7 @@ public class FastNBodySlideController : SimulationSlideController
 
         sim.SetInteractable(bodiesInteractable);
         CheckDistributionAllGraphs();
-        
+
         if (startButton && !autoPlay)
         {
             foreach (Transform child in startButton.transform)
@@ -300,7 +300,6 @@ public class FastNBodySlideController : SimulationSlideController
     {
         if (!graph) return;
 
-        float time = 0;
         float startXCoord = -5f;
         float endXCoord = 5f;
         int[] indices = GetSortedIndices();
