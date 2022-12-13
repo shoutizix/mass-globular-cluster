@@ -1021,9 +1021,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1391287605}
-  - {fileID: 521313507}
-  - {fileID: 824538415}
   - {fileID: 1158341724}
+  - {fileID: 824538415}
+  - {fileID: 521313507}
   m_Father: {fileID: 2866597030137718180}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1163,10 +1163,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4b174ef56f92f4124977f88501c1677c, type: 3}
   - {fileID: 21300000, guid: f1b98009645a04288b5e7b2358a12703, type: 3}
   - {fileID: 21300000, guid: 42262850caeb54f65a99adcc48cea2dc, type: 3}
-  graph: {fileID: 5970626432157864643}
-  graphX: {fileID: 0}
-  graphY: {fileID: 0}
-  graphZ: {fileID: 0}
+  graph: {fileID: 0}
+  graphX: {fileID: 1158341725}
+  normalDistributionOnGraphX: 1
+  graphY: {fileID: 824538416}
+  normalDistributionOnGraphY: 1
+  graphZ: {fileID: 521313508}
+  normalDistributionOnGraphZ: 1
   animationDuration: 2
   waitTimeIteration: 0.15
   waitTimeBeforePlotNormalGraph: 1
@@ -2853,7 +2856,7 @@ RectTransform:
   - {fileID: 542528236}
   - {fileID: 703350388}
   m_Father: {fileID: 264353514}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -5530,7 +5533,7 @@ RectTransform:
   - {fileID: 337551352}
   - {fileID: 2123007343}
   m_Father: {fileID: 264353514}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -8471,8 +8474,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 42262850caeb54f65a99adcc48cea2dc, type: 3}
   graph: {fileID: 0}
   graphX: {fileID: 0}
+  normalDistributionOnGraphX: 0
   graphY: {fileID: 0}
+  normalDistributionOnGraphY: 0
   graphZ: {fileID: 0}
+  normalDistributionOnGraphZ: 0
   animationDuration: 2
   waitTimeIteration: 0.15
   waitTimeBeforePlotNormalGraph: 1
@@ -11294,8 +11300,11 @@ MonoBehaviour:
   bodyLabels: []
   graph: {fileID: 0}
   graphX: {fileID: 0}
+  normalDistributionOnGraphX: 0
   graphY: {fileID: 0}
+  normalDistributionOnGraphY: 0
   graphZ: {fileID: 0}
+  normalDistributionOnGraphZ: 0
   animationDuration: 2
   waitTimeIteration: 0.15
   waitTimeBeforePlotNormalGraph: 1
@@ -12595,8 +12604,11 @@ MonoBehaviour:
   bodyLabels: []
   graph: {fileID: 0}
   graphX: {fileID: 0}
+  normalDistributionOnGraphX: 0
   graphY: {fileID: 0}
+  normalDistributionOnGraphY: 0
   graphZ: {fileID: 0}
+  normalDistributionOnGraphZ: 0
   animationDuration: 2
   waitTimeIteration: 0.15
   waitTimeBeforePlotNormalGraph: 1
@@ -15781,8 +15793,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 42262850caeb54f65a99adcc48cea2dc, type: 3}
   graph: {fileID: 5970626432157864643}
   graphX: {fileID: 0}
+  normalDistributionOnGraphX: 0
   graphY: {fileID: 0}
+  normalDistributionOnGraphY: 0
   graphZ: {fileID: 0}
+  normalDistributionOnGraphZ: 0
   animationDuration: 2
   waitTimeIteration: 0.15
   waitTimeBeforePlotNormalGraph: 1

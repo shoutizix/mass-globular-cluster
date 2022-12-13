@@ -65,8 +65,11 @@ public class FastNBodySlideController : SimulationSlideController
     [Header("Graphs")]
     [SerializeField] private DynamicGraph graph;
     [SerializeField] private DynamicGraph graphX;
+    [SerializeField] private bool normalDistributionOnGraphX = false;
     [SerializeField] private DynamicGraph graphY;
+    [SerializeField] private bool normalDistributionOnGraphY = false;
     [SerializeField] private DynamicGraph graphZ;
+    [SerializeField] private bool normalDistributionOnGraphZ = false;
     [SerializeField] private float animationDuration = 2f;
     [SerializeField] private float waitTimeIteration = 0.15f;
     [SerializeField] private float waitTimeBeforePlotNormalGraph = 1f;
@@ -184,8 +187,9 @@ public class FastNBodySlideController : SimulationSlideController
         SetDataPanelVisibility(autoPlay);
         SetBloomVisibility(bloom);
 
-        sim.SetInteractable(bodiesInteractable); 
-
+        sim.SetInteractable(bodiesInteractable);
+        CheckDistributionAllGraphs();
+        
         if (startButton && !autoPlay)
         {
             foreach (Transform child in startButton.transform)
@@ -240,6 +244,24 @@ public class FastNBodySlideController : SimulationSlideController
         }
     }
 
+    private void CheckDistributionAllGraphs()
+    {
+        if (normalDistributionOnGraphX)
+        {
+            DrawNormalCurve(graphX);
+        }
+
+        if (normalDistributionOnGraphY)
+        {
+            DrawNormalCurve(graphY);
+        }
+
+        if (normalDistributionOnGraphZ)
+        {
+            DrawNormalCurve(graphZ);
+        }
+    }
+
     public void ComputeRadialVelocityVisually()
     {
         sim.CustomReset(false, true, false);
@@ -272,6 +294,29 @@ public class FastNBodySlideController : SimulationSlideController
         simulation.Pause();
         sim.ComputePotentialEnergy();
         StartCoroutine(LoopOverBodiesWithConnections(sim.U));
+    }
+
+    private void DrawNormalCurve(DynamicGraph graph)
+    {
+        if (!graph) return;
+
+        float time = 0;
+        float startXCoord = -5f;
+        float endXCoord = 5f;
+        int[] indices = GetSortedIndices();
+
+        graph.CreateLine(Color.black, false, "Normal distribution");
+
+        for (float x = startXCoord; x < endXCoord; x += 0.2f)
+        {
+            int maxHeight = 20;
+            int minHeight = 0;
+            float maxNormal = NormalDistribution.NormalPDF(sim.GetMeanSpeed(), sim.GetSpeedSigma(), sim.GetMeanSpeed());
+            float yNormal = Mathf.Lerp(minHeight, maxHeight, NormalDistribution.NormalPDF(x, sim.GetSpeedSigma(), sim.GetMeanSpeed()) / maxNormal);
+            
+            Vector2 newPos = new Vector2(x, yNormal);
+            graph.PlotPointOnLastLine(newPos);
+        }
     }
 
     private void PrintListVelocityCount()
