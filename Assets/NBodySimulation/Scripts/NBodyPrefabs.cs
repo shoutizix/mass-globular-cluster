@@ -12,6 +12,9 @@ public class NBodyPrefabs : MonoBehaviour
     [SerializeField] private GameObject angularMomentumVectorPrefab;
     [SerializeField] private GameObject[] lightPrefabs;
     [SerializeField] private GameObject graphPrefab;
+    [SerializeField] private GameObject vectorVelocityXPrefab;
+    [SerializeField] private GameObject vectorVelocityYPrefab;
+    [SerializeField] private GameObject vectorVelocityZPrefab;
 
     [HideInInspector] public List<Transform> bodies;
     [HideInInspector] public Transform centerOfMass;
@@ -19,6 +22,9 @@ public class NBodyPrefabs : MonoBehaviour
     [HideInInspector] public Vector angularMomentumVector;
     [HideInInspector] public List<Transform> lights;
     [HideInInspector] public Graph graph;
+    [HideInInspector] public Arrow positionVectorVelocityX;
+    [HideInInspector] public Arrow positionVectorVelocityY;
+    [HideInInspector] public Arrow positionVectorVelocityZ;
 
     private Transform bodyContainer;
 
@@ -61,6 +67,30 @@ public class NBodyPrefabs : MonoBehaviour
             graph.SetAxisYVisibility(false);
             graph.SetVisibilityOriginX(true);
             graph.name = "Graph";
+        }
+
+        if (vectorVelocityXPrefab)
+        {
+            positionVectorVelocityX = Instantiate(vectorVelocityXPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Arrow>();
+            positionVectorVelocityX.SetComponents(Vector3.zero);
+            positionVectorVelocityX.lineWidth = 0.12f;
+            positionVectorVelocityX.name = "Velocity X Vector";
+        }
+
+        if (vectorVelocityYPrefab)
+        {
+            positionVectorVelocityY = Instantiate(vectorVelocityYPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Arrow>();
+            positionVectorVelocityY.SetComponents(Vector3.zero);
+            positionVectorVelocityY.lineWidth = 0.12f;
+            positionVectorVelocityY.name = "Velocity Y Vector";
+        }
+
+        if (vectorVelocityZPrefab)
+        {
+            positionVectorVelocityZ = Instantiate(vectorVelocityZPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Arrow>();
+            positionVectorVelocityZ.SetComponents(Vector3.zero);
+            positionVectorVelocityZ.lineWidth = 0.12f;
+            positionVectorVelocityZ.name = "Velocity Z Vector";
         }
     }
 

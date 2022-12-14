@@ -1047,7 +1047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 0.5
-  position: {x: 80, y: 15, z: -30}
+  position: {x: 70, y: 15, z: -30}
   lookAt: {x: 10, y: 5, z: 0}
   moveTime: 1
   orthographic: 0
@@ -2134,12 +2134,21 @@ MonoBehaviour:
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
   graphPrefab: {fileID: 0}
+  vectorVelocityXPrefab: {fileID: 1948715729921795565, guid: d9dc6a4b9e6d6482192e743e635a544f,
+    type: 3}
+  vectorVelocityYPrefab: {fileID: 1948715729921795565, guid: d28f50e7865d046a38b48f21e8cc9827,
+    type: 3}
+  vectorVelocityZPrefab: {fileID: 1948715729921795565, guid: deb30c37df3b54a57b1d1ca0a02b766e,
+    type: 3}
   bodies: []
   centerOfMass: {fileID: 0}
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
   graph: {fileID: 0}
+  positionVectorVelocityX: {fileID: 0}
+  positionVectorVelocityY: {fileID: 0}
+  positionVectorVelocityZ: {fileID: 0}
 --- !u!114 &424591231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2231,12 +2240,18 @@ MonoBehaviour:
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
   graphPrefab: {fileID: 0}
+  vectorVelocityXPrefab: {fileID: 0}
+  vectorVelocityYPrefab: {fileID: 0}
+  vectorVelocityZPrefab: {fileID: 0}
   bodies: []
   centerOfMass: {fileID: 0}
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
   graph: {fileID: 0}
+  positionVectorVelocityX: {fileID: 0}
+  positionVectorVelocityY: {fileID: 0}
+  positionVectorVelocityZ: {fileID: 0}
 --- !u!114 &428136180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5117,12 +5132,18 @@ MonoBehaviour:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
   graphPrefab: {fileID: 4771440823329845041, guid: 08e7824f27a0b4610ab95c2c69be7c16,
     type: 3}
+  vectorVelocityXPrefab: {fileID: 0}
+  vectorVelocityYPrefab: {fileID: 0}
+  vectorVelocityZPrefab: {fileID: 0}
   bodies: []
   centerOfMass: {fileID: 0}
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
   graph: {fileID: 0}
+  positionVectorVelocityX: {fileID: 0}
+  positionVectorVelocityY: {fileID: 0}
+  positionVectorVelocityZ: {fileID: 0}
 --- !u!114 &991396267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8543,12 +8564,18 @@ MonoBehaviour:
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
   graphPrefab: {fileID: 0}
+  vectorVelocityXPrefab: {fileID: 0}
+  vectorVelocityYPrefab: {fileID: 0}
+  vectorVelocityZPrefab: {fileID: 0}
   bodies: []
   centerOfMass: {fileID: 0}
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
   graph: {fileID: 0}
+  positionVectorVelocityX: {fileID: 0}
+  positionVectorVelocityY: {fileID: 0}
+  positionVectorVelocityZ: {fileID: 0}
 --- !u!114 &1790991419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9737,12 +9764,18 @@ MonoBehaviour:
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
   graphPrefab: {fileID: 0}
+  vectorVelocityXPrefab: {fileID: 0}
+  vectorVelocityYPrefab: {fileID: 0}
+  vectorVelocityZPrefab: {fileID: 0}
   bodies: []
   centerOfMass: {fileID: 0}
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
   graph: {fileID: 0}
+  positionVectorVelocityX: {fileID: 0}
+  positionVectorVelocityY: {fileID: 0}
+  positionVectorVelocityZ: {fileID: 0}
 --- !u!114 &1944280075
 MonoBehaviour:
   m_ObjectHideFlags: 0

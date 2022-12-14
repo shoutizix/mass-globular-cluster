@@ -301,12 +301,25 @@ public class FastNBodySlideController : SimulationSlideController
 
     public void DisplayBodyVelocitiesAtIndex(int index)
     {
+        Vector3 velocity = sim.GetVelocity(index);
+        Vector3 pos = prefabs.bodies[index].position;
+
+        // Simulation Part (Vectors)
+        prefabs.positionVectorVelocityX.transform.position = pos;
+        prefabs.positionVectorVelocityX.SetComponents(Vector3.right * velocity.x);
+
+        prefabs.positionVectorVelocityY.transform.position = pos;
+        prefabs.positionVectorVelocityY.SetComponents(Vector3.up * velocity.y);
+        
+        prefabs.positionVectorVelocityZ.transform.position = pos;
+        prefabs.positionVectorVelocityZ.SetComponents(Vector3.forward * velocity.z); 
+
+        // UI Part (Graph Part)
         CheckClearLastLine(graphX);
         CheckClearLastLine(graphY);
         CheckClearLastLine(graphZ);
 
         // Display the velocity along each axis on the corresponding graph
-        Vector3 velocity = sim.GetVelocity(index);
         graphX.CreateLine(Color.red, true, "");
         graphX.PlotPointOnLastLine(Vector2.right * velocity.x);
 
