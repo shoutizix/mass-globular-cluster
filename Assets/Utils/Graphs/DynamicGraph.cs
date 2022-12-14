@@ -177,8 +177,10 @@ public class DynamicGraph : MonoBehaviour
     public void ClearLastLine()
     {
         int lastIndex = lines.Count-1;
-        lines[lastIndex].Clear();
-        lines.RemoveAt(lastIndex);
+        LinePlot line = lines[lastIndex];
+        line.Clear();
+        lines.Remove(line);
+        Destroy(line.gameObject);
     }
 
     public void PlotPointOnLastLine(Vector2 position, bool allowSameX = false, bool coordToRect = true)
@@ -217,7 +219,9 @@ public class DynamicGraph : MonoBehaviour
         foreach (var line in lines)
         {
             line.Clear();
+            Destroy(line.gameObject);
         }
+        lines.Clear();
 
         ClearBlocks();
 

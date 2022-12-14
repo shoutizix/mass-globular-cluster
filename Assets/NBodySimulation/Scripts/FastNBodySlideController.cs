@@ -248,16 +248,19 @@ public class FastNBodySlideController : SimulationSlideController
     {
         if (normalDistributionOnGraphX)
         {
+            graphX.Clear();
             DrawNormalCurve(graphX);
         }
 
         if (normalDistributionOnGraphY)
         {
+            graphY.Clear();
             DrawNormalCurve(graphY);
         }
 
         if (normalDistributionOnGraphZ)
         {
+            graphZ.Clear();
             DrawNormalCurve(graphZ);
         }
     }
@@ -298,21 +301,11 @@ public class FastNBodySlideController : SimulationSlideController
 
     public void DisplayBodyVelocitiesAtIndex(int index)
     {
-        if (graphX.GetLinesCount() > 1)
-        {
-             graphX.ClearLastLine();
-        }
-        if (graphY.GetLinesCount() > 1)
-        {
-             graphY.ClearLastLine();
-        }
-        if (graphZ.GetLinesCount() > 1)
-        {
-             graphZ.ClearLastLine();
-        }
+        CheckClearLastLine(graphX);
+        CheckClearLastLine(graphY);
+        CheckClearLastLine(graphZ);
 
         // Display the velocity along each axis on the corresponding graph
-
         Vector3 velocity = sim.GetVelocity(index);
         graphX.CreateLine(Color.red, true, "");
         graphX.PlotPointOnLastLine(Vector2.right * velocity.x);
@@ -322,6 +315,15 @@ public class FastNBodySlideController : SimulationSlideController
 
         graphZ.CreateLine(Color.blue, true, "");
         graphZ.PlotPointOnLastLine(Vector2.right * velocity.z);
+    }
+
+    // For Graphs X Y Z, Check if there is more than 1 line (Normal distribution), if true it means there is a point to clear
+    private void CheckClearLastLine(DynamicGraph graph)
+    {
+        if (graph.GetLinesCount() > 1)
+        {
+            graph.ClearLastLine();
+        }
     }
 
     private void DrawNormalCurve(DynamicGraph graph)
