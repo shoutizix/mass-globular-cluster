@@ -77,6 +77,8 @@ public class FastNBodySlideController : SimulationSlideController
 
     [Header("Body Interactions")]
     [SerializeField] private bool bodiesInteractable = false;
+    [SerializeField] private float reducedAlpha = 0.3f;
+    [SerializeField] private float maxAlpha = 1f;
 
     private HashSet<RectTransform> equations;
     private HashSet<Button> buttons;
@@ -310,9 +312,11 @@ public class FastNBodySlideController : SimulationSlideController
 
         prefabs.positionVectorVelocityY.transform.position = pos;
         prefabs.positionVectorVelocityY.SetComponents(Vector3.up * velocity.y);
-        
+
         prefabs.positionVectorVelocityZ.transform.position = pos;
         prefabs.positionVectorVelocityZ.SetComponents(Vector3.forward * velocity.z); 
+
+        ChangeAlphaOtherBodies(index, true);
 
         // UI Part (Graph Part)
         CheckClearLastLine(graphX);
@@ -330,6 +334,24 @@ public class FastNBodySlideController : SimulationSlideController
         graphZ.PlotPointOnLastLine(Vector2.right * velocity.z);
     }
 
+    // If lower is true then it reduces the alpha to reducedAlpha
+    // If lower is false then it increase the alpha to maxAlpha
+    public void ChangeAlphaOtherBodies(int index, bool lower)
+    {
+        for (int i = 0; i < prefabs.bodies.Count; i++)
+        {
+            if (i != index)
+            {
+                Renderer rend = prefabs.bodies[i].gameObject.GetComponent<Renderer>();
+                Color currColor = rend.material.color;
+
+                if (lower) currColor.a = reducedAlpha;
+                else currColor.a = maxAlpha;
+
+                rend.material.color = currColor;
+            }
+        }
+    }
     // For Graphs X Y Z, Check if there is more than 1 line (Normal distribution), if true it means there is a point to clear
     private void CheckClearLastLine(DynamicGraph graph)
     {

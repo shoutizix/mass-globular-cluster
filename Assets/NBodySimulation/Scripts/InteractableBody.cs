@@ -23,8 +23,6 @@ public class InteractableBody : MonoBehaviour
         {
             slideController.DisplayBodyVelocitiesAtIndex(index);
         }
-
-        // TODO : Update graphs 
     }
 
     private void OnMouseExit() 
@@ -33,6 +31,10 @@ public class InteractableBody : MonoBehaviour
 
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
+        if (slideController)
+        {
+            slideController.ChangeAlphaOtherBodies(index, false);
+        }
         // TODO : Update graphs 
     }
 

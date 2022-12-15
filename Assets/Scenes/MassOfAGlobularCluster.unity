@@ -1176,6 +1176,8 @@ MonoBehaviour:
   waitTimeBeforePlotNormalGraph: 1
   colorBorders: {r: 0, g: 0, b: 0, a: 1}
   bodiesInteractable: 1
+  bodiesNotSelectedMaterial: {fileID: 2100000, guid: 1c8bfbfe53968415495e4ff8904017f8,
+    type: 2}
 --- !u!114 &264353518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8739,6 +8741,7 @@ MonoBehaviour:
   waitTimeBeforePlotNormalGraph: 1
   colorBorders: {r: 0, g: 0, b: 0, a: 1}
   bodiesInteractable: 0
+  bodiesNotSelectedMaterial: {fileID: 0}
 --- !u!114 &1803717795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11647,6 +11650,7 @@ MonoBehaviour:
   waitTimeBeforePlotNormalGraph: 1
   colorBorders: {r: 0, g: 0, b: 0, a: 1}
   bodiesInteractable: 0
+  bodiesNotSelectedMaterial: {fileID: 0}
 --- !u!114 &1366851268612730418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12951,6 +12955,7 @@ MonoBehaviour:
   waitTimeBeforePlotNormalGraph: 1
   colorBorders: {r: 0, g: 0, b: 0, a: 1}
   bodiesInteractable: 0
+  bodiesNotSelectedMaterial: {fileID: 0}
 --- !u!114 &3224529173934859033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16141,6 +16146,7 @@ MonoBehaviour:
   waitTimeBeforePlotNormalGraph: 1
   colorBorders: {r: 0, g: 0, b: 0, a: 1}
   bodiesInteractable: 0
+  bodiesNotSelectedMaterial: {fileID: 0}
 --- !u!224 &8490097839495802693
 RectTransform:
   m_ObjectHideFlags: 0
