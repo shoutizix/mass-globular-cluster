@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731125, g: 0.3807373, b: 0.35873553, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311292, g: 0.38073754, b: 0.358736, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3583,9 +3583,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 558293729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b9a89189ebab409499f1bf56a7c4f45, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cee17b7cafea4a8c80ad830a01f47c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: e09409366c2b545e0aba162e5dd1429a, type: 3}
 --- !u!114 &558293732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3635,29 +3636,7 @@ MonoBehaviour:
   m_Value: 30
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetNumBodies
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-      - m_Target: {fileID: 558293731}
-        m_MethodName: UpdateSliderValue
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
 --- !u!1 &572449630
 GameObject:
   m_ObjectHideFlags: 0
@@ -17106,7 +17085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8428648218419858399}
   - component: {fileID: 8428648218419858397}
-  - component: {fileID: 8428648218419858398}
+  - component: {fileID: 8428648218419858393}
   m_Layer: 5
   m_Name: Radius Slider
   m_TagString: Untagged
@@ -17114,6 +17093,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8428648218419858393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8428648218419858392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cee17b7cafea4a8c80ad830a01f47c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: e09409366c2b545e0aba162e5dd1429a, type: 3}
 --- !u!114 &8428648218419858397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17163,41 +17155,7 @@ MonoBehaviour:
   m_Value: 30
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetNumBodies
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-      - m_Target: {fileID: 8428648218419858398}
-        m_MethodName: UpdateSliderValue
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
---- !u!114 &8428648218419858398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8428648218419858392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b9a89189ebab409499f1bf56a7c4f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls: []
 --- !u!224 &8428648218419858399
 RectTransform:
   m_ObjectHideFlags: 0
