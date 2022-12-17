@@ -41,6 +41,7 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private Button computeUButton;
     [SerializeField] private Button resetButton;
     [SerializeField] private Button startButton;
+    [SerializeField] private Button fitNormalButton;
 
     [Header("Sliders")]
     [SerializeField] private Slider numberSlider;
@@ -70,6 +71,7 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private bool normalDistributionOnGraphY = false;
     [SerializeField] private DynamicGraph graphZ;
     [SerializeField] private bool normalDistributionOnGraphZ = false;
+    [SerializeField] private Color colorNormalFit = Color.black;
     [SerializeField] private float animationDuration = 2f;
     [SerializeField] private float waitTimeIteration = 0.15f;
     [SerializeField] private float waitTimeBeforePlotNormalGraph = 1f;
@@ -128,6 +130,10 @@ public class FastNBodySlideController : SimulationSlideController
         {
             buttons.Add(resetButton);
         }
+        if (fitNormalButton)
+        {
+            buttons.Add(fitNormalButton);
+        }
 
         // Collect equation images
         equations = new HashSet<RectTransform>();
@@ -183,7 +189,7 @@ public class FastNBodySlideController : SimulationSlideController
 
         ResetBodyMaterials();
         HideBodyLabels();
-        SetButtonsInteractivity(true);
+        SetButtonsInteractivity(true, false);
         ShowAllUI();
         HideTextPanels();
         SetDataPanelVisibility(autoPlay);
@@ -251,20 +257,29 @@ public class FastNBodySlideController : SimulationSlideController
         if (normalDistributionOnGraphX)
         {
             graphX.Clear();
-            DrawNormalCurve(graphX);
+            DrawNormalCurve(graphX, colorNormalFit);
         }
 
         if (normalDistributionOnGraphY)
         {
             graphY.Clear();
-            DrawNormalCurve(graphY);
+            DrawNormalCurve(graphY, colorNormalFit);
         }
 
         if (normalDistributionOnGraphZ)
         {
             graphZ.Clear();
-            DrawNormalCurve(graphZ);
+            DrawNormalCurve(graphZ,colorNormalFit);
         }
+    }
+
+    public void FitNormalDistributionVisually()
+    {
+        SetUVisibility(false);
+        SetKVisibility(false);
+        SetButtonsInteractivity(false);
+        simulation.Pause();
+        StartCoroutine(AnimationNormalDistribution(animationDuration));
     }
 
     public void ComputeRadialVelocityVisually()
@@ -361,7 +376,7 @@ public class FastNBodySlideController : SimulationSlideController
         }
     }
 
-    private void DrawNormalCurve(DynamicGraph graph)
+    private void DrawNormalCurve(DynamicGraph graph, Color color)
     {
         if (!graph) return;
 
@@ -369,7 +384,7 @@ public class FastNBodySlideController : SimulationSlideController
         float endXCoord = 5f;
         int[] indices = GetSortedIndices();
 
-        graph.CreateLine(Color.black, false, "Normal distribution");
+        graph.CreateLine(color, false, "Normal distribution");
 
         for (float x = startXCoord; x < endXCoord; x += 0.2f)
         {
@@ -558,15 +573,17 @@ public class FastNBodySlideController : SimulationSlideController
             HideBodyLabels();
         }
 
+        // Uncomment if it is better with no Button
         yield return new WaitForSeconds(waitTimeBeforePlotNormalGraph);
 
+        // Uncomment if it is better with no Button
         // Animation Plot Normal distribution
-        StartCoroutine(AnimationNormalDistribution(animationDuration));
+        //StartCoroutine(AnimationNormalDistribution(animationDuration));
 
         ResetBodyMaterials();
         HideBodyLabels();
         HideTextPanels();
-        SetButtonsInteractivity(true);
+        SetButtonsInteractivity(true, true);
         SetUVisibility(true);
         SetKVisibility(true);
     }
@@ -580,7 +597,7 @@ public class FastNBodySlideController : SimulationSlideController
         float endXCoord = 5f;
         int[] indices = GetSortedIndices();
 
-        graph.CreateLine(Color.black, false, "Normal distribution");
+        graph.CreateLine(colorNormalFit, false, "Normal distribution");
 
         while (time < animationDuration)
         {
@@ -603,6 +620,8 @@ public class FastNBodySlideController : SimulationSlideController
 
             yield return null;
         }
+
+        SetButtonsInteractivity(true, false);
     }
 
     private IEnumerator LoopOverBodies(float maxValue)
@@ -794,10 +813,15 @@ public class FastNBodySlideController : SimulationSlideController
         return indices;
     }
 
-    private void SetButtonsInteractivity(bool interactive)
+    private void SetButtonsInteractivity(bool interactive, bool fitNormalInteractive = false)
     {
         foreach (Button button in buttons)
         {
+            if (button.Equals(fitNormalButton))
+            {
+                button.interactable = fitNormalInteractive;
+                break;
+            }
             button.interactable = interactive;
         }
     }
