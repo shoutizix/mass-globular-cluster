@@ -7,14 +7,13 @@ public class FastNBodySimulation : Simulation
     [Header("Parameters")]
     [SerializeField, Min(0)] private float mass = 1f;
     [SerializeField, Min(0.01f)] private float bodyScale = 1f;
-    [SerializeField, Range(3, 100)] private int numBodies = 10;
+    [SerializeField, Range(3, 1000)] private int numBodies = 10;
     [SerializeField, Min(0.00001f), Tooltip("Softening length")] float epsilon = 0.1f;
     [SerializeField, Min(0)] private float radialMean = 10;
     [SerializeField, Min(0)] private float radialSigma = 2;
     [SerializeField, Min(0)] private float speedMean = 0;
     [SerializeField, Min(0)] private float speedSigma = 0.5f;
-    [SerializeField, Min(0)] private float maxSpeed = 5;
-    [SerializeField] private bool onlyZVelocity = false;
+    [SerializeField] private bool normalForEachAxis = false;
     [SerializeField] private bool useMaxNumSteps = true;
     [SerializeField, Min(1)] private int maxNumSteps = 1000;
     [SerializeField, Min(0)] private float maxAllowedDistance = 1000;
@@ -146,7 +145,7 @@ public class FastNBodySimulation : Simulation
             {
                 Debug.Log("matching half U");
             }
-            GenerateInitialVelocities(true, matchHalfU, onlyZVelocity);
+            GenerateInitialVelocities(true, matchHalfU, normalForEachAxis);
             ComputeKineticEnergy();
             //Debug.Log("K : " + K);
         }
@@ -432,7 +431,7 @@ public class FastNBodySimulation : Simulation
         }
     }
 
-    private void GenerateInitialVelocities(bool workInCMFrame = true, bool matchHalfU = true, bool onlyZVelocity = false)
+    private void GenerateInitialVelocities(bool workInCMFrame = true, bool matchHalfU = true, bool normalForEachAxis = false)
     {
         float mean = speedMean;
         float sigma = speedSigma;
@@ -440,32 +439,35 @@ public class FastNBodySimulation : Simulation
         {
             mean = Mathf.Sqrt(-U / mass / numBodies);
             sigma = 0.1f * mean;
-            //Debug.Log("Computed mean speed = " + mean);
         }
 
         velocityCM = Vector3.zero;
 
         // TODO : Change generation of velocity so that center particles velocity is higher than the one at extremity
-        if (onlyZVelocity)
+        if (normalForEachAxis)
         {
-            print("sigma : "+sigma+", mean : "+mean);
             for (int i = 0; i < numBodies; i++)
             {
                 //float distanceFromCenter = prefabs.bodies[i].position.magnitude;
-                float posZ = prefabs.bodies[i].position.z;
-                float posY = prefabs.bodies[i].position.y;
-                float distanceFromCenter = (prefabs.bodies[i].position - positionCM).magnitude;
+                //float posZ = prefabs.bodies[i].position.z;
+                //float posY = prefabs.bodies[i].position.y;
+                //float distanceFromCenter = (prefabs.bodies[i].position - positionCM).magnitude;
 
                 // Multiply by 5 so that near 0.0 values are at 1 (otherwise is approx. 0.2 max)
                 //float speed = NormalDistribution.NormalPDF(1/distanceFromCenter, sigma, mean) * 5;
-                float speed = 1/distanceFromCenter;
+                //float speed = 1/distanceFromCenter;
 
                 //speed = speed * maxSpeed;
 
-                print("distance i :"+i+", "+distanceFromCenter);
-                print("1/dist i : "+i+", "+1/distanceFromCenter);
-                print("i : "+i+", speed : "+speed);
-                Vector3 velocity = speed * Vector3.forward;
+                //print("distance i :"+i+", "+distanceFromCenter);
+                //print("1/dist i : "+i+", "+1/distanceFromCenter);
+                //print("i : "+i+", speed : "+speed);
+                //Vector3 velocity = speed * Vector3.forward;
+                float speedX = Utils.Random.NormalValue(mean, sigma);
+                float speedY = Utils.Random.NormalValue(mean, sigma);
+                float speedZ = Utils.Random.NormalValue(mean, sigma);
+
+                Vector3 velocity = new Vector3(speedX, speedY, speedZ);  
 
                 x[i * 6 + 3] = velocity.x;
                 x[i * 6 + 4] = velocity.y;

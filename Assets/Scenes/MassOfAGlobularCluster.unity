@@ -2433,7 +2433,7 @@ MonoBehaviour:
   speedMean: 0
   speedSigma: 2
   maxSpeed: 5
-  onlyZVelocity: 0
+  normalForEachAxis: 1
   useMaxNumSteps: 0
   maxNumSteps: 1000
   maxAllowedDistance: 40
@@ -2536,7 +2536,7 @@ MonoBehaviour:
   speedMean: 3.3
   speedSigma: 0.1
   maxSpeed: 5
-  onlyZVelocity: 0
+  normalForEachAxis: 0
   useMaxNumSteps: 0
   maxNumSteps: 1000
   maxAllowedDistance: 40
@@ -5951,7 +5951,7 @@ MonoBehaviour:
   speedMean: 2
   speedSigma: 0
   maxSpeed: 5
-  onlyZVelocity: 0
+  normalForEachAxis: 0
   useMaxNumSteps: 0
   maxNumSteps: 1000
   maxAllowedDistance: 20
@@ -9495,7 +9495,7 @@ MonoBehaviour:
   speedMean: 3.3
   speedSigma: 0.1
   maxSpeed: 5
-  onlyZVelocity: 0
+  normalForEachAxis: 0
   useMaxNumSteps: 0
   maxNumSteps: 1000
   maxAllowedDistance: 40
@@ -10697,7 +10697,7 @@ MonoBehaviour:
   speedMean: 3.3
   speedSigma: 0
   maxSpeed: 5
-  onlyZVelocity: 0
+  normalForEachAxis: 0
   useMaxNumSteps: 0
   maxNumSteps: 1000
   maxAllowedDistance: 50
@@ -14559,7 +14559,7 @@ MonoBehaviour:
   blockPrefab: {fileID: 4064381209439042420, guid: 94f93711d7fc94b15a3cf879c3b37ff4,
     type: 3}
   blockColor: {r: 0.35686275, g: 0.67058825, b: 0.94509804, a: 1}
-  widthBlock: 0.5
+  widthBlock: 1
   linePlotPrefab: {fileID: 174792231296877005, guid: 3dafe8f8b014a46f0ba3b5c75a202312,
     type: 3}
   markerSize: 0.1
@@ -14568,7 +14568,7 @@ MonoBehaviour:
   yAxis: {fileID: 5970626433123902726}
   axisLineWidth: 2
   xRange: {x: -5, y: 5}
-  yRange: {x: 0, y: 50}
+  yRange: {x: 0, y: 40}
   rolling: 0
   xMax: 9
 --- !u!1 &5970626432157864701
@@ -17948,7 +17948,7 @@ MonoBehaviour:
   graphZ: {fileID: 0}
   normalDistributionOnGraphZ: 0
   animationDuration: 2
-  waitTimeIteration: 0.15
+  waitTimeIteration: 0.05
   waitTimeBeforePlotNormalGraph: 1
   colorBorders: {r: 0, g: 0, b: 0, a: 1}
   bodiesInteractable: 0

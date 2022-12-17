@@ -8,7 +8,7 @@ public class DynamicGraph : MonoBehaviour
     [Header("Histograms")]
     [SerializeField] private GameObject blockPrefab;
     [SerializeField] private Color blockColor;
-    [SerializeField] private float widthBlock = 0.5f;
+    [SerializeField] private float widthBlock = 1f;
 
     [Header("Plots")]
     [SerializeField] private GameObject linePlotPrefab;

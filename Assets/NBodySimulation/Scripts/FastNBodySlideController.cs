@@ -404,11 +404,11 @@ public class FastNBodySlideController : SimulationSlideController
         return maxCount;
     }
 
-    private void InitializeVelocityList(DynamicGraph graph)
+    private void InitializeVelocityList(DynamicGraph graph, float interval)
     {
         Vector2 xRange = graph.GetXRange();
 
-        for (float i = xRange.x; i <= xRange.y; i += 0.5f)
+        for (float i = xRange.x; i <= xRange.y; i += interval)
         {
             listVelocityAndCount.Add(Vector2.right * i);
         }
@@ -426,7 +426,10 @@ public class FastNBodySlideController : SimulationSlideController
     private void CheckContainsVelocityAndIncrease(float velocity)
     {
         // .5 Round 
-        float newVelocity = Mathf.Round(2*velocity)/2;
+        //float newVelocity = Mathf.Round(2*velocity)/2;
+
+        // 1 Round
+        float newVelocity = Mathf.Round(velocity);
 
         Vector2 vectorToUpdate = listVelocityAndCount.Find(vec => vec.x == newVelocity);
 
@@ -472,7 +475,7 @@ public class FastNBodySlideController : SimulationSlideController
         {
             graph.Clear();
             listVelocityAndCount.Clear();
-            InitializeVelocityList(graph);
+            InitializeVelocityList(graph, 1f);
             InitializeBlocks(graph);
         } 
 
@@ -495,7 +498,10 @@ public class FastNBodySlideController : SimulationSlideController
                 */
 
                 // .5 Round 
-                float newVelocity = Mathf.Round(2*currentRadialVelocity)/2;
+                //float newVelocity = Mathf.Round(2*currentRadialVelocity)/2;
+                // 1 Round
+                float newVelocity = Mathf.Round(currentRadialVelocity);
+
                 Vector2 currBlock = listVelocityAndCount.Find(vec => vec.x == newVelocity);
 
                 // Draw the current block on the graph
