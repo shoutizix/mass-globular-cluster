@@ -2608,8 +2608,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You can try different values for the parameters of the system and see how
-    it influences the measured mass.
+  m_text: "You can try different values for the parameters of the system and see
+    how it influences the measured mass. You can observe that even if the number
+    of particles doesn\u2019t change, the total mass of the system does. In fact,
+    it shows the influence of <b>dark matter</b> on the system !"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -2928,7 +2930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &517837665
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7372,7 +7374,8 @@ MonoBehaviour:
   m_text: "We make two really important assumption : \nFirst, the velocities of the
     particles are <b>isotropic</b>, it means that the <b>distribution of the velocity</b>
     is the <b>same along each axis</b>.\nSecond, the distribution of the velocities
-    follows the <b>Normal</b> distribution."
+    follows the <b>Normal</b> distribution. Therefore, we obtain the following relation
+    :\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -7675,7 +7678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -15}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1394251092
@@ -8721,7 +8724,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 600, y: 80}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1671435390
@@ -9814,7 +9817,7 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 0.5
   position: {x: 50, y: 15, z: 0}
-  lookAt: {x: 0, y: 0, z: -5}
+  lookAt: {x: 0, y: 2, z: -5}
   moveTime: 1.5
   orthographic: 0
   fieldOfView: 30
@@ -9857,7 +9860,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803717792}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -12970,7 +12973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2086641835536246694
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17935,8 +17938,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: We measure the radial velocities, and then we can compute the standard
-    deviation of the distribution.
+  m_text: We perform some measurements of the radial velocities and we can observe
+    that the distribution can be approximated by a Normal / Gaussian distribution.
+    You can visualize this using the buttons below.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -18271,7 +18275,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8490097839495802698}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -19846,7 +19850,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 600, y: 80}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &8490097840979364665
