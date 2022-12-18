@@ -383,6 +383,8 @@ public class FastNBodySlideController : SimulationSlideController
         float startXCoord = -5f;
         float endXCoord = 5f;
         int[] indices = GetSortedIndices();
+        float meanSpeed = 0f;
+        float sigmaSpeed = 2;
 
         graph.CreateLine(color, false, "Normal distribution");
 
@@ -390,14 +392,31 @@ public class FastNBodySlideController : SimulationSlideController
         {
             int maxHeight = 20;
             int minHeight = 0;
-            float maxNormal = NormalDistribution.NormalPDF(sim.GetMeanSpeed(), sim.GetSpeedSigma(), sim.GetMeanSpeed());
-            float yNormal = Mathf.Lerp(minHeight, maxHeight, NormalDistribution.NormalPDF(x, sim.GetSpeedSigma(), sim.GetMeanSpeed()) / maxNormal);
+            float maxNormal = NormalDistribution.NormalPDF(meanSpeed, sigmaSpeed, meanSpeed);
+            float yNormal = Mathf.Lerp(minHeight, maxHeight, NormalDistribution.NormalPDF(x, sigmaSpeed, meanSpeed) / maxNormal);
             
             Vector2 newPos = new Vector2(x, yNormal);
             graph.PlotPointOnLastLine(newPos);
         }
     }
 
+/*
+    private void DrawStandardDeviation(DynamicGraph graph, Color color)
+    {
+        if (!graph) return;
+
+        float startXCoord = -5f;
+        float endXCoord = 5f;
+        int[] indices = GetSortedIndices();
+        float meanSpeed = 0f;
+        float sigmaSpeed = 2;
+        float maxNormal = NormalDistribution.NormalPDF(meanSpeed, sigmaSpeed, meanSpeed);
+
+        graph.CreateLine(color, false, "Normal distribution");
+        graph.PlotPointOnLastLine(Vector2.up * maxNormal);
+        graph.PlotPointOnLastLine(new Vector2(sigmaSpeed, maxNormal));
+    }
+*/
     private void PrintListVelocityCount()
     {
         string text = "";
