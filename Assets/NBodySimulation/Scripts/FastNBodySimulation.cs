@@ -680,6 +680,33 @@ public class FastNBodySimulation : Simulation
         }
     }
 
+    // Called by Slider OnValueChanged()
+    public void SetSpeedDeviation(float value)
+    {
+        speedSigma = value;
+
+        if (Application.isPlaying)
+        {
+            CustomReset(false, true, false);
+        }
+    }
+
+    public float ComputeMassOfCluster()
+    {
+        // M = (5R*sigma^2)/G
+        // speedSigma is in km/s
+        // radialMean is in pc
+        // Everything is converted to meters
+        float sigmaMeter = speedSigma * 1000f;
+        float sigmaSquare = sigmaMeter * sigmaMeter;
+
+        float radialMeter = radialMean * ((float)Units.parsec_to_meter);
+
+        // Convert result in Solar Mass
+        float massKg = (5 * radialMeter * sigmaSquare)/Units.newtonG_SI;
+        return massKg / ((float)Units.m_sun_SI);
+    }
+
     public float GetMeanSpeed()
     {
         return speedMean;

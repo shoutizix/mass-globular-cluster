@@ -34,6 +34,7 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private MeterFill meterU;
     [SerializeField] private RectTransform dataPanel;
     [SerializeField] private FadeOutUI handRotate;
+    [SerializeField] private TextMeshProUGUI massText;
 
     [Header("Buttons")]
     [SerializeField] private Button measureRadialVelocityButton;
@@ -47,6 +48,7 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private Slider numberSlider;
     [SerializeField] private Slider distanceSlider;
     [SerializeField] private Slider speedSlider;
+    [SerializeField] private Slider speedSigmaSlider;
 
     [Header("Materials")]
     [SerializeField] private Material defaultMaterial;
@@ -160,6 +162,10 @@ public class FastNBodySlideController : SimulationSlideController
         {
             sliders.Add(speedSlider);
         }
+        if (speedSigmaSlider)
+        {
+            sliders.Add(speedSigmaSlider);
+        }
 
         // Get data panel references
         if (dataPanel)
@@ -197,6 +203,11 @@ public class FastNBodySlideController : SimulationSlideController
 
         sim.SetInteractable(bodiesInteractable);
         CheckDistributionAllGraphs();
+        if (speedSigmaSlider)
+        {
+            sim.SetSpeedDeviation(speedSigmaSlider.value);
+        }
+        UpdateMassText();
 
         if (startButton && !autoPlay)
         {
@@ -1061,5 +1072,13 @@ public class FastNBodySlideController : SimulationSlideController
             radialVelocityAnimation.Reset();
         }
         SetBloomVisibility(false);
+    }
+
+    public void UpdateMassText()
+    {
+        if (massText)
+        {
+            massText.text = sim.ComputeMassOfCluster().ToString("0.0");
+        }
     }
 }

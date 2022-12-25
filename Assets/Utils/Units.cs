@@ -14,6 +14,7 @@ public static class Units
     public static float year_SI = 31556952f;             // s
     public static float month_SI = year_SI / 12f;        // s
     public static float day_SI = 86400f;                 // s
+    public static double parsec_to_meter = 3.085677581e16; // 1 pc = 3,085 677 581 × 10^16 m
 
     // Unit options
     public enum UnitTime { Year, Month, Day }
