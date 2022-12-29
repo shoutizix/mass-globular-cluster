@@ -84,6 +84,9 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private float reducedAlpha = 0.3f;
     [SerializeField] private float maxAlpha = 1f;
 
+    [Header("Computed Mass")]
+    [SerializeField] private DisplayNextToText solarMassImage;
+
     private HashSet<RectTransform> equations;
     private HashSet<Button> buttons;
     private HashSet<Slider> sliders;
@@ -220,6 +223,11 @@ public class FastNBodySlideController : SimulationSlideController
         if (handRotate)
         {
             handRotate.TriggerReset();
+        }
+
+        if (solarMassImage)
+        {
+            solarMassImage.UpdateUnitPosition();
         }
     }
 
@@ -1079,6 +1087,10 @@ public class FastNBodySlideController : SimulationSlideController
         if (massText)
         {
             massText.text = sim.ComputeMassOfCluster().ToString("0.0");
+        }
+        if (solarMassImage)
+        {
+            solarMassImage.UpdateUnitPosition();
         }
     }
 }
