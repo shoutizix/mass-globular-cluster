@@ -7,14 +7,24 @@ using UnityEngine.EventSystems;
 public class EquationInteraction : MonoBehaviour, IPointerClickHandler
 {
     [Header("Color")]
-    [SerializeField] private byte colorIntensitySelected;
-    [SerializeField] private byte colorIntensityUnselected;
+    //[SerializeField] private byte colorIntensitySelected;
+    //[SerializeField] private byte colorIntensityUnselected;
+    [SerializeField] private Color colorSelected;
+    [SerializeField] private Color colorUnselected;
 
     [Header("OneBodyPrefabs")]
     [SerializeField] private OneBodyPrefabs prefabs;
 
     private Color32 currColor;
     private Image currImage;
+
+    private void Awake() 
+    {
+        if (!currImage)
+        {
+            currImage = gameObject.GetComponent<Image>();
+        }
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -45,14 +55,16 @@ public class EquationInteraction : MonoBehaviour, IPointerClickHandler
                 prefabs.SetVectorVelocityZVisibility(newIsVisible);
             }
 
-            currImage = gameObject.GetComponent<Image>();
             currColor = currImage.color;
+
             if (newIsVisible)
             {
-                currImage.color = new Color32(currColor.r, currColor.g, currColor.b, colorIntensitySelected);
+                currImage.color = colorSelected;
+                //currImage.color = new Color32(currColor.r, currColor.g, currColor.b, colorIntensitySelected);
             } else 
             {
-                currImage.color = new Color32(currColor.r, currColor.g, currColor.b, colorIntensityUnselected);
+                currImage.color = colorUnselected;
+                //currImage.color = new Color32(currColor.r, currColor.g, currColor.b, colorIntensityUnselected);
             }
             
         }
