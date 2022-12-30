@@ -18919,7 +18919,7 @@ MonoBehaviour:
   xAxis: {fileID: 5970626431313117378}
   yAxis: {fileID: 5970626433123902726}
   axisLineWidth: 2
-  xRange: {x: -5, y: 5}
+  xRange: {x: -7, y: 7}
   yRange: {x: 0, y: 40}
   rolling: 0
   xMax: 9

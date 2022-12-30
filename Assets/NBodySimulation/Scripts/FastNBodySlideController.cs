@@ -399,15 +399,14 @@ public class FastNBodySlideController : SimulationSlideController
     {
         if (!graph) return;
 
-        float startXCoord = -5f;
-        float endXCoord = 5f;
+        Vector2 startEndXCoord = graph.GetXRange();
         int[] indices = GetSortedIndices();
         float meanSpeed = 0f;
         float sigmaSpeed = 2;
 
         graph.CreateLine(color, false, "Normal distribution");
 
-        for (float x = startXCoord; x < endXCoord; x += 0.2f)
+        for (float x = startEndXCoord.x; x < startEndXCoord.y; x += 0.2f)
         {
             int maxHeight = 20;
             int minHeight = 0;
@@ -631,8 +630,7 @@ public class FastNBodySlideController : SimulationSlideController
         if (!graph) yield return null;
 
         float time = 0;
-        float startXCoord = -5f;
-        float endXCoord = 5f;
+        Vector2 startEndXCoord = graph.GetXRange();
         int[] indices = GetSortedIndices();
 
         graph.CreateLine(colorNormalFit, false, "Normal distribution");
@@ -643,7 +641,7 @@ public class FastNBodySlideController : SimulationSlideController
             float t = time / animationDuration;
             t = t * t * (3f - 2f * t);  // Apply some smoothing
 
-            float x = Mathf.Lerp(startXCoord, endXCoord, t);
+            float x = Mathf.Lerp(startEndXCoord.x, startEndXCoord.y, t);
 
             // Plot the normal distribution with the height as high as the highest
             int maxHeight = GetMaxCountVelocityList();
