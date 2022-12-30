@@ -11541,8 +11541,8 @@ MonoBehaviour:
     type: 3}
   orbitPrefab: {fileID: 2765505063272382029, guid: 31011c2b0b26d4389a695d1432a0aff2,
     type: 3}
-  coordinateTriadX: 95
-  coordinateTriadY: 70
+  coordinateTriadX: 125
+  coordinateTriadY: 75
   coordinateTriadZ: 35
   positionBody: {fileID: 0}
   positionVectorVelocityX: {fileID: 0}
