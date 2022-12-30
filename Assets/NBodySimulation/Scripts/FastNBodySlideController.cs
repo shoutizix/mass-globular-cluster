@@ -335,6 +335,13 @@ public class FastNBodySlideController : SimulationSlideController
         StartCoroutine(LoopOverBodiesWithConnections(sim.U));
     }
 
+    public void ClearVelocitiesVectors()
+    {
+        if (prefabs.positionVectorVelocityX) prefabs.positionVectorVelocityX.SetComponents(Vector3.zero);
+        if (prefabs.positionVectorVelocityY) prefabs.positionVectorVelocityY.SetComponents(Vector3.zero);
+        if (prefabs.positionVectorVelocityZ) prefabs.positionVectorVelocityZ.SetComponents(Vector3.zero);
+    }
+
     public void DisplayBodyVelocitiesAtIndex(int index)
     {
         Vector3 velocity = sim.GetVelocity(index);
@@ -1078,6 +1085,7 @@ public class FastNBodySlideController : SimulationSlideController
             radialVelocityAnimation.Reset();
         }
         SetBloomVisibility(false);
+        ClearVelocitiesVectors();
     }
 
     public void UpdateMassText()
