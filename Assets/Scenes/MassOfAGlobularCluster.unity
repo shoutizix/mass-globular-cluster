@@ -4426,7 +4426,7 @@ MonoBehaviour:
   xAxis: {fileID: 1671435392}
   yAxis: {fileID: 115052984}
   axisLineWidth: 2
-  xRange: {x: -5, y: 5}
+  xRange: {x: -7, y: 7}
   yRange: {x: 0, y: 50}
   rolling: 0
   xMax: 9
@@ -7090,7 +7090,7 @@ MonoBehaviour:
   xAxis: {fileID: 347993297}
   yAxis: {fileID: 581098921}
   axisLineWidth: 2
-  xRange: {x: -5, y: 5}
+  xRange: {x: -7, y: 7}
   yRange: {x: 0, y: 50}
   rolling: 0
   xMax: 9
@@ -8782,7 +8782,7 @@ MonoBehaviour:
   xAxis: {fileID: 2064703620}
   yAxis: {fileID: 2027233648}
   axisLineWidth: 2
-  xRange: {x: -5, y: 5}
+  xRange: {x: -7, y: 7}
   yRange: {x: 0, y: 50}
   rolling: 0
   xMax: 9
@@ -13556,7 +13556,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803717792}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -15522,7 +15522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -50}
+  m_AnchoredPosition: {x: 90, y: -50}
   m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2091166988
@@ -21570,7 +21570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8490097839866368890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21621,7 +21621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 90, y: -100}
+  m_AnchoredPosition: {x: 90, y: -120}
   m_SizeDelta: {x: 175, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &8490097839968726284
@@ -21695,7 +21695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 35}
+  m_AnchoredPosition: {x: 90, y: 35}
   m_SizeDelta: {x: 110, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8490097839968726286
