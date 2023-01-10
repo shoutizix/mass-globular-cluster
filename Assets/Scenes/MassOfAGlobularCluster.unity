@@ -3318,7 +3318,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "Ici, vous pouvez essayer diff\xE9rentes valeurs pour les param\xE8tres
+    du syst\xE8me et voir comment elles influencent la masse. Vous pouvez observer
+    que m\xEAme si le nombre de particules ne change pas, la masse totale du syst\xE8me
+    change."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -6626,7 +6629,7 @@ GameObject:
   - component: {fileID: 858859617}
   m_Layer: 5
   m_Name: Mass
-  m_TagString: EN
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7692,10 +7695,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Nous utilisons des unit\xE9s telles que :\n\n    1 unit\xE9 de <b>longueur</b>  
-    = 1 AU\n    1 unit\xE9 de <b>masse</b>         = 1 masse solaire\n    1 unit\xE9
-    de <b>temps</b>         = 1 an\n\nAvec ces unit\xE9s, la constante gravitationnelle\n    
-    est d'environ 39.5. Chaque corps a la masse et la taille du Soleil."
+  m_text: "En fait, cela montre l'influence de la <b>mati\xE8re noire</b> sur le
+    syst\xE8me ! \r\nLa masse totale du syst\xE8me n'est pas seulement compos\xE9e
+    de mati\xE8re \"classique\", il y a aussi de la mati\xE8re noire qui a un poids
+    (important). \r\nPar exemple, la mati\xE8re noire semble repr\xE9senter environ
+    six fois la masse de la mati\xE8re visible et devrait constituer environ 27%
+    de l'Univers !"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -12789,8 +12794,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 116, y: 0}
-  m_SizeDelta: {x: 200, y: 20}
+  m_AnchoredPosition: {x: 186, y: 0}
+  m_SizeDelta: {x: 350, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1871744619
 GameObject:
