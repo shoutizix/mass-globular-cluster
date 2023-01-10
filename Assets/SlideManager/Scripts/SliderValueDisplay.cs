@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SliderValueDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI valueTMP;
+    [SerializeField] private string unitText = "";
 
     private Slider slider;
     private float value;
@@ -27,7 +28,10 @@ public class SliderValueDisplay : MonoBehaviour
         if (valueTMP)
         {
             this.value = value;
-            valueTMP.text = this.value.ToString(format);
+            string spaceAndUnit = "";
+            if (unitText != "") spaceAndUnit = " "+unitText;
+            
+            valueTMP.text = this.value.ToString(format)+spaceAndUnit;
         }
     }
 }

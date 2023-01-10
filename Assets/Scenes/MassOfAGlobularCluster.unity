@@ -1074,7 +1074,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 30, y: -70}
-  m_SizeDelta: {x: 300, y: 110}
+  m_SizeDelta: {x: 300, y: 190}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &167102551
 MonoBehaviour:
@@ -3735,10 +3735,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You can try different values for the parameters of the system and see
-    how it influences the measured mass. You can observe that even if the number
-    of particles doesn\u2019t change, the total mass of the system does. In fact,
-    it shows the influence of <b>dark matter</b> on the system !"
+  m_text: "Here you can try different values for the parameters of the system and
+    see how they influence the inferred mass. You can observe that even if the number
+    of particles doesn\u2019t change, the total mass of the system does."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -4533,7 +4532,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A propos des unit\xE9s"
+  m_text: "Preuve de l'existence de la mati\xE8re noire"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -5480,7 +5479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: More about units
+  m_text: Evidence for dark matter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -10036,7 +10035,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -91.5}
+  m_AnchoredPosition: {x: 60, y: -68}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1451190103
@@ -11414,8 +11413,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "We are using units such that:\n\n    1 unit <b>length</b> = 1 pc\n   
-    1 unit <b>mass</b> = 1 solar mass\n    1 unit <b>speed</b> = 1 km/s"
+  m_text: "In fact, it shows the influence of <b>dark matter</b> on the system !
+    \nThe total mass of the system is not only composed of \"classical\" matter,
+    there is also dark matter that has a weight (and a significant one). \nFor example,
+    dark matter appears to have about six times the mass of visible matter and is
+    expected to constitute about 27% of the Universe !"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -12453,7 +12455,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803717792}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -16588,7 +16590,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: System Radius
+  m_text: System radius
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -16722,7 +16724,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6.4
+  m_text: 6.1 pc
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -17011,7 +17013,7 @@ MonoBehaviour:
   m_MinValue: 1
   m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 6.445716
+  m_Value: 6.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -17061,6 +17063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueTMP: {fileID: 3252033074152193331}
+  unitText: pc
 --- !u!1 &3252033074681136278
 GameObject:
   m_ObjectHideFlags: 0
@@ -18189,7 +18192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Deviation de la vitesse
+  m_text: Ecart type de la vitesse
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -18495,6 +18498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueTMP: {fileID: 7549667294788398170}
+  unitText: km/s
 --- !u!1 &7549667294725300582
 GameObject:
   m_ObjectHideFlags: 0
@@ -18663,8 +18667,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0}
-  m_SizeDelta: {x: 40, y: 10}
+  m_AnchoredPosition: {x: 70, y: 0}
+  m_SizeDelta: {x: 60, y: 10}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &7549667294788398170
 MonoBehaviour:
@@ -18685,7 +18689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 30.0
+  m_text: 30.0 km/s
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -19174,7 +19178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Speed Deviation
+  m_text: Speed standard deviation
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -21427,7 +21431,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8490097839495802698}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
