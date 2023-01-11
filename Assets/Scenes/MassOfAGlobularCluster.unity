@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311292, g: 0.38073754, b: 0.358736, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731125, g: 0.3807373, b: 0.35873553, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1906,7 +1906,6 @@ GameObject:
   - component: {fileID: 264353516}
   - component: {fileID: 264353515}
   - component: {fileID: 264353517}
-  - component: {fileID: 264353518}
   m_Layer: 5
   m_Name: Slide Gaussian Isotropic
   m_TagString: Untagged
@@ -2088,33 +2087,6 @@ MonoBehaviour:
   reducedAlpha: 0.3
   maxAlpha: 1
   solarMassImage: {fileID: 0}
---- !u!114 &264353518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264353513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1275bd9b09fa4a35bad22e20e510722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 5382f5d6f7b474be4aa0e1ef0826ea26, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 264353517}
-        m_MethodName: Reset
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &265411691
 GameObject:
   m_ObjectHideFlags: 0
@@ -3634,9 +3606,9 @@ MonoBehaviour:
   timeScale: 1
   solver: 1
   numSubsteps: 20
-  onMaxDistanceReached: {fileID: 11400000, guid: e11b0d641c1474f149736b45c2be63a5,
+  onMaxDistanceReached: {fileID: 11400000, guid: b8b779576742840739938143dacffd70,
     type: 2}
-  onComputeEnergies: {fileID: 11400000, guid: 775e5ec42293b4062a49757f2aba8180, type: 2}
+  onComputeEnergies: {fileID: 0}
   averageVirial: 0
 --- !u!1 &427919703
 GameObject:
@@ -3812,9 +3784,9 @@ MonoBehaviour:
   timeScale: 1
   solver: 1
   numSubsteps: 20
-  onMaxDistanceReached: {fileID: 11400000, guid: e11b0d641c1474f149736b45c2be63a5,
+  onMaxDistanceReached: {fileID: 11400000, guid: 93bb15820d1154cc59ab0c1e62af7535,
     type: 2}
-  onComputeEnergies: {fileID: 11400000, guid: 775e5ec42293b4062a49757f2aba8180, type: 2}
+  onComputeEnergies: {fileID: 0}
   averageVirial: 0
 --- !u!1 &429261535
 GameObject:
@@ -4276,7 +4248,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reminder of virial theorem
+  m_text: Reminder of the virial theorem
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -5312,7 +5284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1275bd9b09fa4a35bad22e20e510722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: e11b0d641c1474f149736b45c2be63a5, type: 2}
+  gameEvent: {fileID: 11400000, guid: 45885c091999f4959add960bea7f281e, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -10300,9 +10272,9 @@ MonoBehaviour:
   timeScale: 1
   solver: 1
   numSubsteps: 20
-  onMaxDistanceReached: {fileID: 11400000, guid: e11b0d641c1474f149736b45c2be63a5,
+  onMaxDistanceReached: {fileID: 11400000, guid: 1107e1de4c24f40ada46dddb782100f4,
     type: 2}
-  onComputeEnergies: {fileID: 11400000, guid: 775e5ec42293b4062a49757f2aba8180, type: 2}
+  onComputeEnergies: {fileID: 0}
   averageVirial: 0
 --- !u!1 &1391287604
 GameObject:
@@ -13152,9 +13124,9 @@ MonoBehaviour:
   timeScale: 1
   solver: 1
   numSubsteps: 20
-  onMaxDistanceReached: {fileID: 11400000, guid: e11b0d641c1474f149736b45c2be63a5,
+  onMaxDistanceReached: {fileID: 11400000, guid: 45885c091999f4959add960bea7f281e,
     type: 2}
-  onComputeEnergies: {fileID: 11400000, guid: 775e5ec42293b4062a49757f2aba8180, type: 2}
+  onComputeEnergies: {fileID: 0}
   averageVirial: 0
 --- !u!1 &1803500079
 GameObject:
@@ -13242,7 +13214,6 @@ GameObject:
   - component: {fileID: 1803717797}
   - component: {fileID: 1803717796}
   - component: {fileID: 1803717794}
-  - component: {fileID: 1803717795}
   m_Layer: 5
   m_Name: Slide Result Mass
   m_TagString: Untagged
@@ -13362,33 +13333,6 @@ MonoBehaviour:
   reducedAlpha: 0.3
   maxAlpha: 1
   solarMassImage: {fileID: 2099544409}
---- !u!114 &1803717795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803717792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1275bd9b09fa4a35bad22e20e510722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 5382f5d6f7b474be4aa0e1ef0826ea26, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1803717794}
-        m_MethodName: Reset
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1803717796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16646,7 +16590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1275bd9b09fa4a35bad22e20e510722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: e11b0d641c1474f149736b45c2be63a5, type: 2}
+  gameEvent: {fileID: 11400000, guid: 93bb15820d1154cc59ab0c1e62af7535, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -22365,7 +22309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1275bd9b09fa4a35bad22e20e510722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 5382f5d6f7b474be4aa0e1ef0826ea26, type: 2}
+  gameEvent: {fileID: 11400000, guid: b8b779576742840739938143dacffd70, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
