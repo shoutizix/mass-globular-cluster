@@ -17131,7 +17131,7 @@ MonoBehaviour:
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 0.5
   position: {x: 0, y: 5, z: -25}
-  lookAt: {x: 0, y: 0, z: 0}
+  lookAt: {x: 0, y: 1, z: 0}
   moveTime: 1.5
   orthographic: 0
   fieldOfView: 20
