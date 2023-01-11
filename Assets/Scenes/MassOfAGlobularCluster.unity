@@ -546,6 +546,7 @@ MonoBehaviour:
   colorSelected: {r: 0.35686275, g: 0.67058825, b: 0.94509804, a: 1}
   colorUnselected: {r: 1, g: 1, b: 1, a: 1}
   prefabs: {fileID: 1551909484}
+  slideController: {fileID: 0}
 --- !u!114 &48690798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5695,6 +5696,7 @@ MonoBehaviour:
   colorSelected: {r: 0.5137255, g: 0.88235295, b: 0.70980394, a: 1}
   colorUnselected: {r: 1, g: 1, b: 1, a: 1}
   prefabs: {fileID: 1551909484}
+  slideController: {fileID: 0}
 --- !u!114 &598585912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5850,7 +5852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 4, y: 2}
+  m_EffectDistance: {x: 2.9, y: 1.4}
   m_UseGraphicAlpha: 0
 --- !u!114 &609257331
 MonoBehaviour:
@@ -5880,6 +5882,7 @@ MonoBehaviour:
   colorSelected: {r: 0, g: 0, b: 0, a: 1}
   colorUnselected: {r: 1, g: 1, b: 1, a: 1}
   prefabs: {fileID: 1551909484}
+  slideController: {fileID: 2016269480}
 --- !u!114 &609257333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6619,6 +6622,7 @@ MonoBehaviour:
   colorSelected: {r: 1, g: 0, b: 0, a: 1}
   colorUnselected: {r: 1, g: 1, b: 1, a: 1}
   prefabs: {fileID: 1551909484}
+  slideController: {fileID: 0}
 --- !u!114 &707428296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7223,6 +7227,7 @@ MonoBehaviour:
   colorSelected: {r: 0, g: 0, b: 0, a: 1}
   colorUnselected: {r: 1, g: 1, b: 1, a: 1}
   prefabs: {fileID: 1551909484}
+  slideController: {fileID: 0}
 --- !u!114 &784623159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7940,6 +7945,7 @@ MonoBehaviour:
   colorSelected: {r: 0.5137255, g: 0.88235295, b: 0.70980394, a: 1}
   colorUnselected: {r: 1, g: 1, b: 1, a: 1}
   prefabs: {fileID: 1551909484}
+  slideController: {fileID: 2016269480}
 --- !u!114 &884525161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11989,6 +11995,8 @@ MonoBehaviour:
   frequency: 2
   amplitude: 1
   vectorLength: 0
+  colorIntensitySelected: 1
+  colorIntensityUnselected: 0.5
 --- !u!1 &1554593438
 GameObject:
   m_ObjectHideFlags: 0
@@ -15562,6 +15570,7 @@ MonoBehaviour:
   colorSelected: {r: 0.35686275, g: 0.67058825, b: 0.94509804, a: 1}
   colorUnselected: {r: 1, g: 1, b: 1, a: 1}
   prefabs: {fileID: 1551909484}
+  slideController: {fileID: 2016269480}
 --- !u!114 &2014634344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15691,6 +15700,12 @@ MonoBehaviour:
   amplitude: 2
   vectorLength: 35
   handRotate: {fileID: 2016687748}
+  Vx: {fileID: 2081762238}
+  Vy: {fileID: 884525161}
+  Vz: {fileID: 2014634344}
+  Vtot: {fileID: 609257333}
+  colorIntensitySelected: 255
+  colorIntensityUnselected: 150
 --- !u!1 &2016687743
 GameObject:
   m_ObjectHideFlags: 0
@@ -16028,6 +16043,7 @@ MonoBehaviour:
   colorSelected: {r: 1, g: 0, b: 0, a: 1}
   colorUnselected: {r: 1, g: 1, b: 1, a: 1}
   prefabs: {fileID: 1551909484}
+  slideController: {fileID: 2016269480}
 --- !u!114 &2081762238
 MonoBehaviour:
   m_ObjectHideFlags: 0

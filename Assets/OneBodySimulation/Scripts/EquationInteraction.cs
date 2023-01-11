@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class EquationInteraction : MonoBehaviour, IPointerClickHandler
+public class EquationInteraction : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Color")]
-    //[SerializeField] private byte colorIntensitySelected;
-    //[SerializeField] private byte colorIntensityUnselected;
     [SerializeField] private Color colorSelected;
     [SerializeField] private Color colorUnselected;
 
-    [Header("OneBodyPrefabs")]
+    [Header("One Body")]
     [SerializeField] private OneBodyPrefabs prefabs;
+    [SerializeField] private OneBodySlideController slideController;
 
     private Color32 currColor;
     private Image currImage;
@@ -60,13 +59,21 @@ public class EquationInteraction : MonoBehaviour, IPointerClickHandler
             if (newIsVisible)
             {
                 currImage.color = colorSelected;
-                //currImage.color = new Color32(currColor.r, currColor.g, currColor.b, colorIntensitySelected);
             } else 
             {
                 currImage.color = colorUnselected;
-                //currImage.color = new Color32(currColor.r, currColor.g, currColor.b, colorIntensityUnselected);
             }
             
         }
+    }
+
+    public void OnPointerEnter(PointerEventData pointerEventData)
+    {
+        slideController.HighlightCurrentImageAndVector(gameObject.name, true);
+    }
+
+    public void OnPointerExit(PointerEventData pointerEventData)
+    {
+        slideController.HighlightCurrentImageAndVector(gameObject.name, false);
     }
 }
