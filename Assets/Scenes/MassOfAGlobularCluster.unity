@@ -1740,10 +1740,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: The virial theorem can be used to obtain the mass of a self-gravitating
     system by knowing the total kinetic energy of it. This energy is directly related
-    to the mean velocity of the particles of the system. Since, the systems that
-    we are studying are <b>very far away</b>, the only measure that we can have is
-    the <b>radial velocity</b>, which corresponds in our case to the velocity along
-    the <b>Z axis</b>.
+    to the mean velocity of the particles of the system. Since such astrophysical
+    systems are <b>very far away</b>, in practice we cannot measure the total velocity
+    of each particle. We can only accurately measure their <b>radial components</b>,
+    namely the component of velocity <b>along the line of sight</b>.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -8040,7 +8040,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: In real life, we obtain values for the radial velocity by measuring the
-    Doppler effect.
+    Doppler effect. Here we have chosen a coordinate system such that the z-axis
+    lies along our line of sight to the system.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -9051,6 +9052,7 @@ GameObject:
   - component: {fileID: 1173429083}
   - component: {fileID: 1173429082}
   - component: {fileID: 1173429081}
+  - component: {fileID: 1173429084}
   m_Layer: 5
   m_Name: Tip
   m_TagString: Untagged
@@ -9077,7 +9079,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 30, y: -70}
-  m_SizeDelta: {x: 300, y: 55}
+  m_SizeDelta: {x: 300, y: 105}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1173429081
 MonoBehaviour:
@@ -9128,6 +9130,27 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!223 &1173429084
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173429079}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0
 --- !u!1 &1179963128
 GameObject:
   m_ObjectHideFlags: 0
@@ -9859,7 +9882,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1282723544
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9898,7 +9921,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "Le th\xE9or\xE8me du viriel peut \xEAtre utilis\xE9 pour obtenir la masse
+    d'un syst\xE8me auto-gravitant en mesurant son \xE9nergie cin\xE9tique totale.
+    Cette \xE9nergie est directement li\xE9e \xE0 la vitesse moyenne des particules
+    du syst\xE8me. Comme ces syst\xE8mes astrophysiques sont <b>tr\xE8s \xE9loign\xE9s</b>,
+    nous ne pouvons pas, en pratique, mesurer la vitesse totale de chaque particule.
+    Nous pouvons seulement mesurer avec pr\xE9cision leurs <b>composantes radiales</b>,
+    c'est-\xE0-dire la composante de la vitesse <b>le long de la ligne de vis\xE9e</b>."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -10841,7 +10870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1394251093
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13256,7 +13285,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765713632}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -13265,7 +13294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1765713634
@@ -13287,10 +13316,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Nous utilisons des unit\xE9s telles que :\n\n    1 unit\xE9 de <b>longueur</b>  
-    = 1 AU\n    1 unit\xE9 de <b>masse</b>         = 1 masse solaire\n    1 unit\xE9
-    de <b>temps</b>         = 1 an\n\nAvec ces unit\xE9s, la constante gravitationnelle\n    
-    est d'environ 39.5. Chaque corps a la masse et la taille du Soleil."
+  m_text: "En r\xE9alit\xE9, nous obtenons les valeurs de la vitesse radiale en mesurant
+    l'effet Doppler. Ici, nous avons choisi un syst\xE8me de coordonn\xE9es tel que
+    l'axe Z se trouve le long de notre ligne de vis\xE9e vers le syst\xE8me."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -15205,7 +15233,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 70, y: -115}
+  m_AnchoredPosition: {x: 105, y: -125}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1948826641
@@ -17232,7 +17260,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826383030401227122}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -17574,7 +17602,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3224529173934859029}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
