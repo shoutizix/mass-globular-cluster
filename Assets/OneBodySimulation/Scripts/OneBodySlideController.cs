@@ -29,13 +29,7 @@ public class OneBodySlideController : SimulationSlideController
 
     private void Awake() 
     {
-        equationImages = new List<Image>(){Vx, Vy, Vz, Vtot};
-        Outline outVx;
-        if(Vx.gameObject.TryGetComponent(out outVx))
-        {
-            print("YES");
-        }
-        
+        equationImages = new List<Image>(){Vx, Vy, Vz, Vtot}; 
     }
 
     public override void InitializeSlide()

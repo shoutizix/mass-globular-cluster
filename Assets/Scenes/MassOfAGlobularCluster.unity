@@ -17602,7 +17602,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3224529173934859029}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -22972,9 +22972,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: We perform some measurements of the radial velocities and we can observe
-    that the distribution can be approximated by a Normal / Gaussian distribution.
-    You can visualize this using the buttons below.
+  m_text: If a globular cluster is gravitationally stable over time, we expect a
+    roughly equal number of particles to be moving inwards as outwards at any moment.
+    There is no preferred direction about the center of mass. Click the button below
+    to measure the histogram of radial velocities at a given instant.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -23310,7 +23311,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8490097839495802698}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -23328,8 +23329,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 0.5
-  position: {x: 80, y: 15, z: 0}
-  lookAt: {x: 0, y: 0, z: 0}
+  position: {x: 95, y: 15, z: 0}
+  lookAt: {x: 0, y: 4, z: -3}
   moveTime: 1.5
   orthographic: 0
   fieldOfView: 30
@@ -23535,7 +23536,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 90, y: 35}
-  m_SizeDelta: {x: 110, y: 30}
+  m_SizeDelta: {x: 180, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8490097839968726286
 CanvasRenderer:
@@ -23895,7 +23896,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Measure V
+  m_text: Compute histogram
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1d59b1c3fdcb4eaa939a49561e164fd, type: 2}
   m_sharedMaterial: {fileID: -7471981085373252525, guid: b1d59b1c3fdcb4eaa939a49561e164fd,
@@ -24177,7 +24178,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "Si un amas globulaire est gravitationnellement stable dans le temps, nous
+    nous attendons \xE0 ce qu'un nombre \xE0 peu pr\xE8s \xE9gal de particules se
+    d\xE9placent vers l'int\xE9rieur et vers l'ext\xE9rieur \xE0 tout moment. Il
+    n'y a pas de direction pr\xE9f\xE9rentielle autour du centre de masse. Cliquez
+    sur le bouton ci-dessous pour mesurer l'histogramme des vitesses radiales \xE0
+    un instant donn\xE9."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -24663,7 +24669,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 600, y: 80}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &8490097840979364665
