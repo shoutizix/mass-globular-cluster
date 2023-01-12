@@ -24,11 +24,18 @@ public class OneBodySlideController : SimulationSlideController
     [SerializeField] private byte colorIntensityUnselected = 150;
 
     private List<Image> equationImages;
+    private List<Outline> equationOutlines;
     private OneBodySimulation sim;
 
     private void Awake() 
     {
         equationImages = new List<Image>(){Vx, Vy, Vz, Vtot};
+        Outline outVx;
+        if(Vx.gameObject.TryGetComponent(out outVx))
+        {
+            print("YES");
+        }
+        
     }
 
     public override void InitializeSlide()
@@ -94,6 +101,14 @@ public class OneBodySlideController : SimulationSlideController
         {
             Color32 currColor = currImage.color;
             currImage.color = new Color32(currColor.r, currColor.g, currColor.b, colorIntensitySelected);
+            
+            // Outline part
+            Outline currOutline;
+            if(currImage.gameObject.TryGetComponent(out currOutline))
+            {
+                Color32 currOutlineColor = currOutline.effectColor;
+                currOutline.effectColor = new Color32(currOutlineColor.r, currOutlineColor.g, currOutlineColor.b, colorIntensitySelected);
+            }
         }
     }
 
@@ -103,6 +118,14 @@ public class OneBodySlideController : SimulationSlideController
         {
             Color32 currColor = currImage.color;
             currImage.color = new Color32(currColor.r, currColor.g, currColor.b, colorIntensityUnselected);
+
+            // Outline part
+            Outline currOutline;
+            if(currImage.gameObject.TryGetComponent(out currOutline))
+            {
+                Color32 currOutlineColor = currOutline.effectColor;
+                currOutline.effectColor = new Color32(currOutlineColor.r, currOutlineColor.g, currOutlineColor.b, colorIntensityUnselected);
+            }
         }
     }
 }
