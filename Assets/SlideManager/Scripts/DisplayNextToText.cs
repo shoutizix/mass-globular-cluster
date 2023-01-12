@@ -8,16 +8,25 @@ public class DisplayNextToText : MonoBehaviour
     [SerializeField] private float offsetX = 10f;
     [SerializeField] private float offsetY = -0.5f;
     private Image solarMassUnitImage;
-    private void OnEnable() 
+    private TextMeshProUGUI powerText;
+    private void OnValidate()
     {
         if (!solarMassUnitImage)
         {
-            solarMassUnitImage = GetComponent<Image>();
+            if(!TryGetComponent(out solarMassUnitImage));
         }
+
+        if(!TryGetComponent(out powerText))
+        
         if (textMass)
         {
             UpdateUnitPosition();
         }
+    }
+
+    public void SetTextPower(string power)
+    {
+        powerText.text = power;
     }
 
     public void UpdateUnitPosition()
@@ -26,6 +35,13 @@ public class DisplayNextToText : MonoBehaviour
 
         float xPos = textMass.rectTransform.offsetMin.x + textMass.preferredWidth + offsetX;
         float yPos = textMass.rectTransform.offsetMax.y + offsetY;
-        solarMassUnitImage.rectTransform.anchoredPosition = new Vector2(xPos, yPos);
+        if (solarMassUnitImage)
+        {
+            solarMassUnitImage.rectTransform.anchoredPosition = new Vector2(xPos, yPos);
+        }
+        if (powerText)
+        {
+            powerText.rectTransform.anchoredPosition = new Vector2(xPos, yPos);
+        }
     }
 }

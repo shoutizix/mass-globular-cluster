@@ -86,6 +86,7 @@ public class FastNBodySlideController : SimulationSlideController
 
     [Header("Computed Mass")]
     [SerializeField] private DisplayNextToText solarMassImage;
+    [SerializeField] private DisplayNextToText powerText;
 
     private HashSet<RectTransform> equations;
     private HashSet<Button> buttons;
@@ -1090,13 +1091,23 @@ public class FastNBodySlideController : SimulationSlideController
 
     public void UpdateMassText()
     {
+        char power = ' ';
         if (massText)
         {
-            massText.text = sim.ComputeMassOfCluster().ToString("0.0");
+            string massTextPowerTen = sim.ComputeMassOfCluster().ToString("0.0E0");
+            massTextPowerTen = massTextPowerTen.Replace("E", " * 10");
+
+            power = massTextPowerTen[massTextPowerTen.Length-1];
+            massText.text = massTextPowerTen.Remove(massTextPowerTen.Length-1);
         }
         if (solarMassImage)
         {
             solarMassImage.UpdateUnitPosition();
+        }
+        if (powerText)
+        {
+            powerText.SetTextPower(power.ToString());
+            powerText.UpdateUnitPosition();
         }
     }
 }
