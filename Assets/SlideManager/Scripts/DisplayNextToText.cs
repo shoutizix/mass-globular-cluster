@@ -13,10 +13,10 @@ public class DisplayNextToText : MonoBehaviour
     {
         if (!solarMassUnitImage)
         {
-            if(!TryGetComponent(out solarMassUnitImage));
+            TryGetComponent(out solarMassUnitImage);
         }
 
-        if(!TryGetComponent(out powerText))
+        TryGetComponent(out powerText);
         
         if (textMass)
         {

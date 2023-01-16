@@ -668,6 +668,11 @@ public class FastNBodySimulation : Simulation
         }
     }
 
+    public int GetNumBodies()
+    {
+        return numBodies;
+    }
+
     // Called by Slider OnValueChanged()
     public void SetMeanSpeed(float value)
     {

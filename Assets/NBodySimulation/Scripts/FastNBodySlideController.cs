@@ -34,7 +34,6 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private MeterFill meterU;
     [SerializeField] private RectTransform dataPanel;
     [SerializeField] private FadeOutUI handRotate;
-    [SerializeField] private TextMeshProUGUI massText;
 
     [Header("Buttons")]
     [SerializeField] private Button measureRadialVelocityButton;
@@ -74,7 +73,9 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private DynamicGraph graphZ;
     [SerializeField] private bool normalDistributionOnGraphZ = false;
     [SerializeField] private Color colorNormalFit = Color.black;
-    [SerializeField] private float animationDuration = 2f;
+    [SerializeField] private Color colorStandardDeviation = Color.black;
+    [SerializeField] private float animationNormalDuration = 2f;
+    [SerializeField] private float animationStandardDeviationDuration = 2f;
     [SerializeField] private float waitTimeIteration = 0.15f;
     [SerializeField] private float waitTimeBeforePlotNormalGraph = 1f;
     [SerializeField] private Color colorBorders = Color.black;
@@ -84,9 +85,14 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private float reducedAlpha = 0.3f;
     [SerializeField] private float maxAlpha = 1f;
 
+    [Header("Computed Sigma")]
+    [SerializeField] private TextMeshProUGUI sigmaValue;
+    private float lastComputedSigma = 0f;
+
     [Header("Computed Mass")]
     [SerializeField] private DisplayNextToText solarMassImage;
     [SerializeField] private DisplayNextToText powerText;
+    [SerializeField] private TextMeshProUGUI massText;
 
     private HashSet<RectTransform> equations;
     private HashSet<Button> buttons;
@@ -299,7 +305,7 @@ public class FastNBodySlideController : SimulationSlideController
         SetKVisibility(false);
         SetButtonsInteractivity(false);
         simulation.Pause();
-        StartCoroutine(AnimationNormalDistribution(animationDuration));
+        StartCoroutine(AnimationNormalDistribution(animationNormalDuration));
     }
 
     public void ComputeRadialVelocityVisually()
@@ -443,6 +449,7 @@ public class FastNBodySlideController : SimulationSlideController
         graph.PlotPointOnLastLine(new Vector2(sigmaSpeed, maxNormal));
     }
 */
+
     private void PrintListVelocityCount()
     {
         string text = "";
@@ -665,7 +672,58 @@ public class FastNBodySlideController : SimulationSlideController
             yield return null;
         }
 
+        StartCoroutine(AnimationStandardDeviation(animationStandardDeviationDuration));
+
         SetButtonsInteractivity(true, false);
+    }
+
+    private IEnumerator AnimationStandardDeviation(float animationDuration)
+    {
+        if (!graph) yield return null;
+
+        float time = 0;
+        float meanSpeed = sim.GetMeanSpeed();
+        float sigmaSpeed = sim.GetSpeedSigma();
+
+        int[] indices = GetSortedIndices();
+
+        graph.CreateLine(colorStandardDeviation, false, "Standard deviation");
+
+        // Compute the normal distribution with the height as high as the highest
+        int maxHeight = GetMaxCountVelocityList();
+        int minHeight = 0;
+        float maxNormal = NormalDistribution.NormalPDF(meanSpeed, sigmaSpeed, meanSpeed);
+            
+        // The higher is yNormal, the lower is the std
+        float maxStd = sigmaSpeed + 0.5f;
+        float minStd = sigmaSpeed - 0.5f;
+
+        float maxHeightMinStd = NormalDistribution.NormalPDF(meanSpeed, minStd, meanSpeed) * sim.GetNumBodies();
+
+        float xStd = Mathf.Lerp(maxStd, minStd, maxHeight/maxHeightMinStd);
+        float yStd = Mathf.Lerp(minHeight, maxHeight, NormalDistribution.NormalPDF(xStd, sigmaSpeed, meanSpeed) / maxNormal);
+        
+        lastComputedSigma = xStd;
+
+        Vector2 startEndXCoord = new Vector2(meanSpeed, xStd);
+
+        // Update the std value displayed
+        UpdateSigmaText();
+
+        while (time < animationDuration)
+        {
+            time += Time.deltaTime;
+            float t = time / animationDuration;
+            t = t * t * (3f - 2f * t);  // Apply some smoothing
+
+            float x = Mathf.Lerp(startEndXCoord.x, startEndXCoord.y, t);
+
+            Vector2 newPos = new Vector2(x, yStd);
+            
+            graph.PlotPointOnLastLine(newPos);
+
+            yield return null;
+        }
     }
 
     private IEnumerator LoopOverBodies(float maxValue)
@@ -1108,6 +1166,15 @@ public class FastNBodySlideController : SimulationSlideController
         {
             powerText.SetTextPower(power.ToString());
             powerText.UpdateUnitPosition();
+        }
+    }
+
+    public void UpdateSigmaText()
+    {
+        if (sigmaValue)
+        {
+            float newSigma = lastComputedSigma * 10f;
+            sigmaValue.text = newSigma.ToString("0.0")+" km/s";
         }
     }
 }
