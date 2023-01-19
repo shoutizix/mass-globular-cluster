@@ -693,6 +693,16 @@ public class FastNBodySlideController : SimulationSlideController
         int maxHeight = GetMaxCountVelocityList();
         int minHeight = 0;
         float maxNormal = NormalDistribution.NormalPDF(meanSpeed, sigmaSpeed, meanSpeed);
+
+        // Compute the standard deviation
+        float result = 0f;
+        for (int i = 0; i < indices.Length; i++)
+        {
+            float radialVelocity = sim.GetVelocity(indices[i]).z;
+            result += Mathf.Pow(radialVelocity - meanSpeed, 2);
+        }
+
+        float computedSigma = Mathf.Sqrt(result/indices.Length);
             
         // The higher is yNormal, the lower is the std
         float maxStd = sigmaSpeed + 0.5f;
@@ -700,12 +710,11 @@ public class FastNBodySlideController : SimulationSlideController
 
         float maxHeightMinStd = NormalDistribution.NormalPDF(meanSpeed, minStd, meanSpeed) * sim.GetNumBodies();
 
-        float xStd = Mathf.Lerp(maxStd, minStd, maxHeight/maxHeightMinStd);
-        float yStd = Mathf.Lerp(minHeight, maxHeight, NormalDistribution.NormalPDF(xStd, sigmaSpeed, meanSpeed) / maxNormal);
+        float yStd = Mathf.Lerp(minHeight, maxHeight, NormalDistribution.NormalPDF(computedSigma, sigmaSpeed, meanSpeed) / maxNormal);
         
-        lastComputedSigma = xStd;
+        lastComputedSigma = Mathf.Lerp(maxStd, minStd, maxHeight/maxHeightMinStd);
 
-        Vector2 startEndXCoord = new Vector2(meanSpeed, xStd);
+        Vector2 startEndXCoord = new Vector2(meanSpeed, computedSigma);
 
         // Update the std value displayed
         UpdateSigmaText();
