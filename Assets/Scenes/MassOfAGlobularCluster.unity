@@ -2407,7 +2407,6 @@ MonoBehaviour:
   coordinateOrigin: 0
   angularMomentumVector: 0
   lights: 1
-  showGraph: 0
   globalVolume: {fileID: 1198009743}
   bloom: 0
   panelRadialVelocity: {fileID: 0}
@@ -2477,6 +2476,10 @@ MonoBehaviour:
   reducedAlpha: 0.3
   maxAlpha: 1
   sigmaValue: {fileID: 0}
+  sigmaValueX: {fileID: 874229719}
+  sigmaValueY: {fileID: 1247296181}
+  sigmaValueZ: {fileID: 277872784}
+  sigmaValueTotal: {fileID: 1953534163}
   solarMassImage: {fileID: 0}
   powerText: {fileID: 0}
   massText: {fileID: 0}
@@ -4098,7 +4101,6 @@ MonoBehaviour:
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
-  graph: {fileID: 0}
   positionVectorVelocityX: {fileID: 0}
   positionVectorVelocityY: {fileID: 0}
   positionVectorVelocityZ: {fileID: 0}
@@ -4139,6 +4141,7 @@ MonoBehaviour:
     type: 2}
   onComputeEnergies: {fileID: 0}
   averageVirial: 0
+  lastComputedSigma: 0
 --- !u!1 &427919703
 GameObject:
   m_ObjectHideFlags: 0
@@ -4276,7 +4279,6 @@ MonoBehaviour:
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
-  graph: {fileID: 0}
   positionVectorVelocityX: {fileID: 0}
   positionVectorVelocityY: {fileID: 0}
   positionVectorVelocityZ: {fileID: 0}
@@ -4317,6 +4319,7 @@ MonoBehaviour:
     type: 2}
   onComputeEnergies: {fileID: 0}
   averageVirial: 0
+  lastComputedSigma: 0
 --- !u!1 &429261535
 GameObject:
   m_ObjectHideFlags: 0
@@ -5979,7 +5982,6 @@ MonoBehaviour:
   coordinateOrigin: 0
   angularMomentumVector: 0
   lights: 1
-  showGraph: 0
   globalVolume: {fileID: 1198009743}
   bloom: 0
   panelRadialVelocity: {fileID: 0}
@@ -6028,6 +6030,10 @@ MonoBehaviour:
   reducedAlpha: 0.3
   maxAlpha: 1
   sigmaValue: {fileID: 0}
+  sigmaValueX: {fileID: 0}
+  sigmaValueY: {fileID: 0}
+  sigmaValueZ: {fileID: 0}
+  sigmaValueTotal: {fileID: 0}
   solarMassImage: {fileID: 0}
   powerText: {fileID: 0}
   massText: {fileID: 0}
@@ -9254,7 +9260,6 @@ MonoBehaviour:
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
-  graph: {fileID: 0}
   positionVectorVelocityX: {fileID: 0}
   positionVectorVelocityY: {fileID: 0}
   positionVectorVelocityZ: {fileID: 0}
@@ -9295,6 +9300,7 @@ MonoBehaviour:
     type: 2}
   onComputeEnergies: {fileID: 11400000, guid: 775e5ec42293b4062a49757f2aba8180, type: 2}
   averageVirial: 0
+  lastComputedSigma: 0
 --- !u!1 &1006335179
 GameObject:
   m_ObjectHideFlags: 0
@@ -11853,7 +11859,6 @@ MonoBehaviour:
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
-  graph: {fileID: 0}
   positionVectorVelocityX: {fileID: 0}
   positionVectorVelocityY: {fileID: 0}
   positionVectorVelocityZ: {fileID: 0}
@@ -11894,6 +11899,7 @@ MonoBehaviour:
     type: 2}
   onComputeEnergies: {fileID: 0}
   averageVirial: 0
+  lastComputedSigma: 0
 --- !u!1 &1391287604
 GameObject:
   m_ObjectHideFlags: 0
@@ -15137,7 +15143,6 @@ MonoBehaviour:
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
-  graph: {fileID: 0}
   positionVectorVelocityX: {fileID: 0}
   positionVectorVelocityY: {fileID: 0}
   positionVectorVelocityZ: {fileID: 0}
@@ -15178,6 +15183,7 @@ MonoBehaviour:
     type: 2}
   onComputeEnergies: {fileID: 0}
   averageVirial: 0
+  lastComputedSigma: 0
 --- !u!1 &1803500079
 GameObject:
   m_ObjectHideFlags: 0
@@ -15314,7 +15320,6 @@ MonoBehaviour:
   coordinateOrigin: 0
   angularMomentumVector: 0
   lights: 1
-  showGraph: 0
   globalVolume: {fileID: 1198009743}
   bloom: 0
   panelRadialVelocity: {fileID: 0}
@@ -15384,6 +15389,10 @@ MonoBehaviour:
   reducedAlpha: 0.3
   maxAlpha: 1
   sigmaValue: {fileID: 0}
+  sigmaValueX: {fileID: 0}
+  sigmaValueY: {fileID: 0}
+  sigmaValueZ: {fileID: 0}
+  sigmaValueTotal: {fileID: 0}
   solarMassImage: {fileID: 2099544409}
   powerText: {fileID: 752752000}
   massText: {fileID: 858859617}
@@ -16657,7 +16666,6 @@ MonoBehaviour:
   coordinateOrigin: {fileID: 0}
   angularMomentumVector: {fileID: 0}
   lights: []
-  graph: {fileID: 0}
   positionVectorVelocityX: {fileID: 0}
   positionVectorVelocityY: {fileID: 0}
   positionVectorVelocityZ: {fileID: 0}
@@ -16698,6 +16706,7 @@ MonoBehaviour:
     type: 2}
   onComputeEnergies: {fileID: 11400000, guid: 775e5ec42293b4062a49757f2aba8180, type: 2}
   averageVirial: 0
+  lastComputedSigma: 0
 --- !u!1 &1948826639
 GameObject:
   m_ObjectHideFlags: 0
@@ -19031,7 +19040,6 @@ MonoBehaviour:
   coordinateOrigin: 0
   angularMomentumVector: 0
   lights: 1
-  showGraph: 0
   globalVolume: {fileID: 1198009743}
   bloom: 1
   panelRadialVelocity: {fileID: 0}
@@ -19080,6 +19088,10 @@ MonoBehaviour:
   reducedAlpha: 0.3
   maxAlpha: 1
   sigmaValue: {fileID: 0}
+  sigmaValueX: {fileID: 0}
+  sigmaValueY: {fileID: 0}
+  sigmaValueZ: {fileID: 0}
+  sigmaValueTotal: {fileID: 0}
   solarMassImage: {fileID: 0}
   powerText: {fileID: 0}
   massText: {fileID: 0}
@@ -19433,7 +19445,6 @@ MonoBehaviour:
   coordinateOrigin: 0
   angularMomentumVector: 0
   lights: 0
-  showGraph: 0
   globalVolume: {fileID: 1198009743}
   bloom: 0
   panelRadialVelocity: {fileID: 0}
@@ -19481,6 +19492,10 @@ MonoBehaviour:
   reducedAlpha: 0.3
   maxAlpha: 1
   sigmaValue: {fileID: 0}
+  sigmaValueX: {fileID: 0}
+  sigmaValueY: {fileID: 0}
+  sigmaValueZ: {fileID: 0}
+  sigmaValueTotal: {fileID: 0}
   solarMassImage: {fileID: 0}
   powerText: {fileID: 0}
   massText: {fileID: 0}
@@ -24795,7 +24810,6 @@ MonoBehaviour:
   coordinateOrigin: 0
   angularMomentumVector: 0
   lights: 1
-  showGraph: 0
   globalVolume: {fileID: 1198009743}
   bloom: 0
   panelRadialVelocity: {fileID: 8490097839866368891}
@@ -24865,6 +24879,10 @@ MonoBehaviour:
   reducedAlpha: 0.3
   maxAlpha: 1
   sigmaValue: {fileID: 211645389}
+  sigmaValueX: {fileID: 0}
+  sigmaValueY: {fileID: 0}
+  sigmaValueZ: {fileID: 0}
+  sigmaValueTotal: {fileID: 0}
   solarMassImage: {fileID: 0}
   powerText: {fileID: 0}
   massText: {fileID: 0}

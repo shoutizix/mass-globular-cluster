@@ -86,7 +86,10 @@ public class FastNBodySlideController : SimulationSlideController
 
     [Header("Computed Sigma")]
     [SerializeField] private TextMeshProUGUI sigmaValue;
-    private float lastComputedSigma = 0f;
+    [SerializeField] private TextMeshProUGUI sigmaValueX;
+    [SerializeField] private TextMeshProUGUI sigmaValueY;
+    [SerializeField] private TextMeshProUGUI sigmaValueZ;
+    [SerializeField] private TextMeshProUGUI sigmaValueTotal;
 
     [Header("Computed Mass")]
     [SerializeField] private DisplayNextToText solarMassImage;
@@ -233,6 +236,28 @@ public class FastNBodySlideController : SimulationSlideController
         if (solarMassImage)
         {
             solarMassImage.UpdateUnitPosition();
+        }
+
+        if (sigmaValueX)
+        {
+            UpdateSigmaText(sigmaValueX);
+        }
+
+        if (sigmaValueY)
+        {
+            UpdateSigmaText(sigmaValueY);
+        }
+
+        if (sigmaValueZ)
+        {
+            UpdateSigmaText(sigmaValueZ);
+        }
+
+        if (sigmaValueTotal)
+        {
+            // Compute the total sigma
+            float totalSigma = sim.ComputeTotalSigma();
+            UpdateSigmaText(sigmaValueTotal, totalSigma, true);
         }
     }
 
@@ -710,12 +735,12 @@ public class FastNBodySlideController : SimulationSlideController
 
         float yStd = Mathf.Lerp(minHeight, maxHeight, NormalDistribution.NormalPDF(computedSigma, sigmaSpeed, meanSpeed) / maxNormal);
         
-        lastComputedSigma = Mathf.Lerp(maxStd, minStd, maxHeight/maxHeightMinStd);
+        sim.lastComputedSigma = Mathf.Lerp(maxStd, minStd, maxHeight/maxHeightMinStd);
 
         Vector2 startEndXCoord = new Vector2(meanSpeed, computedSigma);
 
         // Update the std value displayed
-        UpdateSigmaText();
+        UpdateSigmaText(sigmaValue);
 
         while (time < animationDuration)
         {
@@ -1176,12 +1201,16 @@ public class FastNBodySlideController : SimulationSlideController
         }
     }
 
-    public void UpdateSigmaText()
+    public void UpdateSigmaText(TextMeshProUGUI sigmaText, float customValue = 0f, bool useCustomValue = false)
     {
-        if (sigmaValue)
+        float newSigma;
+        if (useCustomValue)
         {
-            float newSigma = lastComputedSigma * 10f;
-            sigmaValue.text = newSigma.ToString("0.0")+" km/s";
+            newSigma = customValue * 10f;
+        } else
+        {
+            newSigma = sim.lastComputedSigma * 10f;
         }
+        sigmaText.text = newSigma.ToString("0.0")+" km/s";
     }
 }

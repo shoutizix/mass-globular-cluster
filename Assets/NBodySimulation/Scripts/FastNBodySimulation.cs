@@ -72,6 +72,7 @@ public class FastNBodySimulation : Simulation
     [HideInInspector] public float averageVirial;
     private float previousVirial;
     private bool interactable = false;
+    public float lastComputedSigma = 0f;
 
     private void Awake()
     {
@@ -743,5 +744,10 @@ public class FastNBodySimulation : Simulation
     public bool GetInteractable()
     {
         return interactable;
+    }
+
+    public float ComputeTotalSigma()
+    {
+        return Mathf.Sqrt(3f) * lastComputedSigma;
     }
 }
