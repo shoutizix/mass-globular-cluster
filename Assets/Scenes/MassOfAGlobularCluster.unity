@@ -14097,7 +14097,7 @@ MonoBehaviour:
   amplitude: 1
   vectorLength: 0
   colorIntensitySelected: 1
-  colorIntensityUnselected: 0.5
+  colorIntensityUnselected: 0.2
 --- !u!1 &1554593438
 GameObject:
   m_ObjectHideFlags: 0
