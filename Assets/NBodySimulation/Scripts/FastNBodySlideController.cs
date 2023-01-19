@@ -17,7 +17,6 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private bool coordinateOrigin;
     [SerializeField] private bool angularMomentumVector;
     [SerializeField] private bool lights;
-    [SerializeField] private bool showGraph;
 
     [Header("Bloom")]
     [SerializeField] private GameObject globalVolume;
@@ -201,7 +200,6 @@ public class FastNBodySlideController : SimulationSlideController
         prefabs.SetCoordinateOriginVisibility(coordinateOrigin);
         prefabs.SetAngularMomentumVectorVisibility(angularMomentumVector);
         prefabs.SetLightsVisibility(lights);
-        prefabs.SetGraphVisibility(showGraph);
 
         ResetBodyMaterials();
         HideBodyLabels();

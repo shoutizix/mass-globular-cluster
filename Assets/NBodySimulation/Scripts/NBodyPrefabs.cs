@@ -21,7 +21,6 @@ public class NBodyPrefabs : MonoBehaviour
     [HideInInspector] public Transform coordinateOrigin;
     [HideInInspector] public Vector angularMomentumVector;
     [HideInInspector] public List<Transform> lights;
-    [HideInInspector] public Graph graph;
     [HideInInspector] public Arrow positionVectorVelocityX;
     [HideInInspector] public Arrow positionVectorVelocityY;
     [HideInInspector] public Arrow positionVectorVelocityZ;
@@ -57,16 +56,6 @@ public class NBodyPrefabs : MonoBehaviour
         {
             Transform light = Instantiate(lightPrefab, transform).transform;
             lights.Add(light);
-        }
-
-        if (graphPrefab)
-        {
-            graph = Instantiate(graphPrefab, transform).GetComponent<Graph>();
-            graph.SetLengthPositiveAxisX(4f);
-            graph.SetLengthNegativeAxisX(4f);
-            graph.SetAxisYVisibility(false);
-            graph.SetVisibilityOriginX(true);
-            graph.name = "Graph";
         }
 
         if (vectorVelocityXPrefab)
@@ -123,14 +112,6 @@ public class NBodyPrefabs : MonoBehaviour
         foreach (Transform light in lights)
         {
             light.gameObject.SetActive(visible);
-        }
-    }
-
-    public void SetGraphVisibility(bool visible)
-    {
-        if (graph)
-        {
-            graph.gameObject.SetActive(visible);
         }
     }
 
