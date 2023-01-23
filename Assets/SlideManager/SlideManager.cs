@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlideManager : MonoBehaviour
 {
@@ -70,6 +71,16 @@ public class SlideManager : MonoBehaviour
             if (!text.CompareTag("Untagged"))
             {
                 text.gameObject.SetActive(text.CompareTag(language));
+            }
+        }
+
+        // Change also the image (in general latex equation)
+        // To match with the chosen language
+        foreach (var image in GetComponentsInChildren<Image>(true))
+        {
+            if (!image.CompareTag("Untagged"))
+            {
+                image.gameObject.SetActive(image.CompareTag(language));
             }
         }
     }
