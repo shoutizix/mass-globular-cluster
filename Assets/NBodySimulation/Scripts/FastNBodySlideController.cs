@@ -71,6 +71,8 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private bool normalDistributionOnGraphY = false;
     [SerializeField] private DynamicGraph graphZ;
     [SerializeField] private bool normalDistributionOnGraphZ = false;
+    [SerializeField] private DynamicGraph graphTotal;
+    [SerializeField] private bool normalDistributionOnGraphTotal = false;
     [SerializeField] private Color colorNormalFit = Color.black;
     [SerializeField] private Color colorStandardDeviation = Color.black;
     [SerializeField] private float animationNormalDuration = 2f;
@@ -303,22 +305,38 @@ public class FastNBodySlideController : SimulationSlideController
 
     private void CheckDistributionAllGraphs()
     {
+        float mean = sim.GetMeanSpeed();
+        float sigma = sim.GetSpeedSigma();
+
         if (normalDistributionOnGraphX)
         {
             graphX.Clear();
-            DrawNormalCurve(graphX, colorNormalFit);
+            DrawNormalCurve(graphX, colorNormalFit, mean, sigma);
         }
 
         if (normalDistributionOnGraphY)
         {
             graphY.Clear();
-            DrawNormalCurve(graphY, colorNormalFit);
+            DrawNormalCurve(graphY, colorNormalFit, mean, sigma);
         }
 
         if (normalDistributionOnGraphZ)
         {
             graphZ.Clear();
-            DrawNormalCurve(graphZ,colorNormalFit);
+            DrawNormalCurve(graphZ,colorNormalFit, mean, sigma);
+        }
+
+        if (normalDistributionOnGraphTotal)
+        {
+            float sigmaTotal = sim.ComputeTotalSigma();
+
+            // If sigma total equals 0 then don't draw the graph to avoid error
+            // (should only happen when user doesn't fit normal distribution on slide measure velocity) 
+            if (sigmaTotal != 0)
+            {
+                graphTotal.Clear();
+                DrawNormalCurve(graphTotal,colorNormalFit, mean, sigmaTotal);
+            }
         }
     }
 
@@ -432,14 +450,14 @@ public class FastNBodySlideController : SimulationSlideController
         }
     }
 
-    private void DrawNormalCurve(DynamicGraph graph, Color color)
+    private void DrawNormalCurve(DynamicGraph graph, Color color, float mean, float sigma)
     {
         if (!graph) return;
 
         Vector2 startEndXCoord = graph.GetXRange();
         int[] indices = GetSortedIndices();
-        float meanSpeed = 0f;
-        float sigmaSpeed = 2;
+        float meanSpeed = mean;
+        float sigmaSpeed = sigma;
 
         graph.CreateLine(color, false, "Normal distribution");
 
