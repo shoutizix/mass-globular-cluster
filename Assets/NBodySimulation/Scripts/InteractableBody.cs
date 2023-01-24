@@ -8,7 +8,7 @@ public class InteractableBody : MonoBehaviour
     private Vector2 hotspot = new Vector2(14, 6);
     private bool interactable = false;
     private int index = 0;
-    private FastNBodySlideController slideController;
+    private List<FastNBodySlideController> slideControllers;
 
     private void OnMouseEnter() 
     {
@@ -19,9 +19,15 @@ public class InteractableBody : MonoBehaviour
             Cursor.SetCursor(handCursor, hotspot, CursorMode.Auto);
         }
 
-        if (slideController)
+        if (slideControllers.Count > 0)
         {
-            slideController.DisplayBodyVelocitiesAtIndex(index);
+            foreach (FastNBodySlideController slideController in slideControllers)
+            {
+                if (slideController.gameObject.activeInHierarchy)
+                {
+                    slideController.DisplayBodyVelocitiesAtIndex(index);
+                }
+            }
         }
     }
 
@@ -31,11 +37,16 @@ public class InteractableBody : MonoBehaviour
 
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-        if (slideController)
+        if (slideControllers.Count > 0)
         {
-            slideController.ChangeAlphaOtherBodies(index, false);
+            foreach (FastNBodySlideController slideController in slideControllers)
+            {
+                if (slideController.gameObject.activeInHierarchy)
+                {
+                    slideController.ChangeAlphaOtherBodies(index, false);
+                }
+            }
         }
-        // TODO : Update graphs 
     }
 
     public void SetInteractable(bool newVal)
@@ -53,9 +64,9 @@ public class InteractableBody : MonoBehaviour
         index = newVal;
     }
 
-    public void SetSlideController(FastNBodySlideController sController)
+    public void SetSlideControllers(List<FastNBodySlideController> sControllers)
     {
-        slideController = sController;
+        slideControllers = sControllers;
     }
 
 }

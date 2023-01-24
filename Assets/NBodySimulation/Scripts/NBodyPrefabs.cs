@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NBodyPrefabs : MonoBehaviour
 {
-    [SerializeField] private FastNBodySlideController slideController;
+    [SerializeField] private List<FastNBodySlideController> slideControllers;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject bodyPrefab;
@@ -137,7 +137,7 @@ public class NBodyPrefabs : MonoBehaviour
                 InteractableBody interBody;
                 if (bodies[i].gameObject.TryGetComponent(out interBody))
                 {
-                    interBody.SetSlideController(slideController); 
+                    interBody.SetSlideControllers(slideControllers); 
                     interBody.SetIndex(i);
                 }
             }
