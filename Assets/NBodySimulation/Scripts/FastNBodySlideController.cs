@@ -310,20 +310,31 @@ public class FastNBodySlideController : SimulationSlideController
 
         if (normalDistributionOnGraphX)
         {
+            // If lastComputedSigma is the sigma value displayed
+            // Thus if it equals 0 then it should plot the graph
             graphX.Clear();
-            DrawNormalCurve(graphX, colorNormalFit, mean, sigma);
+            if (sim.lastComputedSigma != 0)
+            {
+                DrawNormalCurve(graphX, colorNormalFit, mean, sigma);
+            }
         }
 
         if (normalDistributionOnGraphY)
         {
             graphY.Clear();
-            DrawNormalCurve(graphY, colorNormalFit, mean, sigma);
+            if (sim.lastComputedSigma != 0)
+            {
+                DrawNormalCurve(graphY, colorNormalFit, mean, sigma);
+            }
         }
 
         if (normalDistributionOnGraphZ)
         {
             graphZ.Clear();
-            DrawNormalCurve(graphZ,colorNormalFit, mean, sigma);
+            if (sim.lastComputedSigma != 0)
+            {
+                DrawNormalCurve(graphZ,colorNormalFit, mean, sigma);
+            }
         }
 
         if (normalDistributionOnGraphTotal)
@@ -408,9 +419,20 @@ public class FastNBodySlideController : SimulationSlideController
         ChangeAlphaOtherBodies(index, true);
 
         // UI Part (Graph Part)
-        CheckClearLastLine(graphX);
-        CheckClearLastLine(graphY);
-        CheckClearLastLine(graphZ);
+
+        // When lastComputedSigma equals 0 the normal curve is not drawn
+        // So we should remove the last line without the check
+        if (sim.lastComputedSigma == 0)
+        {
+            graphX.ClearLastLine();
+            graphY.ClearLastLine();
+            graphZ.ClearLastLine();
+        } else
+        {
+            CheckClearLastLine(graphX);
+            CheckClearLastLine(graphY);
+            CheckClearLastLine(graphZ);
+        }
 
         // Display the velocity along each axis on the corresponding graph
         graphX.CreateLine(Color.red, true, "");

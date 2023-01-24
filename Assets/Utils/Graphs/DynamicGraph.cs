@@ -177,6 +177,11 @@ public class DynamicGraph : MonoBehaviour
     public void ClearLastLine()
     {
         int lastIndex = lines.Count-1;
+        // If index < 0 then the list is empty so return
+        if (lastIndex < 0)
+        {
+            return;
+        }
         LinePlot line = lines[lastIndex];
         line.Clear();
         lines.Remove(line);
