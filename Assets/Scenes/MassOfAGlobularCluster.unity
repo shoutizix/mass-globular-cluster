@@ -1221,12 +1221,16 @@ MonoBehaviour:
   graph: {fileID: 0}
   graphX: {fileID: 946740786}
   normalDistributionOnGraphX: 1
+  drawStdDeviationOnGraphX: 1
   graphY: {fileID: 980668587}
   normalDistributionOnGraphY: 1
+  drawStdDeviationOnGraphY: 1
   graphZ: {fileID: 379707499}
   normalDistributionOnGraphZ: 1
+  drawStdDeviationOnGraphZ: 1
   graphTotal: {fileID: 974213442}
   normalDistributionOnGraphTotal: 1
+  drawStdDeviationOnGraphTotal: 1
   colorNormalFit: {r: 0, g: 0, b: 0, a: 1}
   colorStandardDeviation: {r: 0, g: 0, b: 0, a: 1}
   animationNormalDuration: 2
@@ -3390,12 +3394,16 @@ MonoBehaviour:
   graph: {fileID: 0}
   graphX: {fileID: 1158341725}
   normalDistributionOnGraphX: 1
+  drawStdDeviationOnGraphX: 1
   graphY: {fileID: 824538416}
   normalDistributionOnGraphY: 1
+  drawStdDeviationOnGraphY: 1
   graphZ: {fileID: 521313508}
   normalDistributionOnGraphZ: 1
+  drawStdDeviationOnGraphZ: 1
   graphTotal: {fileID: 231340110}
   normalDistributionOnGraphTotal: 1
+  drawStdDeviationOnGraphTotal: 1
   colorNormalFit: {r: 0, g: 0, b: 0, a: 1}
   colorStandardDeviation: {r: 0, g: 0, b: 0, a: 1}
   animationNormalDuration: 2
@@ -8666,12 +8674,16 @@ MonoBehaviour:
   graph: {fileID: 0}
   graphX: {fileID: 269582378}
   normalDistributionOnGraphX: 1
+  drawStdDeviationOnGraphX: 0
   graphY: {fileID: 1871744621}
   normalDistributionOnGraphY: 1
+  drawStdDeviationOnGraphY: 0
   graphZ: {fileID: 1920022153}
   normalDistributionOnGraphZ: 1
+  drawStdDeviationOnGraphZ: 0
   graphTotal: {fileID: 0}
   normalDistributionOnGraphTotal: 0
+  drawStdDeviationOnGraphTotal: 0
   colorNormalFit: {r: 0, g: 0, b: 0, a: 1}
   colorStandardDeviation: {r: 0, g: 0, b: 0, a: 1}
   animationNormalDuration: 2
@@ -22252,12 +22264,16 @@ MonoBehaviour:
   graph: {fileID: 0}
   graphX: {fileID: 0}
   normalDistributionOnGraphX: 0
+  drawStdDeviationOnGraphX: 0
   graphY: {fileID: 0}
   normalDistributionOnGraphY: 0
+  drawStdDeviationOnGraphY: 0
   graphZ: {fileID: 0}
   normalDistributionOnGraphZ: 0
+  drawStdDeviationOnGraphZ: 0
   graphTotal: {fileID: 0}
   normalDistributionOnGraphTotal: 0
+  drawStdDeviationOnGraphTotal: 0
   colorNormalFit: {r: 0, g: 0, b: 0, a: 1}
   colorStandardDeviation: {r: 0, g: 0, b: 0, a: 1}
   animationNormalDuration: 2
@@ -27876,12 +27892,16 @@ MonoBehaviour:
   graph: {fileID: 0}
   graphX: {fileID: 0}
   normalDistributionOnGraphX: 0
+  drawStdDeviationOnGraphX: 0
   graphY: {fileID: 0}
   normalDistributionOnGraphY: 0
+  drawStdDeviationOnGraphY: 0
   graphZ: {fileID: 0}
   normalDistributionOnGraphZ: 0
+  drawStdDeviationOnGraphZ: 0
   graphTotal: {fileID: 0}
   normalDistributionOnGraphTotal: 0
+  drawStdDeviationOnGraphTotal: 0
   colorNormalFit: {r: 0, g: 0, b: 0, a: 1}
   colorStandardDeviation: {r: 0, g: 0, b: 0, a: 1}
   animationNormalDuration: 2
@@ -28283,12 +28303,16 @@ MonoBehaviour:
   graph: {fileID: 0}
   graphX: {fileID: 0}
   normalDistributionOnGraphX: 0
+  drawStdDeviationOnGraphX: 0
   graphY: {fileID: 0}
   normalDistributionOnGraphY: 0
+  drawStdDeviationOnGraphY: 0
   graphZ: {fileID: 0}
   normalDistributionOnGraphZ: 0
+  drawStdDeviationOnGraphZ: 0
   graphTotal: {fileID: 0}
   normalDistributionOnGraphTotal: 0
+  drawStdDeviationOnGraphTotal: 0
   colorNormalFit: {r: 0, g: 0, b: 0, a: 1}
   colorStandardDeviation: {r: 0, g: 0, b: 0, a: 1}
   animationNormalDuration: 2
@@ -33672,12 +33696,16 @@ MonoBehaviour:
   graph: {fileID: 5970626432157864643}
   graphX: {fileID: 0}
   normalDistributionOnGraphX: 0
+  drawStdDeviationOnGraphX: 0
   graphY: {fileID: 0}
   normalDistributionOnGraphY: 0
+  drawStdDeviationOnGraphY: 0
   graphZ: {fileID: 0}
   normalDistributionOnGraphZ: 0
+  drawStdDeviationOnGraphZ: 0
   graphTotal: {fileID: 0}
   normalDistributionOnGraphTotal: 0
+  drawStdDeviationOnGraphTotal: 0
   colorNormalFit: {r: 1, g: 0, b: 0, a: 1}
   colorStandardDeviation: {r: 0.75686276, g: 0.41670066, b: 0, a: 1}
   animationNormalDuration: 2

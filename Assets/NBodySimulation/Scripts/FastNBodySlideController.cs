@@ -67,12 +67,16 @@ public class FastNBodySlideController : SimulationSlideController
     [SerializeField] private DynamicGraph graph;
     [SerializeField] private DynamicGraph graphX;
     [SerializeField] private bool normalDistributionOnGraphX = false;
+    [SerializeField] private bool drawStdDeviationOnGraphX = false;
     [SerializeField] private DynamicGraph graphY;
     [SerializeField] private bool normalDistributionOnGraphY = false;
+    [SerializeField] private bool drawStdDeviationOnGraphY = false;
     [SerializeField] private DynamicGraph graphZ;
     [SerializeField] private bool normalDistributionOnGraphZ = false;
+    [SerializeField] private bool drawStdDeviationOnGraphZ = false;
     [SerializeField] private DynamicGraph graphTotal;
     [SerializeField] private bool normalDistributionOnGraphTotal = false;
+    [SerializeField] private bool drawStdDeviationOnGraphTotal = false;
     [SerializeField] private Color colorNormalFit = Color.black;
     [SerializeField] private Color colorStandardDeviation = Color.black;
     [SerializeField] private float animationNormalDuration = 2f;
@@ -115,6 +119,8 @@ public class FastNBodySlideController : SimulationSlideController
 
     // Mesure of the radial velocity
     private List<Vector2> listVelocityAndCount = new List<Vector2>();
+
+    private Color colorZAxisBlue = new Color(0.3568628f, 0.6705883f, 0.945098f, 1);
 
 
     private void Awake()
@@ -306,34 +312,46 @@ public class FastNBodySlideController : SimulationSlideController
     private void CheckDistributionAllGraphs()
     {
         float mean = sim.GetMeanSpeed();
-        float sigma = sim.GetSpeedSigma();
+        float sigma = sim.lastComputedSigma;
 
         if (normalDistributionOnGraphX)
         {
             // If lastComputedSigma is the sigma value displayed
             // Thus if it equals 0 then it should plot the graph
             graphX.Clear();
-            if (sim.lastComputedSigma != 0)
+            if (sigma != 0)
             {
                 DrawNormalCurve(graphX, colorNormalFit, mean, sigma);
+                if (drawStdDeviationOnGraphX)
+                {
+                    DrawStandardDeviation(graphX, Color.red, sigma);
+                }
             }
         }
 
         if (normalDistributionOnGraphY)
         {
             graphY.Clear();
-            if (sim.lastComputedSigma != 0)
+            if (sigma != 0)
             {
                 DrawNormalCurve(graphY, colorNormalFit, mean, sigma);
+                if (drawStdDeviationOnGraphY)
+                {
+                    DrawStandardDeviation(graphY, Color.green, sigma);
+                }
             }
         }
 
         if (normalDistributionOnGraphZ)
         {
             graphZ.Clear();
-            if (sim.lastComputedSigma != 0)
+            if (sigma != 0)
             {
                 DrawNormalCurve(graphZ,colorNormalFit, mean, sigma);
+                if (drawStdDeviationOnGraphZ)
+                {
+                    DrawStandardDeviation(graphZ, colorZAxisBlue, sigma);
+                }
             }
         }
 
@@ -347,6 +365,10 @@ public class FastNBodySlideController : SimulationSlideController
             {
                 graphTotal.Clear();
                 DrawNormalCurve(graphTotal,colorNormalFit, mean, sigmaTotal);
+                if (drawStdDeviationOnGraphTotal)
+                {
+                    DrawStandardDeviation(graphTotal, Color.gray, sigmaTotal);
+                }
             }
         }
     }
@@ -429,9 +451,28 @@ public class FastNBodySlideController : SimulationSlideController
             graphZ.ClearLastLine();
         } else
         {
-            CheckClearLastLine(graphX);
-            CheckClearLastLine(graphY);
-            CheckClearLastLine(graphZ);
+            // First check if the last line is not null to avoid crashes
+            if (graphX.GetLastLine())
+            {
+                if (graphX.GetLastLine().name != "Line Standard deviation")
+                {
+                    CheckClearLastLine(graphX);
+                }
+            }
+            if (graphY.GetLastLine())
+            {
+                if (graphY.GetLastLine().name != "Line Standard deviation")
+                {
+                    CheckClearLastLine(graphY);
+                }
+            }
+            if (graphZ.GetLastLine())
+            {
+                if (graphZ.GetLastLine().name != "Line Standard deviation")
+                {
+                    CheckClearLastLine(graphZ);
+                }
+            }
         }
 
         // Display the velocity along each axis on the corresponding graph
@@ -441,7 +482,7 @@ public class FastNBodySlideController : SimulationSlideController
         graphY.CreateLine(Color.green, true, "");
         graphY.PlotPointOnLastLine(Vector2.right * velocity.y);
 
-        graphZ.CreateLine(Color.blue, true, "");
+        graphZ.CreateLine(colorZAxisBlue, true, "");
         graphZ.PlotPointOnLastLine(Vector2.right * velocity.z);
     }
 
@@ -483,35 +524,35 @@ public class FastNBodySlideController : SimulationSlideController
 
         graph.CreateLine(color, false, "Normal distribution");
 
-        for (float x = startEndXCoord.x; x < startEndXCoord.y; x += 0.2f)
+        for (float x = startEndXCoord.x; x < startEndXCoord.y; x += 0.1f)
         {
+            /*
             int maxHeight = 20;
             int minHeight = 0;
             float maxNormal = NormalDistribution.NormalPDF(meanSpeed, sigmaSpeed, meanSpeed);
             float yNormal = Mathf.Lerp(minHeight, maxHeight, NormalDistribution.NormalPDF(x, sigmaSpeed, meanSpeed) / maxNormal);
-            
+            */
+            float yNormal = NormalDistribution.NormalPDF(x, sigmaSpeed, meanSpeed) * sim.GetNumBodies();
             Vector2 newPos = new Vector2(x, yNormal);
             graph.PlotPointOnLastLine(newPos);
         }
     }
 
-/*
-    private void DrawStandardDeviation(DynamicGraph graph, Color color)
+    private void DrawStandardDeviation(DynamicGraph graph, Color color, float sigma)
     {
         if (!graph) return;
 
-        float startXCoord = -5f;
-        float endXCoord = 5f;
-        int[] indices = GetSortedIndices();
-        float meanSpeed = 0f;
-        float sigmaSpeed = 2;
-        float maxNormal = NormalDistribution.NormalPDF(meanSpeed, sigmaSpeed, meanSpeed);
+        graph.CreateLine(color, false, "Standard deviation");
 
-        graph.CreateLine(color, false, "Normal distribution");
-        graph.PlotPointOnLastLine(Vector2.up * maxNormal);
-        graph.PlotPointOnLastLine(new Vector2(sigmaSpeed, maxNormal));
+        float meanSpeed = sim.GetMeanSpeed();
+        
+        float yStd = NormalDistribution.NormalPDF(sigma, sigma, meanSpeed) * sim.GetNumBodies();
+
+        Vector2 startEndXCoord = new Vector2(meanSpeed, sigma);
+            
+        graph.PlotPointOnLastLine(new Vector2(startEndXCoord.x, yStd));
+        graph.PlotPointOnLastLine(new Vector2(startEndXCoord.y, yStd));
     }
-*/
 
     private void PrintListVelocityCount()
     {

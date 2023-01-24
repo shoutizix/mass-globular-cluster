@@ -80,6 +80,18 @@ public class DynamicGraph : MonoBehaviour
         return lines.Count;
     }
 
+    public GameObject GetLastLine()
+    {
+        int lastIndex = lines.Count-1;
+        // If index < 0 then the list is empty so return null
+        if (lastIndex < 0)
+        {
+            return null;
+        }
+
+        return lines[lastIndex].gameObject;
+    }
+
     public void DrawExteriorBorder(List<Vector2> positions, Color color)
     {
         if (!rect) rect = GetComponent<RectTransform>();
