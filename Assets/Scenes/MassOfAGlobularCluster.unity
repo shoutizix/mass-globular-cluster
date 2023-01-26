@@ -1047,7 +1047,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137377060}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -29957,10 +29957,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: If a globular cluster is gravitationally stable over time, we expect a
-    roughly equal number of particles to be moving inwards as outwards at any moment.
-    There is no preferred direction about the center of mass. Click the button below
-    to measure the histogram of radial velocities at a given instant and the corresponding
-    standard deviation.
+    roughly <b>equal number of particles</b> to be moving <b>inwards</b> as <b>outwards</b>
+    at any moment. There is no preferred direction about the center of mass. <b>Click
+    the button</b> below to measure the histogram of <b>radial velocities</b> at
+    a given instant and the corresponding <b>standard deviation</b>.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -30310,7 +30310,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8490097839495802698}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -31048,11 +31048,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Si un amas globulaire est gravitationnellement stable dans le temps, nous
-    nous attendons \xE0 ce qu'un nombre \xE0 peu pr\xE8s \xE9gal de particules se
-    d\xE9placent vers l'int\xE9rieur et vers l'ext\xE9rieur \xE0 tout moment. Il
-    n'y a pas de direction pr\xE9f\xE9rentielle autour du centre de masse. Cliquez
-    sur le bouton ci-dessous pour mesurer l'histogramme des vitesses radiales \xE0
-    un instant donn\xE9 et l'\xE9cart-type correspondant."
+    nous attendons \xE0 ce qu'un <b>nombre \xE0 peu pr\xE8s \xE9gal de particules</b>
+    se d\xE9placent <b>vers l'int\xE9rieur</b> et <b>vers l'ext\xE9rieur</b> \xE0
+    tout moment. Il n'y a pas de direction pr\xE9f\xE9rentielle autour du centre
+    de masse. <b>Cliquez sur le bouton</b> ci-dessous pour mesurer l'histogramme
+    des <b>vitesses radiales</b> \xE0 un instant donn\xE9 et <b>l'\xE9cart-type</b>
+    correspondant."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
