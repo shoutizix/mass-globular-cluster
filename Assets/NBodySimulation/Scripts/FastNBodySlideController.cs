@@ -394,17 +394,6 @@ public class FastNBodySlideController : SimulationSlideController
         StartCoroutine(LoopOverBodiesMeasureRadialVelocity(sim.RadialVelocity));
     }
 
-    public void ComputeKVisually()
-    {
-        UpdateKMeter(0);
-        SetUVisibility(false);
-        SetRadialVelocityVisibility(false);
-        SetButtonsInteractivity(false);
-        simulation.Pause();
-        sim.ComputeKineticEnergy();
-        StartCoroutine(LoopOverBodies(sim.K));
-    }
-
     public void ComputeUVisually()
     {
         UpdateUMeter(0);
@@ -837,91 +826,6 @@ public class FastNBodySlideController : SimulationSlideController
 
             yield return null;
         }
-    }
-
-    private IEnumerator LoopOverBodies(float maxValue)
-    {
-        int[] indices = GetSortedIndices();
-        float currentK = 0;
-
-        TextMeshProUGUI counter = default;
-        TextMeshProUGUI value = default;
-
-        if (panelK)
-        {
-            Transform counterK = panelK.Find("Counter");
-            if (counterK)
-            {
-                counterK.TryGetComponent(out counter);
-            }
-            Transform valueK = panelK.Find("Value");
-            if (valueK)
-            {
-                valueK.TryGetComponent(out value);
-            }
-        }
-
-        // Highlight the bodies one-by-one and show velocities
-        for (int i = 0; i < indices.Length; i++)
-        {
-            Transform body = prefabs.bodies[indices[i]];
-            Vector3 velocity = sim.GetVelocity(indices[i]);
-
-            // Update running K
-            currentK += 0.5f * sim.GetMass(indices[i]) * velocity.sqrMagnitude;
-            if (counter)
-            {
-                counter.text = (i + 1).ToString();
-            }
-            if (value)
-            {
-                value.text = currentK.ToString("0.00");
-            }
-
-            UpdateKMeter(currentK / maxValue);
-
-            // Highlight the current body
-            body.GetComponent<MeshRenderer>().material = glowMaterial;
-
-            // Show appropriate index label
-            if (bodyLabels.Count > i && prefabs.BodiesHaveLabels())
-            {
-                Transform label = body.Find("Label");
-                if (label)
-                {
-                    label.GetComponent<SpriteRenderer>().sprite = bodyLabels[i];
-                    label.gameObject.SetActive(true);
-                }
-            }
-
-            // Draw the body's velocity vector
-            if (velocityPrefab)
-            {
-                velocityVector = Instantiate(velocityPrefab, Vector3.zero, Quaternion.identity, simulation.transform).GetComponent<Vector>();
-                velocityVector.SetPositions(body.position, body.position + velocity);
-                velocityVector.Redraw();
-            }
-
-            yield return new WaitForSeconds(0.4f);
-
-            // Destroy the velocity vector
-            if (velocityVector)
-            {
-                Destroy(velocityVector.gameObject);
-                velocityVector = null;
-            }
-
-            HideBodyLabels();
-        }
-
-        yield return new WaitForSeconds(2);
-
-        ResetBodyMaterials();
-        HideBodyLabels();
-        SetButtonsInteractivity(true);
-        SetUVisibility(true);
-        SetRadialVelocityVisibility(true);
-        simulation.Resume();
     }
 
     private IEnumerator LoopOverBodiesWithConnections(float maxValue)

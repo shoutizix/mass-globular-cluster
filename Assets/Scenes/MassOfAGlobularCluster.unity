@@ -1307,7 +1307,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137377060}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -19055,13 +19055,19 @@ MonoBehaviour:
     type: 3}
   vectorVelocityTotalPrefab: {fileID: 1948715729921795565, guid: f470f2e73529445ff9d9f2f40c1836a0,
     type: 3}
-  coordinateTriadPrefab: {fileID: 3853705163930917420, guid: 5606b785adf484ee7b06a3f7df9402b5,
+  coordinateTriadPrefab: {fileID: 3853705163930917420, guid: b4efce635049233488ef48eba73a0f4d,
     type: 3}
   orbitPrefab: {fileID: 2765505063272382029, guid: 31011c2b0b26d4389a695d1432a0aff2,
     type: 3}
-  coordinateTriadX: 125
-  coordinateTriadY: 75
-  coordinateTriadZ: 35
+  unitVectorX: {fileID: 3472711107700721301, guid: 47898572380e48b4f882982a0c060243,
+    type: 3}
+  unitVectorY: {fileID: 3472711107700721301, guid: 4af935b4e0017394483c19a8f912f0c0,
+    type: 3}
+  unitVectorZ: {fileID: 3472711107700721301, guid: 6f5e5ab862001e74b90335ee88932be6,
+    type: 3}
+  coordinateTriadX: 150
+  coordinateTriadY: 125
+  coordinateTriadZ: 30
   positionBody: {fileID: 0}
   positionVectorVelocityX: {fileID: 0}
   positionVectorVelocityY: {fileID: 0}
@@ -19069,6 +19075,9 @@ MonoBehaviour:
   positionVectorVelocityTotal: {fileID: 0}
   positionCoordinateTriad: {fileID: 0}
   orbit: {fileID: 0}
+  positionUnitVectorX: {fileID: 0}
+  positionUnitVectorY: {fileID: 0}
+  positionUnitVectorZ: {fileID: 0}
 --- !u!114 &1551909485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27798,7 +27807,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826383030401227122}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -30188,7 +30197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 9.200073}
+  m_AnchoredPosition: {x: 0, y: 9.200058}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &3988569392787126001

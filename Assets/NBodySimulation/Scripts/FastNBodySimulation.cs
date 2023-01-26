@@ -158,13 +158,6 @@ public class FastNBodySimulation : Simulation
         angularMomentum = ComputeAngularMomentum(Vector3.zero);  // about the origin
         magnitudeL = angularMomentum.magnitude;
 
-        // Draw angular momentum vector
-        if (prefabs.angularMomentumVector)
-        {
-            prefabs.angularMomentumVector.SetPositions(Vector3.zero, angularMomentum);
-            prefabs.angularMomentumVector.Redraw();
-        }
-
         // Compute starting energy and virial values
         totalEnergy = K + U;
         averageVirial = 2 * K + U;
@@ -190,11 +183,6 @@ public class FastNBodySimulation : Simulation
         if (prefabs.centerOfMass)
         {
             prefabs.centerOfMass.position = R;
-        }
-        if (prefabs.angularMomentumVector)
-        {
-            prefabs.angularMomentumVector.SetPositions(Vector3.zero, angularMomentum);
-            prefabs.angularMomentumVector.Redraw();
         }
 
         // Take an integration step + move the actual game objects

@@ -43,14 +43,6 @@ public class NBodyPrefabs : MonoBehaviour
             coordinateOrigin.name = "Coordinate Origin";
         }
 
-        if (angularMomentumVectorPrefab)
-        {
-            angularMomentumVector = Instantiate(angularMomentumVectorPrefab, transform).GetComponent<Vector>();
-            angularMomentumVector.SetPositions(Vector3.zero, Vector3.zero);
-            angularMomentumVector.Redraw();
-            angularMomentumVector.name = "Angular Momentum Vector";
-        }
-
         lights = new List<Transform>();
         foreach (GameObject lightPrefab in lightPrefabs)
         {

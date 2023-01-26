@@ -12,6 +12,9 @@ public class OneBodyPrefabs : MonoBehaviour
     [SerializeField] private GameObject vectorVelocityTotalPrefab;
     [SerializeField] private GameObject coordinateTriadPrefab;
     [SerializeField] private GameObject orbitPrefab;
+    [SerializeField] private GameObject unitVectorX;
+    [SerializeField] private GameObject unitVectorY;
+    [SerializeField] private GameObject unitVectorZ;
 
     [Header("Positions")]
     [SerializeField] private float coordinateTriadX = 20;
@@ -25,6 +28,9 @@ public class OneBodyPrefabs : MonoBehaviour
     [HideInInspector] public Arrow positionVectorVelocityTotal;
     [HideInInspector] public Transform positionCoordinateTriad;
     [HideInInspector] public LineRenderer orbit;
+    [HideInInspector] public Vector positionUnitVectorX;
+    [HideInInspector] public Vector positionUnitVectorY;
+    [HideInInspector] public Vector positionUnitVectorZ;
 
     public void SetBodyVisibility(bool isVisible)
     {
