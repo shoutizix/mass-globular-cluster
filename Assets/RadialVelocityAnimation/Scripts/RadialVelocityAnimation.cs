@@ -143,6 +143,10 @@ public class RadialVelocityAnimation : MonoBehaviour
     }
 
     public void Reset() {
+        if (cameraController.cameraMoving != null)
+        {
+            StopCoroutine(cameraController.cameraMoving);
+        }
         StopAllCoroutines();
 
         hasMoved = false;
