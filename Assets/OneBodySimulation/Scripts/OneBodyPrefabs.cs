@@ -204,7 +204,7 @@ public class OneBodyPrefabs : MonoBehaviour
 
     public Vector3 GetNewPosTriad(Camera mainCamera)
     {
-        return mainCamera.ScreenToWorldPoint(new Vector3(coordinateTriadX, coordinateTriadY, coordinateTriadZ));
+        return mainCamera.ViewportToWorldPoint(new Vector3(coordinateTriadX, coordinateTriadY, coordinateTriadZ));
     }
     public void UpdateTriad(Vector3 newPos)
     {

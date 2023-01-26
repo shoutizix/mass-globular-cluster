@@ -19065,8 +19065,8 @@ MonoBehaviour:
     type: 3}
   unitVectorZ: {fileID: 3472711107700721301, guid: 6f5e5ab862001e74b90335ee88932be6,
     type: 3}
-  coordinateTriadX: 150
-  coordinateTriadY: 125
+  coordinateTriadX: 0.15
+  coordinateTriadY: 0.17
   coordinateTriadZ: 30
   positionBody: {fileID: 0}
   positionVectorVelocityX: {fileID: 0}
