@@ -83,6 +83,17 @@ public class SlideManager : MonoBehaviour
                 image.gameObject.SetActive(image.CompareTag(language));
             }
         }
+
+        
+        // Change all the Rect Transform (principally for the whole tooltip object)
+        // To match with the chosen language
+        foreach (var image in GetComponentsInChildren<RectTransform>(true))
+        {
+            if (!image.CompareTag("Untagged"))
+            {
+                image.gameObject.SetActive(image.CompareTag(language));
+            }
+        }
     }
 
     private void InitializeSlides()
