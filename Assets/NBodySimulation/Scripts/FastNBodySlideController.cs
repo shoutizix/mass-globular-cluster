@@ -121,6 +121,7 @@ public class FastNBodySlideController : SimulationSlideController
     private List<Vector2> listVelocityAndCount = new List<Vector2>();
 
     private Color colorZAxisBlue = new Color(0.3568628f, 0.6705883f, 0.945098f, 1);
+    private Color colorYAxisGreen = new Color(0.5137255f, 0.8823529f, 0.7098039f, 1);
 
 
     private void Awake()
@@ -337,7 +338,7 @@ public class FastNBodySlideController : SimulationSlideController
                 DrawNormalCurve(graphY, colorNormalFit, mean, sigma);
                 if (drawStdDeviationOnGraphY)
                 {
-                    DrawStandardDeviation(graphY, Color.green, sigma);
+                    DrawStandardDeviation(graphY, colorYAxisGreen, sigma);
                 }
             }
         }
@@ -468,7 +469,7 @@ public class FastNBodySlideController : SimulationSlideController
         graphX.CreateLine(Color.red, true, "");
         graphX.PlotPointOnLastLine(Vector2.right * velocity.x);
 
-        graphY.CreateLine(Color.green, true, "");
+        graphY.CreateLine(colorYAxisGreen, true, "");
         graphY.PlotPointOnLastLine(Vector2.right * velocity.y);
 
         graphZ.CreateLine(colorZAxisBlue, true, "");
