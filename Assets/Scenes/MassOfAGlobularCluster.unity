@@ -4716,7 +4716,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1777213032}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &424591230
 MonoBehaviour:
@@ -11534,110 +11534,6 @@ RectTransform:
   m_AnchoredPosition: {x: 595, y: -188}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0, y: 1}
---- !u!1 &991396264
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 991396265}
-  - component: {fileID: 991396267}
-  - component: {fileID: 991396266}
-  m_Layer: 0
-  m_Name: 20 Body Simulation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &991396265
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991396264}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1777213032}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &991396266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991396264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a3c19c75990e4bfc9f3ef38895c003c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slideControllers: []
-  bodyPrefab: {fileID: 6335571273640261831, guid: 55ecc591f70e04ad7b186a9a970d394d,
-    type: 3}
-  centerOfMassPrefab: {fileID: 1208157535638110807, guid: 52e077c8711b04628a0362e888941e86,
-    type: 3}
-  coordinateOriginPrefab: {fileID: 0}
-  angularMomentumVectorPrefab: {fileID: 0}
-  lightPrefabs:
-  - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
-  graphPrefab: {fileID: 4771440823329845041, guid: 08e7824f27a0b4610ab95c2c69be7c16,
-    type: 3}
-  vectorVelocityXPrefab: {fileID: 0}
-  vectorVelocityYPrefab: {fileID: 0}
-  vectorVelocityZPrefab: {fileID: 0}
-  bodies: []
-  centerOfMass: {fileID: 0}
-  coordinateOrigin: {fileID: 0}
-  angularMomentumVector: {fileID: 0}
-  lights: []
-  positionVectorVelocityX: {fileID: 0}
-  positionVectorVelocityY: {fileID: 0}
-  positionVectorVelocityZ: {fileID: 0}
---- !u!114 &991396267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991396264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc15ff74287a8400a9bb83bb327db90b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paused: 0
-  mass: 0.1
-  bodyScale: 1
-  numBodies: 20
-  epsilon: 0.2
-  radialMean: 7
-  radialSigma: 0.5
-  speedMean: 2
-  speedSigma: 0
-  normalForEachAxis: 0
-  useMaxNumSteps: 0
-  maxNumSteps: 1000
-  maxAllowedDistance: 20
-  samplePeriod: 100
-  printSamples: 0
-  unitLength: 0
-  unitMass: 0
-  unitTime: 0
-  timeScale: 1
-  solver: 1
-  numSubsteps: 20
-  onMaxDistanceReached: {fileID: 11400000, guid: e11b0d641c1474f149736b45c2be63a5,
-    type: 2}
-  onComputeEnergies: {fileID: 11400000, guid: 775e5ec42293b4062a49757f2aba8180, type: 2}
-  averageVirial: 0
-  lastComputedSigma: 0
 --- !u!1 &1000989311
 GameObject:
   m_ObjectHideFlags: 0
@@ -15671,7 +15567,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1777213032}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1388718182
 MonoBehaviour:
@@ -19744,12 +19640,9 @@ Transform:
   m_Children:
   - {fileID: 1551909483}
   - {fileID: 428136178}
-  - {fileID: 1790991417}
   - {fileID: 1944280073}
-  - {fileID: 991396265}
   - {fileID: 424591229}
   - {fileID: 1388718181}
-  - {fileID: 1788338288}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20169,213 +20062,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787710978}
   m_CullTransparentMesh: 0
---- !u!1 &1788338287
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1788338288}
-  - component: {fileID: 1788338290}
-  - component: {fileID: 1788338289}
-  m_Layer: 0
-  m_Name: 80 Body Simulation Std
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1788338288
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788338287}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1777213032}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1788338289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788338287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a3c19c75990e4bfc9f3ef38895c003c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slideControllers: []
-  bodyPrefab: {fileID: 6335571273640261831, guid: 55ecc591f70e04ad7b186a9a970d394d,
-    type: 3}
-  centerOfMassPrefab: {fileID: 0}
-  coordinateOriginPrefab: {fileID: 0}
-  angularMomentumVectorPrefab: {fileID: 0}
-  lightPrefabs:
-  - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
-  graphPrefab: {fileID: 0}
-  vectorVelocityXPrefab: {fileID: 1948715729921795565, guid: d9dc6a4b9e6d6482192e743e635a544f,
-    type: 3}
-  vectorVelocityYPrefab: {fileID: 1948715729921795565, guid: d28f50e7865d046a38b48f21e8cc9827,
-    type: 3}
-  vectorVelocityZPrefab: {fileID: 1948715729921795565, guid: deb30c37df3b54a57b1d1ca0a02b766e,
-    type: 3}
-  bodies: []
-  centerOfMass: {fileID: 0}
-  coordinateOrigin: {fileID: 0}
-  angularMomentumVector: {fileID: 0}
-  lights: []
-  positionVectorVelocityX: {fileID: 0}
-  positionVectorVelocityY: {fileID: 0}
-  positionVectorVelocityZ: {fileID: 0}
---- !u!114 &1788338290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788338287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc15ff74287a8400a9bb83bb327db90b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paused: 0
-  mass: 0.1
-  bodyScale: 0.8
-  numBodies: 100
-  epsilon: 0.2
-  radialMean: 7
-  radialSigma: 4.6
-  speedMean: 0
-  speedSigma: 2
-  normalForEachAxis: 1
-  useMaxNumSteps: 0
-  maxNumSteps: 1000
-  maxAllowedDistance: 40
-  samplePeriod: 100
-  printSamples: 0
-  unitLength: 0
-  unitMass: 0
-  unitTime: 0
-  timeScale: 1
-  solver: 1
-  numSubsteps: 20
-  onMaxDistanceReached: {fileID: 11400000, guid: b8b779576742840739938143dacffd70,
-    type: 2}
-  onComputeEnergies: {fileID: 0}
-  averageVirial: 0
-  lastComputedSigma: 0
---- !u!1 &1790991416
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1790991417}
-  - component: {fileID: 1790991419}
-  - component: {fileID: 1790991418}
-  m_Layer: 0
-  m_Name: 80 Body Simulation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1790991417
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790991416}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1777213032}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1790991418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790991416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a3c19c75990e4bfc9f3ef38895c003c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slideControllers: []
-  bodyPrefab: {fileID: 6335571273640261831, guid: 55ecc591f70e04ad7b186a9a970d394d,
-    type: 3}
-  centerOfMassPrefab: {fileID: 0}
-  coordinateOriginPrefab: {fileID: 0}
-  angularMomentumVectorPrefab: {fileID: 0}
-  lightPrefabs:
-  - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
-  graphPrefab: {fileID: 0}
-  vectorVelocityXPrefab: {fileID: 0}
-  vectorVelocityYPrefab: {fileID: 0}
-  vectorVelocityZPrefab: {fileID: 0}
-  bodies: []
-  centerOfMass: {fileID: 0}
-  coordinateOrigin: {fileID: 0}
-  angularMomentumVector: {fileID: 0}
-  lights: []
-  positionVectorVelocityX: {fileID: 0}
-  positionVectorVelocityY: {fileID: 0}
-  positionVectorVelocityZ: {fileID: 0}
---- !u!114 &1790991419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790991416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc15ff74287a8400a9bb83bb327db90b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paused: 0
-  mass: 0.1
-  bodyScale: 0.8
-  numBodies: 80
-  epsilon: 0.2
-  radialMean: 7
-  radialSigma: 0.5
-  speedMean: 3.3
-  speedSigma: 0.1
-  normalForEachAxis: 0
-  useMaxNumSteps: 0
-  maxNumSteps: 1000
-  maxAllowedDistance: 40
-  samplePeriod: 100
-  printSamples: 0
-  unitLength: 0
-  unitMass: 0
-  unitTime: 0
-  timeScale: 1
-  solver: 1
-  numSubsteps: 20
-  onMaxDistanceReached: {fileID: 11400000, guid: 45885c091999f4959add960bea7f281e,
-    type: 2}
-  onComputeEnergies: {fileID: 0}
-  averageVirial: 0
-  lastComputedSigma: 0
 --- !u!1 &1803717792
 GameObject:
   m_ObjectHideFlags: 0
@@ -22678,7 +22364,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1777213032}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1944280074
 MonoBehaviour:
