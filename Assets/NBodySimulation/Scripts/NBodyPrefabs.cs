@@ -11,7 +11,6 @@ public class NBodyPrefabs : MonoBehaviour
     [SerializeField] private GameObject coordinateOriginPrefab;
     [SerializeField] private GameObject angularMomentumVectorPrefab;
     [SerializeField] private GameObject[] lightPrefabs;
-    [SerializeField] private GameObject graphPrefab;
     [SerializeField] private GameObject vectorVelocityXPrefab;
     [SerializeField] private GameObject vectorVelocityYPrefab;
     [SerializeField] private GameObject vectorVelocityZPrefab;
