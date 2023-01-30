@@ -1047,7 +1047,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137377060}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -1515,7 +1515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 89, y: -97}
+  m_AnchoredPosition: {x: 207, y: -132}
   m_SizeDelta: {x: 1020, y: 220}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &190009088
@@ -2093,7 +2093,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 30, y: -70}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 300, y: 225}
   m_Pivot: {x: 0, y: 1}
 --- !u!223 &232132546
 Canvas:
@@ -2161,7 +2161,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232132544}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -4740,7 +4740,6 @@ MonoBehaviour:
   angularMomentumVectorPrefab: {fileID: 0}
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
-  graphPrefab: {fileID: 0}
   vectorVelocityXPrefab: {fileID: 1948715729921795565, guid: d9dc6a4b9e6d6482192e743e635a544f,
     type: 3}
   vectorVelocityYPrefab: {fileID: 1948715729921795565, guid: d28f50e7865d046a38b48f21e8cc9827,
@@ -4958,7 +4957,6 @@ MonoBehaviour:
   angularMomentumVectorPrefab: {fileID: 0}
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
-  graphPrefab: {fileID: 0}
   vectorVelocityXPrefab: {fileID: 0}
   vectorVelocityYPrefab: {fileID: 0}
   vectorVelocityZPrefab: {fileID: 0}
@@ -7550,7 +7548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 113, y: -97.5}
+  m_AnchoredPosition: {x: 190, y: -149}
   m_SizeDelta: {x: 680, y: 220}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &585409587
@@ -8406,7 +8404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 155, y: -58.6}
+  m_AnchoredPosition: {x: 116, y: -76}
   m_SizeDelta: {x: 1460, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &642098617
@@ -8778,7 +8776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 199, y: -97}
+  m_AnchoredPosition: {x: 9, y: -166}
   m_SizeDelta: {x: 1020, y: 220}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &690700804
@@ -9581,7 +9579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -167}
+  m_AnchoredPosition: {x: 90, y: -197}
   m_SizeDelta: {x: 1680, y: 280}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &797655541
@@ -10674,7 +10672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -83}
+  m_AnchoredPosition: {x: 64, y: -100}
   m_SizeDelta: {x: 140, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &925511287
@@ -10924,7 +10922,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 7.5, y: -97.5}
+  m_AnchoredPosition: {x: 120, y: -132}
   m_SizeDelta: {x: 680, y: 220}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &946884481
@@ -15362,7 +15360,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 148.7, y: -58.6}
+  m_AnchoredPosition: {x: 97, y: -76}
   m_SizeDelta: {x: 1460, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1378021979
@@ -15589,7 +15587,6 @@ MonoBehaviour:
   angularMomentumVectorPrefab: {fileID: 0}
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
-  graphPrefab: {fileID: 0}
   vectorVelocityXPrefab: {fileID: 0}
   vectorVelocityYPrefab: {fileID: 0}
   vectorVelocityZPrefab: {fileID: 0}
@@ -20350,7 +20347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 213.5, y: -83}
+  m_AnchoredPosition: {x: 126, y: -100}
   m_SizeDelta: {x: 140, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1833535244
@@ -20708,7 +20705,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -150.4}
+  m_AnchoredPosition: {x: 90, y: -170}
   m_SizeDelta: {x: 1680, y: 280}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1845936835
@@ -22387,7 +22384,6 @@ MonoBehaviour:
   angularMomentumVectorPrefab: {fileID: 0}
   lightPrefabs:
   - {fileID: 5072136149118941552, guid: c9b1d0bb1db4f4bbbae7de9d70e94dc2, type: 3}
-  graphPrefab: {fileID: 0}
   vectorVelocityXPrefab: {fileID: 0}
   vectorVelocityYPrefab: {fileID: 0}
   vectorVelocityZPrefab: {fileID: 0}
@@ -23590,10 +23586,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "En fait, nous avons :\n\n\nEn utilisant le fait que \t\t\t\tpour une variable
-    al\xE9atoire  , et nous supposons que                 avec \t                 
-    ,\ncar il y a autant de particules qui se d\xE9placent vers l'int\xE9rieur que
-    vers l'ext\xE9rieur. Ainsi, nous avons "
+  m_text: "En fait, nous avons :\n\n\nChaque terme du c\xF4t\xE9 droit peut \xEAtre
+    d\xE9velopp\xE9 en \t\t\t     pour une variable al\xE9atoire    . \nEn supposant
+    qu'il y a autant de particules se d\xE9pla\xE7ant vers l'int\xE9rieur que vers
+    l'ext\xE9rieur dans le syst\xE8me, nous avons                    avec \t        
+    \t\t . Nous pouvons donc finalement \xE9crire"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -24270,9 +24267,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "In fact, we have :\n\n\nUsing the fact that \t\t\t\tfor a random variable   
-    , and we assume that \n\t     with \t\t        as there are as many particles
-    that move inwards than outwards.\nThus, we have"
+  m_text: "In fact, we have :\n\n\nEach term on the right-hand side can be expanded
+    to \t\t\t\tfor a random variable    . Assuming that there are as many particles
+    moving inwards as outwards in the system, we have\t         with\nWe can therefore
+    finally write"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 350cfcf20da78478f9197161ac83b480, type: 2}
   m_sharedMaterial: {fileID: -1129015340585624399, guid: 350cfcf20da78478f9197161ac83b480,
@@ -30543,7 +30541,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8024456726816780502}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
