@@ -25,7 +25,6 @@ public class FastNBodySlideController : SimulationSlideController
     [Header("Equations / Displays")]
     [SerializeField] private RectTransform panelRadialVelocity;
     [SerializeField] private MeterFill meterRadialVelocity;
-    [SerializeField] private RectTransform dataPanel;
     [SerializeField] private FadeOutUI handRotate;
 
     [Header("Buttons")]
@@ -99,12 +98,6 @@ public class FastNBodySlideController : SimulationSlideController
     private Vector velocityVector = default;
     private Arrow velocityArrow = default;
 
-    // Data Panel values
-    private TextMeshProUGUI dataPanelU;
-    private TextMeshProUGUI dataPanelK;
-    private TextMeshProUGUI dataPanelE;
-    private TextMeshProUGUI dataPanelV;
-
     // Mesure of the radial velocity
     private List<Vector2> listVelocityAndCount = new List<Vector2>();
 
@@ -159,15 +152,6 @@ public class FastNBodySlideController : SimulationSlideController
         {
             sliders.Add(speedSigmaSlider);
         }
-
-        // Get data panel references
-        if (dataPanel)
-        {
-            dataPanelU = dataPanel.Find("U Value").GetComponent<TextMeshProUGUI>();
-            dataPanelK = dataPanel.Find("K Value").GetComponent<TextMeshProUGUI>();
-            dataPanelE = dataPanel.Find("E Value").GetComponent<TextMeshProUGUI>();
-            dataPanelV = dataPanel.Find("V Value").GetComponent<TextMeshProUGUI>();
-        }
     }
 
     public override void InitializeSlide()
@@ -177,7 +161,6 @@ public class FastNBodySlideController : SimulationSlideController
             return;
         }
 
-        //Debug.Log(transform.name + " resetting " + sim.name);
         sim.CustomReset(true, true, virializeOnReset);
 
         prefabs.SetCenterOfMassVisibility(centerOfMass);
@@ -190,7 +173,6 @@ public class FastNBodySlideController : SimulationSlideController
         SetButtonsInteractivity(true, false);
         ShowAllUI();
         HideTextPanels();
-        SetDataPanelVisibility(autoPlay);
         SetBloomVisibility(bloom);
 
         sim.SetInteractable(bodiesInteractable);
@@ -253,7 +235,6 @@ public class FastNBodySlideController : SimulationSlideController
         {
             sim.Pause();
             SetSliderVisibility(true);
-            SetDataPanelVisibility(false);
         }
 
         if (startButton)
@@ -862,14 +843,6 @@ public class FastNBodySlideController : SimulationSlideController
         }
     }
 
-    private void SetDataPanelVisibility(bool visible)
-    {
-        if (dataPanel)
-        {
-            dataPanel.gameObject.SetActive(visible);
-        }
-    }
-
     private void ResetBodyMaterials()
     {
         if (defaultMaterial)
@@ -881,26 +854,6 @@ public class FastNBodySlideController : SimulationSlideController
                     renderer.material = defaultMaterial;
                 }
             }
-        }
-    }
-
-    public void UpdateDataPanel()
-    {
-        if (dataPanelU)
-        {
-            dataPanelU.text = (sim.U / sim.E).ToString("0.0");
-        }
-        if (dataPanelK)
-        {
-            dataPanelK.text = (sim.K / sim.E).ToString("0.0");
-        }
-        if (dataPanelE)
-        {
-            dataPanelE.text = ((sim.U + sim.K) / sim.E).ToString("0.0");
-        }
-        if (dataPanelV)
-        {
-            dataPanelV.text = (sim.averageVirial / sim.E).ToString("0.0");
         }
     }
 
