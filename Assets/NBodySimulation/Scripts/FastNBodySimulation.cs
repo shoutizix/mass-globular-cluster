@@ -432,7 +432,6 @@ public class FastNBodySimulation : Simulation
 
         velocityCM = Vector3.zero;
 
-        // TODO : Change generation of velocity so that center particles velocity is higher than the one at extremity
         if (normalForEachAxis)
         {
             for (int i = 0; i < numBodies; i++)
@@ -452,6 +451,8 @@ public class FastNBodySimulation : Simulation
                 //print("1/dist i : "+i+", "+1/distanceFromCenter);
                 //print("i : "+i+", speed : "+speed);
                 //Vector3 velocity = speed * Vector3.forward;
+
+                // Generate random velocity according to a Gaussian with mean and sigma
                 float speedX = Utils.Random.NormalValue(mean, sigma);
                 float speedY = Utils.Random.NormalValue(mean, sigma);
                 float speedZ = Utils.Random.NormalValue(mean, sigma);
@@ -549,31 +550,6 @@ public class FastNBodySimulation : Simulation
         return -G * mass * mass / r;
     }
 
-    // Acceleration of the body at index due to the positions of all other bodies
-    //public Vector3 Acceleration(int index)
-    //{
-    //    Vector3 acceleration = Vector3.zero;
-    //    for (int i = 0; i < numBodies; i++)
-    //    {
-    //        // Don't need to avoid i == index, since we have softening
-    //        Vector3 r = positions[i] - positions[index];
-    //        acceleration += r / Mathf.Pow(r.sqrMagnitude + epsilon * epsilon, 1.5f);
-    //    }
-
-    //    return G * mass * acceleration;
-    //}
-
-    //private void ComputeInitAccelerations()
-    //{
-    //    accelerations = new List<Vector3>(numBodies);
-    //    accelerationsPrev = new List<Vector3>(numBodies);
-    //    for (int i = 0; i < numBodies; i++)
-    //    {
-    //        accelerations.Add(Acceleration(i));
-    //        accelerationsPrev.Add(Vector3.zero);
-    //    }
-    //}
-
     public float ComputeEnergies()
     {
         currentK = 0;
@@ -632,7 +608,7 @@ public class FastNBodySimulation : Simulation
         return value;
     }
 
-    // Called by Slider OnValueChanged()
+    // Can be called by a Slider
     public void SetMeanDistance(float value)
     {
         radialMean = value;
@@ -644,7 +620,7 @@ public class FastNBodySimulation : Simulation
         }
     }
 
-    // Called by Slider OnValueChanged()
+    // Can be called by a Slider
     public void SetNumBodies(float value)
     {
         numBodies = (int)value;
