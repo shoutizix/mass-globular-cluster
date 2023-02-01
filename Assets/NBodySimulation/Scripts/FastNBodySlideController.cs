@@ -25,19 +25,11 @@ public class FastNBodySlideController : SimulationSlideController
     [Header("Equations / Displays")]
     [SerializeField] private RectTransform panelRadialVelocity;
     [SerializeField] private MeterFill meterRadialVelocity;
-    [SerializeField] private RectTransform equationK;
-    [SerializeField] private RectTransform panelK;
-    [SerializeField] private MeterFill meterK;
-    [SerializeField] private RectTransform equationU;
-    [SerializeField] private RectTransform panelU;
-    [SerializeField] private MeterFill meterU;
     [SerializeField] private RectTransform dataPanel;
     [SerializeField] private FadeOutUI handRotate;
 
     [Header("Buttons")]
     [SerializeField] private Button measureRadialVelocityButton;
-    [SerializeField] private Button computeKButton;
-    [SerializeField] private Button computeUButton;
     [SerializeField] private Button resetButton;
     [SerializeField] private Button startButton;
     [SerializeField] private Button fitNormalButton;
@@ -51,10 +43,6 @@ public class FastNBodySlideController : SimulationSlideController
     [Header("Materials")]
     [SerializeField] private Material defaultMaterial;
     [SerializeField] private Material glowMaterial;
-
-    [Header("Body Connector")]
-    [SerializeField] private GameObject connectorPrefab;
-    [SerializeField] private float lineWidth = 0.1f;
 
     [Header("Vectors")]
     [SerializeField] private GameObject velocityPrefab;
@@ -141,14 +129,6 @@ public class FastNBodySlideController : SimulationSlideController
         {
             buttons.Add(measureRadialVelocityButton);
         }
-        if (computeKButton)
-        {
-            buttons.Add(computeKButton);
-        }
-        if (computeUButton)
-        {
-            buttons.Add(computeUButton);
-        }
         if (resetButton)
         {
             buttons.Add(resetButton);
@@ -160,14 +140,6 @@ public class FastNBodySlideController : SimulationSlideController
 
         // Collect equation images
         equations = new HashSet<RectTransform>();
-        if (equationK)
-        {
-            equations.Add(equationK);
-        }
-        if (equationU)
-        {
-            equations.Add(equationU);
-        }
 
         // Collect all assigned sliders
         sliders = new HashSet<Slider>();
@@ -374,36 +346,23 @@ public class FastNBodySlideController : SimulationSlideController
         }
     }
 
+    // Called by Button
     public void FitNormalDistributionVisually()
     {
-        SetUVisibility(false);
-        SetKVisibility(false);
         SetButtonsInteractivity(false);
         simulation.Pause();
         StartCoroutine(AnimationNormalDistribution(animationNormalDuration));
     }
 
+    // Called by Button
     public void ComputeRadialVelocityVisually()
     {
         sim.CustomReset(false, true, false);
         UpdateRadialVelocityMeter(0);
-        SetUVisibility(false);
-        SetKVisibility(false);
         SetButtonsInteractivity(false);
         simulation.Pause();
         sim.ComputeRadialVelocity();
         StartCoroutine(LoopOverBodiesMeasureRadialVelocity(sim.RadialVelocity));
-    }
-
-    public void ComputeUVisually()
-    {
-        UpdateUMeter(0);
-        SetKVisibility(false);
-        SetRadialVelocityVisibility(false);
-        SetButtonsInteractivity(false);
-        simulation.Pause();
-        sim.ComputePotentialEnergy();
-        StartCoroutine(LoopOverBodiesWithConnections(sim.U));
     }
 
     public void ClearVelocitiesVectors()
@@ -516,12 +475,6 @@ public class FastNBodySlideController : SimulationSlideController
 
         for (float x = startEndXCoord.x; x < startEndXCoord.y; x += 0.1f)
         {
-            /*
-            int maxHeight = 20;
-            int minHeight = 0;
-            float maxNormal = NormalDistribution.NormalPDF(meanSpeed, sigmaSpeed, meanSpeed);
-            float yNormal = Mathf.Lerp(minHeight, maxHeight, NormalDistribution.NormalPDF(x, sigmaSpeed, meanSpeed) / maxNormal);
-            */
             float yNormal = NormalDistribution.NormalPDF(x, sigmaSpeed, meanSpeed) * sim.GetNumBodies();
             Vector2 newPos = new Vector2(x, yNormal);
             graph.PlotPointOnLastLine(newPos);
@@ -730,8 +683,6 @@ public class FastNBodySlideController : SimulationSlideController
         HideBodyLabels();
         HideTextPanels();
         SetButtonsInteractivity(true, true);
-        SetUVisibility(true);
-        SetKVisibility(true);
     }
 
     private IEnumerator AnimationNormalDistribution(float animationDuration)
@@ -829,95 +780,6 @@ public class FastNBodySlideController : SimulationSlideController
         }
     }
 
-    private IEnumerator LoopOverBodiesWithConnections(float maxValue)
-    {
-        int[] indices = GetSortedIndices();
-        float currentU = 0;
-
-        TextMeshProUGUI counter = default;
-        TextMeshProUGUI value = default;
-
-        if (panelU)
-        {
-            Transform counterU = panelU.Find("Counter");
-            if (counterU)
-            {
-                counterU.TryGetComponent(out counter);
-            }
-            Transform valueU = panelU.Find("Value");
-            if (valueU)
-            {
-                valueU.TryGetComponent(out value);
-            }
-        }
-
-        // Highlight the bodies and their connections one-by-one
-        for (int i = 0; i < indices.Length - 1; i++)
-        {
-            Transform body1 = prefabs.bodies[indices[i]];
-
-            if (counter)
-            {
-                counter.text = (i + 1).ToString();
-            }
-
-            // Highlight the current body
-            body1.GetComponent<MeshRenderer>().material = glowMaterial;
-
-            // Show appropriate index label
-            if (bodyLabels.Count > i && prefabs.BodiesHaveLabels())
-            {
-                Transform label = body1.Find("Label");
-                if (label)
-                {
-                    label.GetComponent<SpriteRenderer>().sprite = bodyLabels[i];
-                    label.gameObject.SetActive(true);
-                }
-            }
-
-            // Connect the current body with remaining others
-            connectors = new HashSet<GameObject>();
-            for (int j = i + 1; j < indices.Length; j++)
-            {
-                Transform body2 = prefabs.bodies[indices[j]];
-
-                currentU += sim.GravitationalPotentialEnergy(i, j);
-
-                LineRenderer connector = Instantiate(connectorPrefab, Vector3.zero, Quaternion.identity, simulation.transform).GetComponent<LineRenderer>();
-                connector.startWidth = lineWidth;
-                connector.endWidth = lineWidth;
-                connector.positionCount = 2;
-                connector.SetPositions(new Vector3[] { body1.position, body2.position });
-                connectors.Add(connector.gameObject);
-            }
-
-            // Update running U
-            if (value)
-            {
-                value.text = currentU.ToString("0.00");
-            }
-
-            UpdateUMeter(currentU / maxValue);
-
-            yield return new WaitForSeconds(0.4f);
-
-            foreach (GameObject connector in connectors)
-            {
-                Destroy(connector);
-            }
-
-            HideBodyLabels();
-        }
-
-        yield return new WaitForSeconds(2);
-
-        ResetBodyMaterials();
-        SetButtonsInteractivity(true);
-        SetKVisibility(true);
-        SetRadialVelocityVisibility(true);
-        simulation.Resume();
-    }
-
     private int[] GetSortedIndices()
     {
         // Sort according to body x position on the screen
@@ -992,51 +854,11 @@ public class FastNBodySlideController : SimulationSlideController
         }
     }
 
-    private void SetUVisibility(bool visible)
-    {
-        if (equationU)
-        {
-            equationU.gameObject.SetActive(visible);
-        }
-        if (computeUButton)
-        {
-            computeUButton.gameObject.SetActive(visible);
-        }
-        if (panelK)
-        {
-            panelK.gameObject.SetActive(!visible);
-        }
-    }
-
-    private void SetKVisibility(bool visible)
-    {
-        if (equationK)
-        {
-            equationK.gameObject.SetActive(visible);
-        }
-        if (computeKButton)
-        {
-            computeKButton.gameObject.SetActive(visible);
-        }
-        if (panelU)
-        {
-            panelU.gameObject.SetActive(!visible);
-        }
-    }
-
     private void HideTextPanels()
     {
         if (panelRadialVelocity)
         {
             panelRadialVelocity.gameObject.SetActive(false);
-        }
-        if (panelK)
-        {
-            panelK.gameObject.SetActive(false);
-        }
-        if (panelU)
-        {
-            panelU.gameObject.SetActive(false);
         }
     }
 
@@ -1058,31 +880,6 @@ public class FastNBodySlideController : SimulationSlideController
                 {
                     renderer.material = defaultMaterial;
                 }
-            }
-        }
-    }
-
-    // Called by StartButton
-    public void TogglePlayPause()
-    {
-        if (sim.paused)
-        {
-            sim.Resume();
-            SetSliderVisibility(false);
-            SetDataPanelVisibility(true);
-            foreach (Transform child in startButton.transform)
-            {
-                child.gameObject.SetActive(child.name == "Pause Text");
-            }
-        }
-        else
-        {
-            sim.Pause();
-            //SetSliderVisibility(true);
-            //SetDataPanelVisibility(false);
-            foreach (Transform child in startButton.transform)
-            {
-                child.gameObject.SetActive(child.name == "Resume Text");
             }
         }
     }
@@ -1127,22 +924,6 @@ public class FastNBodySlideController : SimulationSlideController
         if (meterRadialVelocity)
         {
             meterRadialVelocity.SetFillAmount(fillAmount);
-        }
-    }
-
-    private void UpdateKMeter(float fillAmount)
-    {
-        if (meterK)
-        {
-            meterK.SetFillAmount(fillAmount);
-        }
-    }
-
-    private void UpdateUMeter(float fillAmount)
-    {
-        if (meterU)
-        {
-            meterU.SetFillAmount(fillAmount);
         }
     }
 
