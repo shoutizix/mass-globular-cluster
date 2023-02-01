@@ -478,6 +478,7 @@ public class FastNBodySlideController : SimulationSlideController
         graph.PlotPointOnLastLine(new Vector2(startEndXCoord.y, yStd));
     }
 
+    // Can be use to debug the histogram graph
     private void PrintListVelocityCount()
     {
         string text = "";
